@@ -15,7 +15,6 @@ Swiper.Game = function(game) {
     this.ding;
 };
 
-//hej hej hej
 
 Swiper.Game.prototype = {
     
