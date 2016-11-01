@@ -1,16 +1,22 @@
 .module_top, .module_bottom{
-  visibility: hidden;
+  	visibility: hidden;
 }
 
 table {
-  border: 0px !important;
+  	border: 0px !important;
+}
+
+body{
+	padding 0;
+	margin 0;
+	background-color: #000000;
 }
 
 .module_content img{
-  min-width: 70px;
+  	min-width: 70px;
 }
 
 .module_content h2{
-  font-size: 30px;
+  	font-size: 30px;
 }
 
