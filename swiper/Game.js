@@ -3,6 +3,7 @@ Game = function(game) {
     this.countdown;
     this.secondsElapsed;
     this.timer;
+    this.generateImage;
     };
 
 var bunny;
@@ -21,26 +22,41 @@ Game.prototype = {
 
 
         this.buildWorld();
+
+        
     },
     
     updateSeconds: function() {
         this.secondsElapsed++;
     },
+
+    
     
     buildWorld: function() {
         this.add.image(0, 0, 'sky');
         this.add.image(0, 800, 'hill');
         this.timer.start();
+
+        //definerar bilder i loop med tiden        
+        this.game.time.events.repeat(Phaser.Timer.SECOND * 2, 10, this.generateImage, this);
+
+        
+
+    },
+
+    generateImage: function() {
         //definerar bilder
         bunny = this.game.add.sprite(0,0,'bunny');
         spacefighter = this.game.add.sprite(100,0,'spacefighter');
-        
 
         this.game.physics.enable( [ bunny,spacefighter ], Phaser.Physics.ARCADE);
+        
         //collide with world 
         bunny.body.collideWorldBounds = true;
         spacefighter.body.collideWorldBounds = true;
 
+        bunny.inputEnabled = true;
+        bunny.input.enableDrag(true);
     },
     
     quitGame:function(pointer) {
