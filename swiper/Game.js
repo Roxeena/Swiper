@@ -55,20 +55,36 @@ Game.prototype = {
         //definerar bilder
 
         var rndnr=0;
-        rndnr=rndnr +this.game.rnd.integerInRange(1, 2);
+        rndnr=rndnr +this.game.rnd.integerInRange(1, 4);
         if ( rndnr==1){
-            bunny = this.game.add.sprite(0,0,'bunny');  
-            this.game.physics.enable( [ bunny], Phaser.Physics.ARCADE);
-            bunny.body.collideWorldBounds = true; 
-            bunny.inputEnabled = true;
-            bunny.input.enableDrag(true);
+            arrowRight = this.game.add.sprite(0,0,'bunny');  
+            this.game.physics.enable( [ arrowRight], Phaser.Physics.ARCADE);
+            arrowRight.body.collideWorldBounds = true; 
+            arrowRight.inputEnabled = true;
+            arrowRight.input.enableDrag(true);
         }
         else if(rndnr==2){
-            spacefighter = this.game.add.sprite(100,0,'spacefighter');
-            this.game.physics.enable( [ bunny,spacefighter ], Phaser.Physics.ARCADE);
-            spacefighter.body.collideWorldBounds = true;
-            spacefighter.inputEnabled = true;
-            spacefighter.input.enableDrag(true);
+            arrowLeft = this.game.add.sprite(100,0,'spacefighter');
+            this.game.physics.enable( [ arrowLeft ], Phaser.Physics.ARCADE);
+            arrowLeft.body.collideWorldBounds = true;
+            arrowLeft.inputEnabled = true;
+            arrowLeft.input.enableDrag(true);
+           
+        }
+        else if(rndnr==3){
+            arrowUp = this.game.add.sprite(100,0,'explosion');
+            this.game.physics.enable( [ arrowUp], Phaser.Physics.ARCADE);
+            arrowUp.body.collideWorldBounds = true;
+            arrowUp.inputEnabled = true;
+            arrowUp.input.enableDrag(true);
+           
+        }
+        else if(rndnr==4){
+            arrowDown = this.game.add.sprite(100,0,'ghost');
+            this.game.physics.enable( [arrowDown ], Phaser.Physics.ARCADE);
+            arrowDown.body.collideWorldBounds = true;
+            arrowDown.inputEnabled = true;
+            arrowDown.input.enableDrag(true);
            
         }
         
