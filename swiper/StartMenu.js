@@ -15,6 +15,6 @@ StartMenu.prototype = {
 	},
 	startGame: function(pointer) {
 		this.ding.play();
-		this.state.start('game');
+		this.state.start('Game');
 	}
 };
