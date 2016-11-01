@@ -64,12 +64,12 @@ Game.prototype = {
             bunny.input.enableDrag(true);
         }
         else if(rndnr==2){
-        spacefighter = this.game.add.sprite(100,0,'spacefighter');
-        this.game.physics.enable( [ bunny,spacefighter ], Phaser.Physics.ARCADE);
-        spacefighter.body.collideWorldBounds = true;
-        spacefighter.inputEnabled = true;
-        spacefighter.input.enableDrag(true);
-       
+            spacefighter = this.game.add.sprite(100,0,'spacefighter');
+            this.game.physics.enable( [ bunny,spacefighter ], Phaser.Physics.ARCADE);
+            spacefighter.body.collideWorldBounds = true;
+            spacefighter.inputEnabled = true;
+            spacefighter.input.enableDrag(true);
+           
         }
         
         
