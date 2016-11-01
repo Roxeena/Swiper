@@ -17,7 +17,9 @@ Game.prototype = {
         this.secondsElapsed = 0;
         this.timer = this.time.create(false);
         this.timer.loop(1000, this.updateSeconds, this);
-        
+       // this.game.time.events.loop(Phaser.Timer.SECOND, updateSeconds, this);
+
+
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
         this.game.physics.arcade.gravity.y = 100;
 
@@ -28,8 +30,9 @@ Game.prototype = {
     },
     
     updateSeconds: function() {
-        this.secondsElapsed++;
-    },
+        this.secondsElapsed++;       
+    
+        },
 
     
     
@@ -42,10 +45,15 @@ Game.prototype = {
         music.play();
 
 
+
+
         this.timer.start();
 
         //definerar bilder i loop med tiden        
         this.game.time.events.repeat(Phaser.Timer.SECOND * 2, 10, this.generateImage, this);
+
+        //quit
+        this.game.time.events.add(Phaser.Timer.SECOND *68, this.quitGame, this);
 
         
 
