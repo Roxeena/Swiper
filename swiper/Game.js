@@ -35,6 +35,12 @@ Game.prototype = {
     buildWorld: function() {
         this.add.image(0, 0, 'sky');
         this.add.image(0, 800, 'hill');
+
+        var music;
+        music = this.game.add.audio('jerry');
+        music.play();
+
+
         this.timer.start();
 
         //definerar bilder i loop med tiden        

@@ -23,6 +23,7 @@ Preloader.prototype = {
         this.load.audio('hurt_audio', 'assets/audio/hurt.mp3');
         this.load.audio('select_audio', 'assets/audio/select.mp3');
         this.load.audio('game_audio', 'assets/audio/bgm.mp3');
+        this.load.audio('jerry', 'assets/audio/jerry.mp3');
     
 },
 	create: function () {
