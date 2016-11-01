@@ -13,15 +13,15 @@ Boot.prototype = {
 	
 	create: function() { // game items och menu bakground
 	
-	this.input.maxPointers=1;
-	this.stage.disableVisabilityChange = false;
+	//this.input.maxPointers=1;
+	//this.stage.disableVisabilityChange = false;
 	this.scale.scaleMode = Phaser.ScaleManager.SHOW_all;
-	this.scale.miniWidth = 270;
-	this.scale.miniHeight = 480;
+	//this.scale.miniWidth = 270;
+	//this.scale.miniHeight = 480;
 	this.scale.pageAlignHorizontally = true;
-	//this.scale.pageAlignVertically = true;
+	this.scale.pageAlignVertically = true;
 	//this.stage.forcePortrait = true;
-	//this.scale.setScreenSize();
+	//this.game.scale.setScreenSize();
 
 	this.input.addPointer();
 	this.stage.backgroundColor = '#171642';
