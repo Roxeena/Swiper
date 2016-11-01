@@ -5,8 +5,10 @@ Game = function(game) {
     this.timer;
     };
 
-
+var bunny;
+var spacefighter;
 Game.prototype = {
+
    
     create: function() {
         this.gameover = false;
@@ -29,16 +31,26 @@ Game.prototype = {
         this.add.image(0, 0, 'sky');
         this.add.image(0, 800, 'hill');
         this.timer.start();
-        this.game.add.sprite(0,0,'bunny')
+        //definerar bilder
+        bunny = this.game.add.sprite(0,0,'bunny');
+        spacefighter = this.game.add.sprite(100,0,'spacefighter');
+        
+
+        this.game.physics.enable( [ bunny,spacefighter ], Phaser.Physics.ARCADE);
+        //collide with world 
+        bunny.body.collideWorldBounds = true;
+        spacefighter.body.collideWorldBounds = true;
+
     },
     
     quitGame:function(pointer) {
-        this.ding.play();
+        
         this.state.start('StartMenu');
     },
     
     
     update: function() {
+        
         }
     
     
