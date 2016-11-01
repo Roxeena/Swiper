@@ -1,4 +1,4 @@
-Swiper.Game = function(game) {
+Game = function(game) {
     this.totalBunnies;
     this.bunnyGroup;
     this.totalSpacerocks;
@@ -15,8 +15,7 @@ Swiper.Game = function(game) {
     this.ding;
 };
 
-
-Swiper.Game.prototype = {
+Game.prototype = {
     
     create: function() {
         this.gameover = false;

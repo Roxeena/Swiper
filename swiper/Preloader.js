@@ -26,14 +26,10 @@ Preloader.prototype = {
     
 },
 	create: function () {
-      // this.game.state.start('StartMenu');
-    this.preloadBar.cropEnabled = false;
+       this.game.state.start('StartMenu');
+        //this.preloadBar.cropEnabled = false;
     },
  
-    update: function () {
-       // if(this.cache.isSoundDecoded('game_audio') && this.ready == false) {
-            this.ready = true;
-            this.state.start('StartMenu');
-        //}
-    }
+    
+    
 };

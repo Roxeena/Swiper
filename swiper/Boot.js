@@ -1,5 +1,5 @@
 var Boot = function(game){
-
+	console.log("%cStarting my awesome game", "color:white; background:red");
 
 };
 //Swiper.Boot = function(game) {};
@@ -23,7 +23,7 @@ Boot.prototype = {
 	//this.stage.forcePortrait = true;
 	//this.game.scale.setScreenSize();
 
-	this.input.addPointer();
+	//this.input.addPointer();
 	this.stage.backgroundColor = '#171642';
 
 	this.state.start('Preloader');
