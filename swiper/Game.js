@@ -62,6 +62,7 @@ Game.prototype = {
             arrowRight.body.collideWorldBounds = true; 
             arrowRight.inputEnabled = true;
             arrowRight.input.enableDrag(true);
+            arrowRight.input.allowVerticalDrag = false;
         }
         else if(rndnr==2){
             arrowLeft = this.game.add.sprite(100,0,'spacefighter');
@@ -69,6 +70,7 @@ Game.prototype = {
             arrowLeft.body.collideWorldBounds = true;
             arrowLeft.inputEnabled = true;
             arrowLeft.input.enableDrag(true);
+            arrowLeft.input.allowVerticalDrag = false;
            
         }
         else if(rndnr==3){
@@ -77,6 +79,7 @@ Game.prototype = {
             arrowUp.body.collideWorldBounds = true;
             arrowUp.inputEnabled = true;
             arrowUp.input.enableDrag(true);
+            arrowUp.input.allowVerticalDrag = false;
            
         }
         else if(rndnr==4){
@@ -85,6 +88,7 @@ Game.prototype = {
             arrowDown.body.collideWorldBounds = true;
             arrowDown.inputEnabled = true;
             arrowDown.input.enableDrag(true);
+            arrowDown.input.allowVerticalDrag = false;
            
         }
         
