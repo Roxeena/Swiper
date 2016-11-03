@@ -6,8 +6,6 @@ Game = function(game) {
     this.generateImage;
 };
 
-var bunny;
-var spacefighter;
 Game.prototype = {
 
    
