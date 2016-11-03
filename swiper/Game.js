@@ -54,90 +54,50 @@ Game.prototype = {
         //definerar bilder
 
         var rndnr=0;
+        var arrowUp;
+        var arrowDown;
+        var arrowRight;
+        var arrowLeft;
+        var arrowarray;
+        var selected;
         rndnr=rndnr +this.game.rnd.integerInRange(1, 4);
-        
 
         if (rndnr==1){
-            arrowRight = this.game.add.sprite(this.game.world.randomX,0,'bunny');  
-            this.game.physics.enable( [ arrowRight ], Phaser.Physics.ARCADE);
-            arrowRight.body.collideWorldBounds = true; 
-            arrowRight.inputEnabled = true;
-            arrowRight.input.enableDrag(true);
-            arrowRight.input.allowVerticalDrag = false;
 
-            arrowRight.events.onDragStart.add(startDrag, this);
-            arrowRight.events.onDragStop.add(stopDrag, this);
+        arrowRight = this.game.add.sprite(this.game.world.randomX,0,'bunny'); 
+        selected=arrowRight;
+        }     
+        if (rndnr==2){
+        arrowLeft = this.game.add.sprite(this.game.world.randomX,0,'spacefighter');
+            selected=arrowLeft;
+        }
+        if (rndnr==3){
+        arrowUp = this.game.add.sprite(this.game.world.randomX,0,'explosion');
+        selected=arrowUp;
+        }   
+        if (rndnr==4){
+        arrowDown = this.game.add.sprite(this.game.world.randomX,0,'ghost');
+        selected=arrowDown;
+        }
+      
+        this.game.physics.enable( [ selected ], Phaser.Physics.ARCADE);
+            selected.body.collideWorldBounds = true; 
+            selected.inputEnabled = true;
+            selected.input.enableDrag(true);
+            selected.input.allowVerticalDrag = false;
+
+            selected.events.onDragStart.add(startDrag, this);
+            selected.events.onDragStop.add(stopDrag, this);
 
             function startDrag() {
-                arrowRight.body.moves = false;
+                selected.body.moves = false;
             }
 
             function stopDrag() {
-           arrowRight.body.moves = true;
+           selected.body.moves = true;
+
             }
-
-        }
-        else if(rndnr==2){
-            arrowLeft = this.game.add.sprite(this.game.world.randomX,0,'spacefighter');
-            this.game.physics.enable( [ arrowLeft ], Phaser.Physics.ARCADE);
-            arrowLeft.body.collideWorldBounds = true;
-            arrowLeft.inputEnabled = true;
-            arrowLeft.input.enableDrag(true);
-            arrowLeft.input.allowVerticalDrag = false;
-
-            arrowLeft.events.onDragStart.add(startDrag, this);
-            arrowLeft.events.onDragStop.add(stopDrag, this);
-
-            function startDrag() {
-                arrowLeft.body.moves = false;
-            }
-
-            function stopDrag() {
-           arrowLeft.body.moves = true;
-            }
-           
-        }
-        else if(rndnr==3){
-            arrowUp = this.game.add.sprite(this.game.world.randomX,0,'explosion');
-            this.game.physics.enable( [ arrowUp ], Phaser.Physics.ARCADE);
-            arrowUp.body.collideWorldBounds = true;
-            arrowUp.inputEnabled = true;
-            arrowUp.input.enableDrag(true);
-            arrowUp.input.allowVerticalDrag = false;
-
-            arrowUp.events.onDragStart.add(startDrag, this);
-            arrowUp.events.onDragStop.add(stopDrag, this);
-
-            function startDrag() {
-                arrowUp.body.moves = false;
-            }
-
-            function stopDrag() {
-           arrowUp.body.moves = true;
-            }
-           
-        }
-        else if(rndnr==4){
-            arrowDown = this.game.add.sprite(this.game.world.randomX,0,'ghost');
-            this.game.physics.enable( [ arrowDown ], Phaser.Physics.ARCADE);
-            arrowDown.body.collideWorldBounds = true;
-            arrowDown.inputEnabled = true;
-            arrowDown.input.enableDrag(true);
-            arrowDown.input.allowVerticalDrag = false;
-
-            arrowDown.events.onDragStart.add(startDrag, this);
-            arrowDown.events.onDragStop.add(stopDrag, this);
-
-            function startDrag() {
-                arrowDown.body.moves = false;
-            }
-
-            function stopDrag() {
-           arrowDown.body.moves = true;
-            }
-        
-        }
-    },
+            },
 
     
     quitGame:function() {
