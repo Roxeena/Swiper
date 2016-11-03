@@ -101,11 +101,23 @@ Game.prototype = {
         selected.events.onDragStart.add(startDrag, this);
         selected.events.onDragStop.add(stopDrag, this);
 
-        //  By default the Signal is empty, so we create it here:
         selected.body.onWorldBounds = new Phaser.Signal();
+        selected.body.onWorldBounds.add(hitworldbounds, this);
 
-        //  And then listen for it
-        selected.body.onWorldBounds.add(hitWorldBounds, this);
+        //  You still need to call `collide` in your update function, and you can still use
+        //  a callback with it too, but this Signal provides for another level of notification.
+
+        
+        //tar bort object counter funkar ej atm
+        function hitworldbounds (selected) {
+            selected.play('explosion');
+            counterlives=counterlives+1;
+            selected.destroy();
+            
+        }
+
+        
+
 
         function startDrag() {
             selected.body.moves = false;
@@ -115,10 +127,7 @@ Game.prototype = {
             selected.body.moves = true;
      
         }
-        function hitWorldBounds(){
-            counterlives=counterlives-1;
-
-        }
+      
 },
     
     quitGame:function() {
