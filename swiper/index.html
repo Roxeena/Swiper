@@ -10,7 +10,8 @@
 	<script src = "Boot.js"></script>
 	<script src = "Preloader.js"></script>
 	<script src = "StartMenu.js"></script>
-	<script src ="Game.js"></script>
+	<script src = "Game.js"></script>
+	<script src = "HighscoreMenu.js"></script>
 	<link rel="stylesheet" href="style.css">
 
 </head>
@@ -23,6 +24,7 @@
         game.state.add('Preloader', Preloader);
         game.state.add('StartMenu', StartMenu);
         game.state.add('Game', Game);
+        game.state.add('HighscoreMenu', HighscoreMenu);
         game.state.start('Boot');
     })();
 </script>
