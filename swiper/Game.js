@@ -6,8 +6,7 @@ Game = function(game) {
     this.generateImage;
     };
 
-var bunny;
-var spacefighter;
+
 
 Game.prototype = {
 
@@ -50,7 +49,7 @@ Game.prototype = {
         this.timer.start();
 
         //definerar bilder i loop med tiden        
-        this.game.time.events.repeat(Phaser.Timer.SECOND * 2, 10, this.generateImage, this);
+        this.game.time.events.repeat(Phaser.Timer.SECOND * 2, 34, this.generateImage, this);
 
         //quit
         this.game.time.events.add(Phaser.Timer.SECOND *68, this.quitGame, this);
@@ -75,6 +74,18 @@ Game.prototype = {
             arrowRight.input.enableDrag(true);
             arrowRight.input.allowVerticalDrag = false;
 
+            arrowRight.events.onDragStart.add(startDrag, this);
+            arrowRight.events.onDragStop.add(stopDrag, this);
+
+            function startDrag() {
+                arrowRight.body.moves = false;
+            }
+
+            function stopDrag() {
+           arrowRight.body.moves = true;
+            }
+
+
         }
         else if(rndnr==2){
             arrowLeft = this.game.add.sprite(this.game.world.randomX,0,'spacefighter');
@@ -83,6 +94,17 @@ Game.prototype = {
             arrowLeft.inputEnabled = true;
             arrowLeft.input.enableDrag(true);
             arrowLeft.input.allowVerticalDrag = false;
+
+            arrowLeft.events.onDragStart.add(startDrag, this);
+            arrowLeft.events.onDragStop.add(stopDrag, this);
+
+            function startDrag() {
+                arrowLeft.body.moves = false;
+            }
+
+            function stopDrag() {
+           arrowLeft.body.moves = true;
+            }
            
         }
         else if(rndnr==3){
@@ -92,6 +114,17 @@ Game.prototype = {
             arrowUp.inputEnabled = true;
             arrowUp.input.enableDrag(true);
             arrowUp.input.allowVerticalDrag = false;
+
+            arrowUp.events.onDragStart.add(startDrag, this);
+            arrowUp.events.onDragStop.add(stopDrag, this);
+
+            function startDrag() {
+                arrowUp.body.moves = false;
+            }
+
+            function stopDrag() {
+           arrowUp.body.moves = true;
+            }
            
         }
         else if(rndnr==4){
@@ -101,6 +134,17 @@ Game.prototype = {
             arrowDown.inputEnabled = true;
             arrowDown.input.enableDrag(true);
             arrowDown.input.allowVerticalDrag = false;
+
+            arrowDown.events.onDragStart.add(startDrag, this);
+            arrowDown.events.onDragStop.add(stopDrag, this);
+
+            function startDrag() {
+                arrowDown.body.moves = false;
+            }
+
+            function stopDrag() {
+           arrowDown.body.moves = true;
+            }
         
        
     }
