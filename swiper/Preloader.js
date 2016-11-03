@@ -32,6 +32,8 @@ Preloader.prototype = {
         
         this.load.spritesheet('button', 'assets/images/spritesheets/Start_knapp.png');
         this.load.spritesheet('HS_button', 'assets/images/spritesheets/highscore_knapp.png');
+        this.load.spritesheet('back', 'assets/images/spritesheets/Back_knapp.png');
+        this.load.spritesheet('S_button', 'assets/images/spritesheets/settings_knapp.png');
         
         this.load.audio('jerry', 'assets/audio/jerry.mp3');
 
