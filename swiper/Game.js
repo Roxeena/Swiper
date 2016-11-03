@@ -64,43 +64,32 @@ Game.prototype = {
 
         var rndnr=0;
         rndnr=rndnr +this.game.rnd.integerInRange(1, 4);
+        arrowRight;
+        arrowLeft;
+        arrowUp;
+        arrowDown;
+
         if ( rndnr==1){
-            arrowRight = this.game.add.sprite(0,0,'bunny');  
-            this.game.physics.enable( [ arrowRight], Phaser.Physics.ARCADE);
-            arrowRight.body.collideWorldBounds = true; 
-            arrowRight.inputEnabled = true;
-            arrowRight.input.enableDrag(true);
-            arrowRight.input.allowVerticalDrag = false;
-        }
-        else if(rndnr==2){
-            arrowLeft = this.game.add.sprite(100,0,'spacefighter');
-            this.game.physics.enable( [ arrowLeft ], Phaser.Physics.ARCADE);
-            arrowLeft.body.collideWorldBounds = true;
-            arrowLeft.inputEnabled = true;
-            arrowLeft.input.enableDrag(true);
-            arrowLeft.input.allowVerticalDrag = false;
-           
-        }
-        else if(rndnr==3){
-            arrowUp = this.game.add.sprite(100,0,'explosion');
-            this.game.physics.enable( [ arrowUp], Phaser.Physics.ARCADE);
-            arrowUp.body.collideWorldBounds = true;
-            arrowUp.inputEnabled = true;
-            arrowUp.input.enableDrag(true);
-            arrowUp.input.allowVerticalDrag = false;
-           
-        }
-        else if(rndnr==4){
-            arrowDown = this.game.add.sprite(100,0,'ghost');
-            this.game.physics.enable( [arrowDown ], Phaser.Physics.ARCADE);
-            arrowDown.body.collideWorldBounds = true;
-            arrowDown.inputEnabled = true;
-            arrowDown.input.enableDrag(true);
-            arrowDown.input.allowVerticalDrag = false;
-           
+        arrowRight = this.game.add.sprite(0,0,'bunny'); 
         }
         
+        if ( rndnr==2){
+        arrowLeft = this.game.add.sprite(100,0,'spacefighter');
+        }
         
+        if ( rndnr==1){
+        arrowUp = this.game.add.sprite(100,0,'explosion');
+        }
+
+        if ( rndnr==1){
+        arrowDown = this.game.add.sprite(100,0,'ghost');
+        }
+        picarray= [arrowRight,arrowLeft,arrowDown,arrowUp];
+        this.game.physics.enable( [ picarray], Phaser.Physics.ARCADE);
+            picarray.body.collideWorldBounds = true; 
+            picarray.inputEnabled = true;
+            picarray.input.enableDrag(true);
+            picarray.input.allowVerticalDrag = false;
 
         
        
