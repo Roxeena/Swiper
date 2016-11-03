@@ -15,12 +15,15 @@ StartMenu.prototype = {
 	*/
 	var StartMenu = this.game.add.image(0,0,'titlescreen');
 
-	var playtext=this.game.add.button(this.world.centerX-155, this.world.centerY+180,
-			'Touch to start',this.startGame,this);
-		
-	/*	var bitmapplay = this.add.bitmapText(this.world.centerX-155, this.world.centerY+180,
-			'eightbitwonder','Touch to start!',24);
-*/
+
+	button = this.game.add.button(this.game.world.centerX - 155, 430, 'button', this.startGame, this, 2, 1, 0);	
+		/*var bitmapplay = this.add.bitmapText(this.world.centerX-155, this.world.centerY+180,
+			'eightbitwonder','Touch to start!',24,this.startGame,this);*/
+
+		//g.hitArea = new PIXI.Circle(0, 0, diameter);
+
+
+
 	},
 	startGame: function() {
 		//this.ding.play();
