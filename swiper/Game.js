@@ -11,6 +11,7 @@ Game.prototype = {
 
    
     create: function() {
+        
         this.gameover = false;
         this.secondsElapsed = 0;
         this.timer = this.time.create(false);
@@ -30,7 +31,7 @@ Game.prototype = {
     },
 
     buildWorld: function() {
-
+        var counterlives=5;
         //addar bakgrund hill och sky
         this.add.image(0, 0, 'sky');
         this.add.image(0, 800, 'hill');
@@ -52,7 +53,7 @@ Game.prototype = {
 
     generateImage: function() {
         //definerar bilder
-
+        var counterlives= 5;
         var rndnr=0;
         var arrowUp;
         var arrowDown;
@@ -62,6 +63,17 @@ Game.prototype = {
         var selected;
         rndnr=rndnr +this.game.rnd.integerInRange(1, 4);
 
+        if(counterlives==0){
+            this.quitGame();
+        }
+        //  The score
+        scoreString = 'Score : ';
+        scoreText = this.game.add.text(0, 10, scoreString , { font: '34px Arial', fill: '#fff' });
+        //  Lives
+        lives = counterlives;
+        this.game.add.text(0, 40, 'Lives : '+counterlives, { font: '34px Arial', fill: '#fff' });
+
+        //definerar bilder
         if (rndnr==1){
 
         arrowRight = this.game.add.sprite(this.game.world.randomX,0,'bunny'); 
@@ -81,24 +93,33 @@ Game.prototype = {
         }
       
         this.game.physics.enable( [ selected ], Phaser.Physics.ARCADE);
-            selected.body.collideWorldBounds = true; 
-            selected.inputEnabled = true;
-            selected.input.enableDrag(true);
-            selected.input.allowVerticalDrag = false;
+        selected.body.collideWorldBounds = true; 
+        selected.inputEnabled = true;
+        selected.input.enableDrag(true);
+        selected.input.allowVerticalDrag = false;
 
-            selected.events.onDragStart.add(startDrag, this);
-            selected.events.onDragStop.add(stopDrag, this);
+        selected.events.onDragStart.add(startDrag, this);
+        selected.events.onDragStop.add(stopDrag, this);
 
-            function startDrag() {
-                selected.body.moves = false;
-            }
+        //  By default the Signal is empty, so we create it here:
+        selected.body.onWorldBounds = new Phaser.Signal();
 
-            function stopDrag() {
-           selected.body.moves = true;
+        //  And then listen for it
+        selected.body.onWorldBounds.add(hitWorldBounds, this);
 
-            }
-            },
+        function startDrag() {
+            selected.body.moves = false;
+        }
 
+        function stopDrag() {
+            selected.body.moves = true;
+     
+        }
+        function hitWorldBounds(){
+            counterlives=counterlives-1;
+
+        }
+},
     
     quitGame:function() {
         this.state.start('StartMenu');
@@ -106,7 +127,7 @@ Game.prototype = {
     
     
     update: function() {
-        
+       
     }
     
     
