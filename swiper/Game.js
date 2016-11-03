@@ -19,7 +19,7 @@ Game.prototype = {
         this.timer.loop(1000, this.updateSeconds, this);
        // this.game.time.events.loop(Phaser.Timer.SECOND, updateSeconds, this);
 
-
+        //fysik statar t.ex. fysik
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
         this.game.physics.arcade.gravity.y = 100;
 
@@ -37,16 +37,18 @@ Game.prototype = {
     
     
     buildWorld: function() {
+       
+        //addar bakgrund hill och sky
         this.add.image(0, 0, 'sky');
         this.add.image(0, 800, 'hill');
-
+        //musiken skapas och spelas
         var music;
         music = this.game.add.audio('jerry');
         music.play();
 
 
 
-
+        //startar timer som events beror på
         this.timer.start();
 
         //definerar bilder i loop med tiden        
