@@ -6,12 +6,15 @@ Game = function(game) {
     this.generateImage;
 };
 
-
+var counterlives= 5;
+var scoreText;
+var score=0;
+var countertext;
 Game.prototype = {
 
    
     create: function() {
-        
+
         this.gameover = false;
         this.secondsElapsed = 0;
         this.timer = this.time.create(false);
@@ -31,10 +34,13 @@ Game.prototype = {
     },
 
     buildWorld: function() {
-        var counterlives=5;
+        
         //addar bakgrund hill och sky
         this.add.image(0, 0, 'sky');
         this.add.image(0, 800, 'hill');
+        scoreText = this.game.add.text(0, 10, 'Score: '+score , { font: '34px Arial', fill: '#fff' });
+        //  Lives
+        lifetext=this.game.add.text(0, 40, 'Lives : '+counterlives, { font: '34px Arial', fill: '#fff' });
 
         //musiken skapas och spelas
         var music;
@@ -53,7 +59,6 @@ Game.prototype = {
 
     generateImage: function() {
         //definerar bilder
-        var counterlives= 5;
         var rndnr=0;
         var arrowUp;
         var arrowDown;
@@ -63,16 +68,10 @@ Game.prototype = {
         var selected;
         rndnr=rndnr +this.game.rnd.integerInRange(1, 4);
 
-        if(counterlives==0){
-            this.quitGame();
-        }
         //  The score
         scoreString = 'Score : ';
-        scoreText = this.game.add.text(0, 10, scoreString , { font: '34px Arial', fill: '#fff' });
-        //  Lives
-        lives = counterlives;
-        this.game.add.text(0, 40, 'Lives : '+counterlives, { font: '34px Arial', fill: '#fff' });
-
+        score=0;
+        
         //definerar bilder
         if (rndnr==1){
 
@@ -110,14 +109,23 @@ Game.prototype = {
         
         //tar bort object counter funkar ej atm
         function hitworldbounds (selected) {
+            
+            counterlives=counterlives-1;
+            scoreText.setText( 'Score: '+score );
+            //  Lives
+            lifetext.setText('Lives : '+counterlives);
+
             selected.play('explosion');
-            counterlives=counterlives+1;
+         //   counterlives.text = 'lives: ' + counterlives;
             selected.destroy();
+        if (counterlives === 0)
+        {
+        this.quitGame();
+        }
+            
+            
             
         }
-
-        
-
 
         function startDrag() {
             selected.body.moves = false;
@@ -131,6 +139,7 @@ Game.prototype = {
 },
     
     quitGame:function() {
+        counterlives=5;
         this.state.start('StartMenu');
     },
     
