@@ -12,7 +12,7 @@ var counterlives = 5;
 var scoreText;
 var score = 0;
 var countertext;
-
+var music;
 Game.prototype = {
     create: function() {   
         //Initialize some settings and "meta data"
@@ -45,7 +45,7 @@ Game.prototype = {
         lifetext = this.game.add.text(0, 40, 'Lives : '+counterlives, { font: '34px Arial', fill: '#fff' });
 
         //Add the music and play it
-        var music = this.game.add.audio('jerry');
+        music = this.game.add.audio('jerry');
         music.play();
 
         //Start the timer
@@ -64,12 +64,6 @@ Game.prototype = {
         var rndnr = 0;      
         rndnr = rndnr +this.game.rnd.integerInRange(1, 4);
 
-        //The Score. Denna gör dubbel text! Redan addad tidigare i koden! 
-        //Men den går ej att uppdatera (ej i loop) så förstår vad tanken är. Går det inte att göra som med 
-        //elapsed secounds? Ha en function som uppdaterar värdet när ett event (ett mer i score) triggas?            
-        scoreString = 'Score : ';
-        score = 0;
-        
         //Create a random object to spawn
         //If the random number is 1, then spawn a bunny, right arrow
         if (rndnr == 1){
@@ -77,13 +71,6 @@ Game.prototype = {
             arrowRight = this.game.add.sprite(this.game.world.randomX, 0, 'bunny'); 
             selected = arrowRight;
 
-            //Declare variables... Why here?
-            var arrowUp;
-            var arrowDown;
-            var arrowRight;
-            var arrowLeft;
-            var arrowarray;
-            var selected;
         }
         //If the random number is 2, then spawn a spacefighter, left arrow     
         if (rndnr==2){
@@ -138,10 +125,10 @@ Game.prototype = {
 
             //Play animation of exploion when an object collides with the world boundaries
             //Need to add an animation to the variable
-            selected.animations.add('explode');
+          //  selected.animations.add('explode');
             selected.play('explode', 12, true);     //Does not work! I think the object is deleted before the 
             //animation it played. Also think that the loading and adding of spritesheet is wrong. 
-            //counterlives.text = 'lives: ' + counterlives;
+            //counterlives1.text = 'lives: ' + counterlives;
 
             //Play a litle exlosion sound
             var sound = this.game.add.audio('explosion_audio');
@@ -162,18 +149,19 @@ Game.prototype = {
         }
 
         //When starting to drag stop gravity
-        function startDrag() {
+        function startDrag(selected) {
             selected.body.moves = false;
         }
 
         //When stopping to drag allow gravity
-        function stopDrag() {
+        function stopDrag(selected) {
             selected.body.moves = true;
         }
       
     },
     
     quitGame:function() {
+        music.pause();
         counterlives=5;
         this.state.start('StartMenu');
     },
