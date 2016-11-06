@@ -119,11 +119,13 @@ Game.prototype = {
             
             if((selected.x<=10) || (selected.x >=Width-100))
             {
+                //Remove the object
                 selected.destroy();
                 //Update the score. Why? Isnt this function only for when losing lives? 
                 ++score;
                 scoreText.setText( 'Score: '+score );
-                //Remove the object
+                //så det går snabbare.
+                this.game.physics.arcade.gravity.y = this.game.physics.arcade.gravity.y +25;
                 
             }
                 else
