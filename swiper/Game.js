@@ -13,6 +13,10 @@ var scoreText;
 var score = 0;
 var countertext;
 var music;
+var bounds;
+var Width=540;
+var Height=960;
+
 Game.prototype = {
     create: function() {   
         //Initialize some settings and "meta data"
@@ -35,7 +39,8 @@ Game.prototype = {
     },
 
     buildWorld: function() {    //Build the game
-        
+
+        bounds = new Phaser.Rectangle(0, 0, Width-1, Height);
         //Add backgrounds
         this.add.image(0, 0, 'sky');
         this.add.image(0, 800, 'hill');
@@ -63,7 +68,7 @@ Game.prototype = {
         //Create a random number between 1 and 4
         var rndnr = 0;      
         rndnr = rndnr +this.game.rnd.integerInRange(1, 4);
-
+        
         //Create a random object to spawn
         //If the random number is 1, then spawn a bunny, right arrow
         if (rndnr == 1){
@@ -107,37 +112,44 @@ Game.prototype = {
         selected.body.collideWorldBounds = true;
         selected.body.onWorldBounds = new Phaser.Signal();
         selected.body.onWorldBounds.add(hitworldbounds, this);
-
-        //  You still need to call `collide` in your update function, and you can still use
-        //  a callback with it too, but this Signal provides for another level of notification.
-
-        
+           
         //tar bort object counter funkar ej atm. Malin: Denna funktion vill ha ett in argument, säker på att du skickar med något?
         //If an object hit the world bounds, this function is executed
         function hitworldbounds (selected) {
+            
+            if((selected.x<=10) || (selected.x >=Width-100))
+            {
+                selected.destroy();
+                //Update the score. Why? Isnt this function only for when losing lives? 
+                ++score;
+                scoreText.setText( 'Score: '+score );
+                //Remove the object
+                
+            }
+                else
+            {
             //Decrement the number of lives
             --counterlives;
-
-            //Update the score. Why? Isnt this function only for when losing lives? 
-            scoreText.setText( 'Score: '+score );
+            
             //Update the number of lives 
             lifetext.setText('Lives : '+counterlives);
 
             //Play animation of exploion when an object collides with the world boundaries
             //Need to add an animation to the variable
-          //  selected.animations.add('explode');
+           // selected.animations.add('explode');
             selected.play('explode', 12, true);     //Does not work! I think the object is deleted before the 
             //animation it played. Also think that the loading and adding of spritesheet is wrong. 
-            //counterlives1.text = 'lives: ' + counterlives;
+            //counterlives.text = 'lives: ' + counterlives;
 
             //Play a litle exlosion sound
             var sound = this.game.add.audio('explosion_audio');
             sound.play();
-            
-            //Remove the object
+             //Remove the object
             selected.destroy();
-
-            //Check if the player is out of lives
+            }
+            
+           
+             //Check if the player is out of lives
             if (counterlives === 0)
             {
                 //Quit to start menu
@@ -145,6 +157,8 @@ Game.prototype = {
                 //Vore nice om "Game over" menu dök upp först och musik ändrades. Nu fortsätter musiken 
                 //och kan loopas med ny om man startar nytt spel igen direkt.
             }
+        
+           
             
         }
 
@@ -161,8 +175,9 @@ Game.prototype = {
     },
     
     quitGame:function() {
-        music.pause();
         counterlives=5;
+        score=0;
+        music.pause();
         this.state.start('StartMenu');
     },
     
