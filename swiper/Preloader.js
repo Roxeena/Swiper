@@ -17,11 +17,12 @@ Preloader.prototype = {
         
         this.load.image('hill', 'assets/images/hill.png');
         this.load.image('sky', 'assets/images/sky.png');
-        this.load.image('highscore_bild', 'assets/images/HighscoreMenu1.png')
+        this.load.image('highscore_bild', 'assets/images/HighscoreMenu1.png');
         
         this.load.atlasXML('bunny', 'assets/images/spritesheets/bunny.png', 'assets/images/spritesheets/bunny.xml');
         this.load.atlasXML('spacerock', 'assets/images/spritesheets/SpaceRock.png', 'assets/images/spritesheets/SpaceRock.xml');
-        
+
+        this.load.image('spacefighter', 'assets/images/player_blue.png');
         this.load.image('explosion', 'assets/images/explosion.png');
         this.load.image('ghost', 'assets/images/ghost.png');
         
