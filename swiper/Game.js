@@ -16,6 +16,7 @@ var music;
 var bounds;
 var Width=540;
 var Height=960;
+var Level=0;
 
 Game.prototype = {
     create: function() {   
@@ -58,8 +59,9 @@ Game.prototype = {
 
         //Add objects in loop depending on time
         //Spawn an object every 2 seconds        
-        this.game.time.events.repeat(Phaser.Timer.SECOND * 2, 34, this.generateImage, this);
-
+        
+        this.game.time.events.repeat(Phaser.Timer.SECOND * (2/Level), 34, this.generateImage, this);
+       
         //Quit after a certain amount of time, music ends
         this.game.time.events.add(Phaser.Timer.SECOND *68, this.quitGame, this);
     },
@@ -117,11 +119,10 @@ Game.prototype = {
         selected.body.onWorldBounds = new Phaser.Signal();
         selected.body.onWorldBounds.add(hitworldbounds, this);
            
-        //tar bort object counter funkar ej atm. Malin: Denna funktion vill ha ett in argument, säker på att du skickar med något?
-        //If an object hit the world bounds, this function is executed
+        //sides och botten collisionhandler
         function hitworldbounds (selected) {
             
-            if((selected.x<=10) || (selected.x >=Width-100))
+            if((selected.x<=0) || (selected.x >=Width))
             {
                 //Remove the object
                 selected.destroy();
@@ -129,7 +130,11 @@ Game.prototype = {
                 ++score;
                 scoreText.setText( 'Score: '+score );
                 //så det går snabbare.
-                this.game.physics.arcade.gravity.y = this.game.physics.arcade.gravity.y +25;
+                if(score % (Level*5)==0)
+                {
+                   ++Level;
+                }
+                 this.game.physics.arcade.gravity.y = this.game.physics.arcade.gravity.y +(Level*25);
                 
             }
                 else
@@ -140,6 +145,11 @@ Game.prototype = {
             //Update the number of lives 
             lifetext.setText('Lives : '+counterlives);
 
+            //Play animation of exploion when an object collides with the world boundaries
+            //Need to add an animation to the variable
+            selected.play('explode', 12, true);     //Does not work! I think the object is deleted before the 
+            //animation it played. Also think that the loading and adding of spritesheet is wrong. 
+            //counterlives.text = 'lives: ' + counterlives;
 
             //Play a litle exlosion sound
             var sound = this.game.add.audio('explosion_audio');
@@ -148,7 +158,6 @@ Game.prototype = {
             selected.destroy();
             }
             
-           
              //Check if the player is out of lives
             if (counterlives === 0)
             {
@@ -157,8 +166,6 @@ Game.prototype = {
                 //Vore nice om "Game over" menu dök upp först och musik ändrades. Nu fortsätter musiken 
                 //och kan loopas med ny om man startar nytt spel igen direkt.
             }
-        
-           
             
         }
 
@@ -177,14 +184,12 @@ Game.prototype = {
     quitGame:function() {
         counterlives=5;
         score=0;
+        Level=0;
         music.pause();
         this.state.start('StartMenu');
-    },
-    
-    
-    update: function() {
-       
     }
+    
+    
     
     
 };
