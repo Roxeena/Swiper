@@ -3,13 +3,6 @@ var Boot = function(game){
 	console.log("Starting Swiper");
 };
 
-
-Boot.prototype = {
-
-	preload: function() {//kan vara värt a preloada samtliga block etc innan
-		this.load.image('preloaderbar','assets/images/loader_bar.png');
-		this.load.image('titleimage','assets/images/TitleImage.png');
-
 Boot.prototype = {
 	preload: function() {
 		//Preload the images for the loading screen
@@ -37,6 +30,6 @@ Boot.prototype = {
 
 	//Go to Preloader state
 	this.state.start('Preloader');
-	}
+	},
 	
-}
+};

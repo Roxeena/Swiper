@@ -41,6 +41,6 @@ StartMenu.prototype = {
 	/*Quit: function() {
 		this.navigator.app.exitApp();
 	}*/
-	}
+	
 	
 }; 
