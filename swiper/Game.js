@@ -16,6 +16,7 @@ var music;
 var bounds;
 var Width=540;
 var Height=960;
+var Level=0;
 
 Game.prototype = {
     create: function() {   
@@ -59,8 +60,7 @@ Game.prototype = {
         //Add objects in loop depending on time
         //Spawn an object every 2 seconds        
         
-        
-        this.game.time.events.repeat(Phaser.Timer.SECOND * 2, 34, this.generateImage, this);
+        this.game.time.events.repeat(Phaser.Timer.SECOND * (2/Level), 34, this.generateImage, this);
        
         //Quit after a certain amount of time, music ends
         this.game.time.events.add(Phaser.Timer.SECOND *68, this.quitGame, this);
@@ -126,7 +126,11 @@ Game.prototype = {
                 ++score;
                 scoreText.setText( 'Score: '+score );
                 //så det går snabbare.
-                this.game.physics.arcade.gravity.y = this.game.physics.arcade.gravity.y +25;
+                if(score % (Level*5)==0)
+                {
+                   ++Level;
+                }
+                 this.game.physics.arcade.gravity.y = this.game.physics.arcade.gravity.y +(Level*25);
                 
             }
                 else
@@ -176,6 +180,7 @@ Game.prototype = {
     quitGame:function() {
         counterlives=5;
         score=0;
+        Level=0;
         music.pause();
         this.state.start('StartMenu');
     }
