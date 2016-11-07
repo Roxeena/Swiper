@@ -1,0 +1,34 @@
+<!DOCKTYPE HTML>
+<html>
+<head>
+	<meta charset = "utf-8">
+	<meta name = "mobile-web-app-capable" content = "yes">
+    <meta name = "viewport" content = "width = device-width">
+	<title>Swiper game</title>
+	<link rel = "icon" href = "assets/images/iconV2.png">
+	<script src = "libs/phaser.min.js"></script>
+	<script src = "libs/phaser.js"></script>
+	<script src = "Boot.js"></script>
+	<script src = "Preloader.js"></script>
+	<script src = "StartMenu.js"></script>
+	<script src = "Game.js"></script>
+	<script src = "HighscoreMenu.js"></script>
+	<script src = "Settings.js"></script>
+	<link rel = "stylesheet" href = "style.css">
+</head>
+<body>
+	<div id = "gameContainer"></div>
+	<script>
+    	(function(){
+        	var game = new Phaser.Game(540, 960, Phaser.AUTO, 'gameContainer');
+        	game.state.add('Boot', Boot);
+        	game.state.add('Preloader', Preloader);
+        	game.state.add('StartMenu', StartMenu);
+        	game.state.add('Game', Game);
+        	game.state.add('HighscoreMenu', HighscoreMenu);
+        	game.state.add('Settings', Settings);
+        	game.state.start('Boot');
+    	})();
+	</script>
+</body>
+</html>
