@@ -68,31 +68,35 @@ Game.prototype = {
         //Create a random number between 1 and 4
         var rndnr = 0;      
         rndnr = rndnr +this.game.rnd.integerInRange(1, 4);
+
+        //Random X-position for spwan
+        var spwnrng = 0;
+        spwnrng = spwnrng +this.game.rnd.integerInRange(200, 400);
         
         //Create a random object to spawn
         //If the random number is 1, then spawn a bunny, right arrow
         if (rndnr == 1){
             //Add a bunny, right arrow
-            arrowRight = this.game.add.sprite(this.game.world.randomX, 0, 'bunny'); 
+            arrowRight = this.game.add.sprite(spwnrng,0,'bunny'); 
             selected = arrowRight;
 
         }
         //If the random number is 2, then spawn a spacefighter, left arrow     
         if (rndnr==2){
             //Add a spacefighter, left arrow
-            arrowLeft = this.game.add.sprite(this.game.world.randomX,0,'spacefighter');
+            arrowLeft = this.game.add.sprite(spwnrng,0,'spacefighter');
             selected = arrowLeft;
         }
         //If random number is 3, spawn an explosion, up arrow
         if (rndnr==3){
             //Add an explosion, up arrow
-            arrowUp = this.game.add.sprite(this.game.world.randomX,0,'explosion');
+            arrowUp = this.game.add.sprite(spwnrng,0,'explosion');
             selected=arrowUp;
         } 
         //If number is 4, spawn ghost, down arrow 
         if (rndnr==4){
             //Add a ghost, down arrow
-            arrowDown = this.game.add.sprite(this.game.world.randomX,0,'ghost');
+            arrowDown = this.game.add.sprite(spwnrng,0,'ghost');
             selected=arrowDown;
         }
         
@@ -136,12 +140,6 @@ Game.prototype = {
             //Update the number of lives 
             lifetext.setText('Lives : '+counterlives);
 
-            //Play animation of exploion when an object collides with the world boundaries
-            //Need to add an animation to the variable
-           // selected.animations.add('explode');
-            selected.play('explode', 12, true);     //Does not work! I think the object is deleted before the 
-            //animation it played. Also think that the loading and adding of spritesheet is wrong. 
-            //counterlives.text = 'lives: ' + counterlives;
 
             //Play a litle exlosion sound
             var sound = this.game.add.audio('explosion_audio');
