@@ -162,8 +162,6 @@ Game.prototype = {
                 //och kan loopas med ny om man startar nytt spel igen direkt.
             }
         
-           
-            
         }
 
         //When starting to drag stop gravity
@@ -183,11 +181,12 @@ Game.prototype = {
         score=0;
         Level=0;
         music.pause();
-        this.state.start('StartMenu');
+        this.state.start('GameOver');
     },
     
     
     update: function() {
+
     }
     
     
