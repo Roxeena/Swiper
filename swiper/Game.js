@@ -59,9 +59,10 @@ Game.prototype = {
 
         //Add objects in loop depending on time
         //Spawn an object every 2 seconds        
-        
-        this.game.time.events.repeat(Phaser.Timer.SECOND * (2/Level), 34, this.generateImage, this);
+
+        this.game.time.events.repeat(Phaser.Timer.SECOND * (2/(Level+1)), 34, this.generateImage, this);
        
+
         //Quit after a certain amount of time, music ends
         this.game.time.events.add(Phaser.Timer.SECOND *68, this.quitGame, this);
     },
@@ -115,10 +116,11 @@ Game.prototype = {
         selected.body.onWorldBounds = new Phaser.Signal();
         selected.body.onWorldBounds.add(hitworldbounds, this);
            
-        //sides och botten collisionhandler
+        //tar bort object counter funkar ej atm. Malin: Denna funktion vill ha ett in argument, säker på att du skickar med något?
+        //If an object hit the world bounds, this function is executed
         function hitworldbounds (selected) {
             
-            if((selected.x<=0) || (selected.x >=Width))
+            if((selected.x<=10) || (selected.x >=Width-100))
             {
                 //Remove the object
                 selected.destroy();
@@ -143,6 +145,7 @@ Game.prototype = {
 
             //Play animation of exploion when an object collides with the world boundaries
             //Need to add an animation to the variable
+           // selected.animations.add('explode');
             selected.play('explode', 12, true);     //Does not work! I think the object is deleted before the 
             //animation it played. Also think that the loading and adding of spritesheet is wrong. 
             //counterlives.text = 'lives: ' + counterlives;
@@ -154,6 +157,7 @@ Game.prototype = {
             selected.destroy();
             }
             
+           
              //Check if the player is out of lives
             if (counterlives === 0)
             {
@@ -162,6 +166,8 @@ Game.prototype = {
                 //Vore nice om "Game over" menu dök upp först och musik ändrades. Nu fortsätter musiken 
                 //och kan loopas med ny om man startar nytt spel igen direkt.
             }
+        
+           
             
         }
 
@@ -183,9 +189,12 @@ Game.prototype = {
         Level=0;
         music.pause();
         this.state.start('StartMenu');
+    },
+    
+    
+    update: function() {
+       
     }
-    
-    
     
     
 };
