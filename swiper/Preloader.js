@@ -36,13 +36,15 @@ Preloader.prototype = {
 
 
         //Objects in game
-        this.load.atlasXML('bunny', 'assets/images/spritesheets/bunny.png', 'assets/images/spritesheets/bunny.xml');
+        //this.load.atlasXML('bunny', 'assets/images/spritesheets/bunny.png', 'assets/images/spritesheets/bunny.xml');
         this.load.atlasXML('spacerock', 'assets/images/spritesheets/SpaceRock.png', 'assets/images/spritesheets/SpaceRock.xml');
-        this.load.image('explosion', 'assets/images/explosion.png');
-        this.load.image('ghost', 'assets/images/ghost.png');
-        this.load.image('spacefighter', 'assets/images/player_blue.png');
+        //this.load.image('explosion', 'assets/images/explosion.png');
+        //this.load.image('ghost', 'assets/images/ghost.png');
+        //this.load.image('spacefighter', 'assets/images/player_blue.png');
         this.load.image('explode', 'assets/images/explode.png');        //New and possibly wrong
-        
+        this.load.image('proto_right_pil', 'assets/images/proto_right_pil.png');
+        this.load.image('proto_left_pil', 'assets/images/proto_left_pil.png');
+
         //Music and sounds
         this.load.audio('jerry', 'assets/audio/jerry.mp3');
         this.load.audio('explosion_audio', 'assets/audio/explosion.mp3');

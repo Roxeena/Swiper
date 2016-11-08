@@ -17,6 +17,7 @@ var bounds;
 var Width=540;
 var Height=960;
 var Level=0;
+var rndnr;
 
 Game.prototype = {
     create: function() {   
@@ -68,9 +69,9 @@ Game.prototype = {
     },
 
     generateImage: function() {     //Spawn an object
-        //Create a random number between 1 and 4
-        var rndnr = 0;      
-        rndnr = rndnr +this.game.rnd.integerInRange(1, 4);
+        //Create a random number between 1 and 2
+
+        rndnr = this.game.rnd.integerInRange(1, 2);
 
         //Random X-position for spwan
         var spwnrng = 0;
@@ -80,29 +81,17 @@ Game.prototype = {
         //If the random number is 1, then spawn a bunny, right arrow
         if (rndnr == 1){
             //Add a bunny, right arrow
-            arrowRight = this.game.add.sprite(spwnrng,0,'bunny'); 
+            arrowRight = this.game.add.sprite(spwnrng,0,'proto_right_pil'); 
             selected = arrowRight;
 
         }
         //If the random number is 2, then spawn a spacefighter, left arrow     
         if (rndnr==2){
             //Add a spacefighter, left arrow
-            arrowLeft = this.game.add.sprite(spwnrng,0,'spacefighter');
+            arrowLeft = this.game.add.sprite(spwnrng,0,'proto_left_pil');
             selected = arrowLeft;
         }
-        //If random number is 3, spawn an explosion, up arrow
-        if (rndnr==3){
-            //Add an explosion, up arrow
-            arrowUp = this.game.add.sprite(spwnrng,0,'explosion');
-            selected=arrowUp;
-        } 
-        //If number is 4, spawn ghost, down arrow 
-        if (rndnr==4){
-            //Add a ghost, down arrow
-            arrowDown = this.game.add.sprite(spwnrng,0,'ghost');
-            selected=arrowDown;
-        }
-        
+     
         //Enable gravity for new spawned object
         this.game.physics.enable( [ selected ], Phaser.Physics.ARCADE);
          
@@ -124,7 +113,7 @@ Game.prototype = {
         //If an object hit the world bounds, this function is executed
         function hitworldbounds (selected) {
             
-            if((selected.x<=10) || (selected.x >=Width-100))
+            if((selected.x<=100) || (selected.x >=Width-100))//pga objektbredd
             {
                 //Remove the object
                 selected.destroy();
