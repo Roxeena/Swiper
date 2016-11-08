@@ -59,6 +59,7 @@ Preloader.prototype = {
         this.load.spritesheet('S_button', 'assets/images/spritesheets/settings_knapp.png');
         this.load.spritesheet('mute', 'assets/images/spritesheets/MUTE_knapp.png');
         
+        
 },
 
 	create: function () {

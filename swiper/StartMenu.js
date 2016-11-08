@@ -34,7 +34,8 @@ StartMenu.prototype = {
 	},
 
 	/*Quit: function() {
-		this.navigator.app.exitApp();
+		this.navigator.game.exitApp();
+		consol.log("quitting swiper");
 	}*/
 	
 	
