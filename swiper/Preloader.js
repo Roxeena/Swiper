@@ -19,7 +19,8 @@ Preloader.prototype = {
         //Preload thing in the game
         //Menu images
         this.load.image('titlescreen', 'assets/images/ässomebgb2.png');
-        this.load.image('highscore_bild', 'assets/images/HighscoreMenu1.png')
+        this.load.image('highscore_bild', 'assets/images/HighscoreMenu1.png');
+        this.load.image('gameoverMenu', 'assets/images/GAMEOVER.png');
         
         //Fonts
         this.load.bitmapFont('eightbitwonder', 'assets/fonts/eightbitwonder.png', 'assets/fonts/eightbitwonder.fnt');
@@ -58,6 +59,10 @@ Preloader.prototype = {
         this.load.spritesheet('back', 'assets/images/spritesheets/Back_knapp.png');
         this.load.spritesheet('S_button', 'assets/images/spritesheets/settings_knapp.png');
         this.load.spritesheet('mute', 'assets/images/spritesheets/MUTE_knapp.png');
+        this.load.spritesheet('tryAgain', 'assets/images/spritesheets/try_again_knapp.png');
+        this.load.spritesheet('backToMenu', 'assets/images/spritesheets/back_to_menu_knapp.png');
+        this.load.spritesheet('quit', 'assets/images/spritesheets/Quit_knapp.png');
+        
         
 },
 

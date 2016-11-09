@@ -2,12 +2,13 @@ var Game = function(game) {
     //Declare some variables 
     this.gameover;
     this.countdown;
-    this.secondsElapsed;
     this.timer;
     this.generateImage;
 };
 
-//Declare more variables??
+//Declare more variables
+var timer;
+var secondsElapsed = 0;
 var counterlives = 5;
 var scoreText;
 var score = 0;
@@ -19,18 +20,21 @@ var Height=960;
 var Level=0;
 var arrowLeft;
 var arrowRight;
+var rndnr;
+var velocityStart = 150;
+var numSecPerLev= 10;
 
 Game.prototype = {
     create: function() {   
+        score = 0;
         //Initialize some settings and "meta data"
-        this.gameover = false;
-        this.secondsElapsed = 0;                        //Is this requierd when we have a timer?
-        this.timer = this.time.create(false);           //This timer is never used, it is started but never used
-        this.timer.loop(1000, this.updateSeconds, this);
+        this.gameover = false;                        
+        timer = this.time.create(false);          
+        timer.loop(1000, this.updateSeconds, this);
+        timer.start();
 
         //Start the physics of the game, gravity
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
-        this.game.physics.arcade.gravity.y = 100;
 
         //Build world
         this.buildWorld();
@@ -38,7 +42,11 @@ Game.prototype = {
     
     updateSeconds: function() {
         //Update the variable with how many seconds have elapsed
-        this.secondsElapsed++;       
+        secondsElapsed++;
+        //Update the level with time
+        if((secondsElapsed % numSecPerLev) == 0){
+            ++Level;
+        }       
     },
 
     buildWorld: function() {    //Build the game
@@ -56,13 +64,13 @@ Game.prototype = {
         music = this.game.add.audio('jerry');
         music.play();
 
-        //Start the timer
-        this.timer.start();
+        //Start the timer 
+        //this.timer.start();
 
         //Add objects in loop depending on time
         //Spawn an object every 2 seconds        
 
-        this.game.time.events.repeat(Phaser.Timer.SECOND * (2/(Level+1)), 34, this.generateImage, this);
+        this.game.time.events.repeat(Phaser.Timer.SECOND * (2), 34, this.generateImage, this);
        
 
         //Quit after a certain amount of time, music ends
@@ -79,7 +87,9 @@ Game.prototype = {
         spwnrng = spwnrng + this.game.rnd.integerInRange(200, 400);
 
          if (rndnr == 1){
-            //Add a bunny, right arrow
+        //Create a random object to spawn
+        //If the random number is 1, then spawn a right arrow
+            //Add a right arrow
             arrowRight = this.game.add.sprite(spwnrng,0,'proto_right_pil'); 
             
             this.game.physics.enable( [ arrowRight ], Phaser.Physics.ARCADE);
@@ -89,7 +99,7 @@ Game.prototype = {
             arrowRight.body.onWorldBounds.add(hitworldboundsright, this);
 
         }
-        //If the random number is 2, then spawn a spacefighter, left arrow     
+        //If the random number is 2, then spawn a left arrow     
         if (rndnr==2){
             //Add a spacefighter, left arrow
             arrowLeft = this.game.add.sprite(spwnrng,0,'proto_left_pil');
@@ -102,7 +112,10 @@ Game.prototype = {
 
         
         function inputstuff(selected){
-
+        
+        //Set the velocity for the object
+        selected.body.velocity.y = velocityStart + (Level + 1) * 10;
+        
         //Enalbe swiping
         selected.inputEnabled = true;
         selected.input.enableDrag(true);
@@ -118,18 +131,18 @@ Game.prototype = {
         } 
         //   
         function hitworldboundsleft (arrowLeft) {
-            console.log(arrowLeft.position);
+            
             if(arrowLeft.position.x<100){
                this.increment(arrowLeft);
             }
             else if( arrowLeft.position.y<=Height-100 )
             {
-                console.log("sida1");
+                
                 this.decrement(arrowLeft);
             }
             else {
                 this.floor(arrowLeft);
-                console.log("floor");
+                
             }
         }
         function hitworldboundsright (arrowRight) {
@@ -139,11 +152,11 @@ Game.prototype = {
             }
             else if (arrowRight.position.y<=Height-100)
             {
-                console.log("Sida2");
+                
                this.decrement(arrowRight);
             }
             else {
-                console.log("floor");
+                
                 this.floor(arrowRight);
             }
         }
@@ -166,11 +179,7 @@ Game.prototype = {
                 //Update the score. Why? Isnt this function only for when losing lives? 
                 ++score;
                 scoreText.setText( 'Score: '+score );
-                //så det går snabbare.
-                if(score % (Level*5)==0)
-                {
-                   ++Level;
-                }
+
                 },
 
         decrement: function(selected){
@@ -182,6 +191,7 @@ Game.prototype = {
                 },
 
         floor: function(selected){
+                
             //Decrement the number of lives
             --counterlives;
             
@@ -211,18 +221,18 @@ Game.prototype = {
             }
    
         },
-      
+    
 
    quitGame: function() {
         counterlives=5;
-        score=0;
         Level=0;
         music.pause();
-        this.state.start('StartMenu');
-    
+        this.state.start('GameOver', true, false, score);
     },
+    
+    
     update: function() {
-       
+
     }
     
     
