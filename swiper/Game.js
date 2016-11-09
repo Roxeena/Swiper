@@ -12,7 +12,6 @@ var counterlives = 5;
 var scoreText;
 var score = 0;
 var countertext;
-var music;
 var bounds;
 var Width=540;
 var Height=960;
@@ -32,7 +31,9 @@ Game.prototype = {
         this.game.physics.arcade.gravity.y = 100;
 
         //Build world
+        music.mute = true;
         this.buildWorld();
+
     },
     
     updateSeconds: function() {
@@ -52,8 +53,15 @@ Game.prototype = {
         lifetext = this.game.add.text(0, 40, 'Lives : '+counterlives, { font: '34px Arial', fill: '#fff' });
 
         //Add the music and play it
+        
+        
         music = this.game.add.audio('jerry');
-        music.play();
+
+        if(muteMusicbool == false)
+        {
+            music.play();
+        }
+        startMusic = false;
 
         //Start the timer
         this.timer.start();
@@ -145,7 +153,11 @@ Game.prototype = {
 
             //Play a litle exlosion sound
             var sound = this.game.add.audio('explosion_audio');
-            sound.play();
+            if(muteSoundbool == false)
+            {
+                sound.play();
+            }
+            
              //Remove the object
             selected.destroy();
             }

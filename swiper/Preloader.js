@@ -46,6 +46,7 @@ Preloader.prototype = {
         this.load.image('proto_left_pil', 'assets/images/proto_left_pil.png');
 
         //Music and sounds
+        this.load.audio('seal', 'assets/audio/seal.mp4.mp3');
         this.load.audio('jerry', 'assets/audio/jerry.mp3');
         this.load.audio('explosion_audio', 'assets/audio/explosion.mp3');
         this.load.audio('hurt_audio', 'assets/audio/hurt.mp3');
@@ -58,6 +59,11 @@ Preloader.prototype = {
         this.load.spritesheet('back', 'assets/images/spritesheets/Back_knapp.png');
         this.load.spritesheet('S_button', 'assets/images/spritesheets/settings_knapp.png');
         this.load.spritesheet('mute', 'assets/images/spritesheets/MUTE_knapp.png');
+        this.load.spritesheet('unMute', 'assets/images/spritesheets/UNMUTE_knapp.png');
+        this.load.spritesheet('muteMusic', 'assets/images/spritesheets/MUTE_music_knapp.png');
+        this.load.spritesheet('unMuteMusic', 'assets/images/spritesheets/UNMUTE_music_knapp.png');
+        this.load.spritesheet('muteSound', 'assets/images/spritesheets/MUTE_sound_knapp.png');
+        this.load.spritesheet('unMuteSound', 'assets/images/spritesheets/UNMUTE_sound_knapp.png');
         
         
 },

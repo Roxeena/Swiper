@@ -1,6 +1,7 @@
 var StartMenu = function(game){
 }
 
+
 StartMenu.prototype = {
 	create: function(){
 		//Add the start menu image
@@ -13,11 +14,23 @@ StartMenu.prototype = {
 	HS_button = this.game.add.button(this.game.world.centerX - 130, 570, 'HS_button', this.startHighscoreMenu, this, 2, 1, 0);
 	S_button = this.game.add.button(this.game.world.centerX - 130, 680, 'S_button', this.startSettings, this, 2, 1, 0);
 	//Q_button = this.game.add.button(this.game.world.centerX = 130, 790, 'Q_button', this.Quit, this, 2, 1, 0);
+
+	music = this.game.add.audio('seal');
+
+	if(startMusic)
+	{
+		music.play();
+	}
+    
+    startMusic = false;
+
 	},
 
 	//If button "Start" is pressed this function will be executed
 	startGame: function() {
 		//Go to game state
+		music.mute = true;
+		console.log(music.mute);
 		this.game.state.start('Game');
 	},
 
@@ -30,6 +43,7 @@ StartMenu.prototype = {
 	//If button "Settings"
 	startSettings: function() {
 		//Go to settings state
+		
 		this.game.state.start('Settings');
 	},
 
