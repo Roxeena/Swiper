@@ -17,7 +17,7 @@ StartMenu.prototype = {
 	/*var playtext=this.game.add.button(this.world.centerX-155, this.world.centerY+180,
 			'Touch to start',this.startGame,this);
 		*/
-		var bitmapplay = this.add.bitmapText(this.world.centerX-155, this.world.centerY+180,
+		var bitmapplay = this.add.bitmapText(this.world.centerX-155, this.world.centerY+180, this.startGame,
 			'eightbitwonder','Touch to start!',24);
 	},
 	startGame: function(pointer) {
