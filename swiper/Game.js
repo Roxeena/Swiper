@@ -64,9 +64,6 @@ Game.prototype = {
         music = this.game.add.audio('jerry');
         music.play();
 
-        //Start the timer 
-        //this.timer.start();
-
         //Add objects in loop depending on time
         //Spawn an object every 2 seconds        
 
@@ -87,14 +84,11 @@ Game.prototype = {
         spwnrng = spwnrng + this.game.rnd.integerInRange(200, 400);
 
          if (rndnr == 1){
-        //Create a random object to spawn
-        //If the random number is 1, then spawn a right arrow
             //Add a right arrow
             arrowRight = this.game.add.sprite(spwnrng,0,'proto_right_pil'); 
-            
             this.game.physics.enable( [ arrowRight ], Phaser.Physics.ARCADE);
             inputstuff(arrowRight);
-
+            //signal för högerpil
             arrowRight.body.onWorldBounds = new Phaser.Signal();
             arrowRight.body.onWorldBounds.add(hitworldboundsright, this);
 
@@ -105,6 +99,7 @@ Game.prototype = {
             arrowLeft = this.game.add.sprite(spwnrng,0,'proto_left_pil');
             this.game.physics.enable( [ arrowLeft ], Phaser.Physics.ARCADE);
             inputstuff(arrowLeft);
+            //signal för vänsterpil
             arrowLeft.body.onWorldBounds = new Phaser.Signal();
             arrowLeft.body.onWorldBounds.add(hitworldboundsleft, this);
      
@@ -113,49 +108,50 @@ Game.prototype = {
         
         function inputstuff(selected){
         
-        //Set the velocity for the object
-        selected.body.velocity.y = velocityStart + (Level + 1) * 10;
+            //Set the velocity for the object
+            selected.body.velocity.y = velocityStart + (Level + 1) * 10;
         
-        //Enalbe swiping
-        selected.inputEnabled = true;
-        selected.input.enableDrag(true);
-        selected.input.allowVerticalDrag = false;
+            //Enalbe swiping
+            selected.inputEnabled = true;
+            selected.input.enableDrag(true);
+            selected.input.allowVerticalDrag = false;
 
-        //Stop gravity on swiping
-        selected.events.onDragStart.add(startDrag, this);
-        selected.events.onDragStop.add(stopDrag, this);
+             //Stop gravity on swiping
+            selected.events.onDragStart.add(startDrag, this);
+            selected.events.onDragStop.add(stopDrag, this);
         
-        //collision signal and if read signal functioncall        
-        selected.body.collideWorldBounds = true;
+            //collision signal and if read signal functioncall        
+            selected.body.collideWorldBounds = true;
         
         } 
-        //   
+        //hanterar vänsterpilar 
         function hitworldboundsleft (arrowLeft) {
-            
+            // testar ifall träffat rätt sida med marginal för pil
             if(arrowLeft.position.x<100){
                this.increment(arrowLeft);
-            }
+            }//testar ifall fel sida genom att kolla höjd med marginal för object 
             else if( arrowLeft.position.y<=Height-100 )
             {
                 
                 this.decrement(arrowLeft);
             }
-            else {
+            else {//fallet när den träffar golvet
                 this.floor(arrowLeft);
                 
             }
         }
         function hitworldboundsright (arrowRight) {
+            //testar ifall rätt sida med marginal för pil
             if(arrowRight.position.x >=(Width-100) )
             {
                 this.increment(arrowRight)
-            }
+            }// testar ifall fel sida genom att kolla höjd med marginal för object
             else if (arrowRight.position.y<=Height-100)
             {
                 
                this.decrement(arrowRight);
             }
-            else {
+            else {//fallet när den träffar golvet
                 
                 this.floor(arrowRight);
             }
@@ -176,7 +172,7 @@ Game.prototype = {
       increment:function (selected){  
                  //Remove the object
                 selected.destroy();
-                //Update the score. Why? Isnt this function only for when losing lives? 
+                //Update the score. 
                 ++score;
                 scoreText.setText( 'Score: '+score );
 
@@ -185,7 +181,7 @@ Game.prototype = {
         decrement: function(selected){
                 //Remove the object
                 selected.destroy();
-                //Update the score. Why? Isnt this function only for when losing lives? 
+                //Update the score.
                 --score;
                 scoreText.setText( 'Score: '+score );
                 },
@@ -199,8 +195,6 @@ Game.prototype = {
             lifetext.setText('Lives : '+counterlives);
 
             //Play animation of exploion when an object collides with the world boundaries
-            //Need to add an animation to the variable
-           // selected.animations.add('explode');
             selected.play('explode', 12, true);     //Does not work! I think the object is deleted before the 
             //animation it played. Also think that the loading and adding of spritesheet is wrong. 
             //counterlives.text = 'lives: ' + counterlives;
@@ -216,8 +210,6 @@ Game.prototype = {
             {
                 //Quit to start menu
                 this.quitGame();
-                //Vore nice om "Game over" menu dök upp först och musik ändrades. Nu fortsätter musiken 
-                //och kan loopas med ny om man startar nytt spel igen direkt.
             }
    
         },
