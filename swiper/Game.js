@@ -17,7 +17,8 @@ var bounds;
 var Width=540;
 var Height=960;
 var Level=0;
-var rndnr;
+var arrowLeft;
+var arrowRight;
 
 Game.prototype = {
     create: function() {   
@@ -69,32 +70,39 @@ Game.prototype = {
     },
 
     generateImage: function() {     //Spawn an object
-        //Create a random number between 1 and 2
-
-        rndnr = this.game.rnd.integerInRange(1, 2);
+        
+        
+        var rndnr = this.game.rnd.integerInRange(1, 2);
 
         //Random X-position for spwan
         var spwnrng = 0;
-        spwnrng = spwnrng +this.game.rnd.integerInRange(200, 400);
-        
-        //Create a random object to spawn
-        //If the random number is 1, then spawn a bunny, right arrow
-        if (rndnr == 1){
+        spwnrng = spwnrng + this.game.rnd.integerInRange(200, 400);
+
+         if (rndnr == 1){
             //Add a bunny, right arrow
             arrowRight = this.game.add.sprite(spwnrng,0,'proto_right_pil'); 
-            selected = arrowRight;
+            
+            this.game.physics.enable( [ arrowRight ], Phaser.Physics.ARCADE);
+            inputstuff(arrowRight);
+
+            arrowRight.body.onWorldBounds = new Phaser.Signal();
+            arrowRight.body.onWorldBounds.add(hitworldboundsright, this);
 
         }
         //If the random number is 2, then spawn a spacefighter, left arrow     
         if (rndnr==2){
             //Add a spacefighter, left arrow
             arrowLeft = this.game.add.sprite(spwnrng,0,'proto_left_pil');
-            selected = arrowLeft;
-        }
+            this.game.physics.enable( [ arrowLeft ], Phaser.Physics.ARCADE);
+            inputstuff(arrowLeft);
+            arrowLeft.body.onWorldBounds = new Phaser.Signal();
+            arrowLeft.body.onWorldBounds.add(hitworldboundsleft, this);
      
-        //Enable gravity for new spawned object
-        this.game.physics.enable( [ selected ], Phaser.Physics.ARCADE);
-         
+        }
+
+        
+        function inputstuff(selected){
+
         //Enalbe swiping
         selected.inputEnabled = true;
         selected.input.enableDrag(true);
@@ -103,19 +111,57 @@ Game.prototype = {
         //Stop gravity on swiping
         selected.events.onDragStart.add(startDrag, this);
         selected.events.onDragStop.add(stopDrag, this);
-
-        //Enable collision with world bounds and trigger event if this happens
+        
+        //collision signal and if read signal functioncall        
         selected.body.collideWorldBounds = true;
-        selected.body.onWorldBounds = new Phaser.Signal();
-        selected.body.onWorldBounds.add(hitworldbounds, this);
-           
-        //tar bort object counter funkar ej atm. Malin: Denna funktion vill ha ett in argument, säker på att du skickar med något?
-        //If an object hit the world bounds, this function is executed
-        function hitworldbounds (selected) {
-            
-            if((selected.x<=100) || (selected.x >=Width-100))//pga objektbredd
+        
+        } 
+        //   
+        function hitworldboundsleft (arrowLeft) {
+            console.log(arrowLeft.position);
+            if(arrowLeft.position.x<100){
+               this.increment(arrowLeft);
+            }
+            else if( arrowLeft.position.y<=Height-100 )
             {
-                //Remove the object
+                console.log("sida1");
+                this.decrement(arrowLeft);
+            }
+            else {
+                this.floor(arrowLeft);
+                console.log("floor");
+            }
+        }
+        function hitworldboundsright (arrowRight) {
+            if(arrowRight.position.x >=(Width-100) )
+            {
+                this.increment(arrowRight)
+            }
+            else if (arrowRight.position.y<=Height-100)
+            {
+                console.log("Sida2");
+               this.decrement(arrowRight);
+            }
+            else {
+                console.log("floor");
+                this.floor(arrowRight);
+            }
+        }
+      
+        
+        //When starting to drag stop gravity
+        function startDrag(selected) {  
+            selected.body.moves = false;
+        }
+
+        //When stopping to drag allow gravity
+        function stopDrag(selected) {
+            selected.body.moves = true;
+        }
+      },   
+       
+      increment:function (selected){  
+                 //Remove the object
                 selected.destroy();
                 //Update the score. Why? Isnt this function only for when losing lives? 
                 ++score;
@@ -125,11 +171,17 @@ Game.prototype = {
                 {
                    ++Level;
                 }
-                 this.game.physics.arcade.gravity.y = this.game.physics.arcade.gravity.y +(Level*25);
-                
-            }
-                else
-            {
+                },
+
+        decrement: function(selected){
+                //Remove the object
+                selected.destroy();
+                //Update the score. Why? Isnt this function only for when losing lives? 
+                --score;
+                scoreText.setText( 'Score: '+score );
+                },
+
+        floor: function(selected){
             //Decrement the number of lives
             --counterlives;
             
@@ -147,10 +199,8 @@ Game.prototype = {
             var sound = this.game.add.audio('explosion_audio');
             sound.play();
              //Remove the object
-            selected.destroy();
-            }
-            
-           
+            selected.destroy(); 
+
              //Check if the player is out of lives
             if (counterlives === 0)
             {
@@ -159,32 +209,18 @@ Game.prototype = {
                 //Vore nice om "Game over" menu dök upp först och musik ändrades. Nu fortsätter musiken 
                 //och kan loopas med ny om man startar nytt spel igen direkt.
             }
-        
-           
-            
-        }
-
-        //When starting to drag stop gravity
-        function startDrag(selected) {
-            selected.body.moves = false;
-        }
-
-        //When stopping to drag allow gravity
-        function stopDrag(selected) {
-            selected.body.moves = true;
-        }
+   
+        },
       
-    },
-    
-    quitGame:function() {
+
+   quitGame: function() {
         counterlives=5;
         score=0;
         Level=0;
         music.pause();
         this.state.start('StartMenu');
+    
     },
-    
-    
     update: function() {
        
     }
