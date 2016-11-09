@@ -1,10 +1,21 @@
 var GameOver = function(game){
 }
 
+var scoreText;
+var score = 0;
+
 GameOver.prototype = {
+	
+	init: function(scoreIn) {
+		score = scoreIn;
+	},
+
 	create: function(){
 		//Add the game over image
 		var GameOverMenu = this.game.add.image(0,0, 'gameoverMenu');
+
+		//Add the score
+		scoreText = this.game.add.text(100 , 420, 'Your score: '+score , { font: '60px Arial', fill: '#fff' });
 
 		//Add the buttons
 		tryAgain = this.game.add.button(this.game.world.centerX - 140, 550, 'tryAgain', this.tryAgain, this, 2, 1, 0);

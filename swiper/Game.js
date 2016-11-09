@@ -24,6 +24,7 @@ var numSecPerLev= 10;
 
 Game.prototype = {
     create: function() {   
+        score = 0;
         //Initialize some settings and "meta data"
         this.gameover = false;                        
         timer = this.time.create(false);          
@@ -178,10 +179,9 @@ Game.prototype = {
     
     quitGame:function() {
         counterlives=5;
-        score=0;
         Level=0;
         music.pause();
-        this.state.start('GameOver');
+        this.state.start('GameOver', true, false, score);
     },
     
     

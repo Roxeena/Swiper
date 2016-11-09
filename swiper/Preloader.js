@@ -20,7 +20,7 @@ Preloader.prototype = {
         //Menu images
         this.load.image('titlescreen', 'assets/images/ässomebgb2.png');
         this.load.image('highscore_bild', 'assets/images/HighscoreMenu1.png');
-        this.load.image('gameoverMenu', 'assets/images/GEM OVER_screen.png');
+        this.load.image('gameoverMenu', 'assets/images/GAMEOVER.png');
         
         //Fonts
         this.load.bitmapFont('eightbitwonder', 'assets/fonts/eightbitwonder.png', 'assets/fonts/eightbitwonder.fnt');
