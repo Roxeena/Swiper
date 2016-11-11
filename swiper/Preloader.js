@@ -19,7 +19,8 @@ Preloader.prototype = {
         //Preload thing in the game
         //Menu images
         this.load.image('titlescreen', 'assets/images/ässomebgb2.png');
-        this.load.image('highscore_bild', 'assets/images/HighscoreMenu1.png')
+        this.load.image('highscore_bild', 'assets/images/HighscoreMenu1.png');
+        this.load.image('gameoverMenu', 'assets/images/GAMEOVER.png');
         
         //Fonts
         this.load.bitmapFont('eightbitwonder', 'assets/fonts/eightbitwonder.png', 'assets/fonts/eightbitwonder.fnt');
@@ -46,6 +47,7 @@ Preloader.prototype = {
         this.load.image('proto_left_pil', 'assets/images/proto_left_pil.png');
 
         //Music and sounds
+        this.load.audio('seal', 'assets/audio/seal.mp4.mp3');
         this.load.audio('jerry', 'assets/audio/jerry.mp3');
         this.load.audio('explosion_audio', 'assets/audio/explosion.mp3');
         this.load.audio('hurt_audio', 'assets/audio/hurt.mp3');
@@ -60,6 +62,16 @@ Preloader.prototype = {
         this.load.spritesheet('back', 'assets/images/spritesheets/Back_knapp.png');
         this.load.spritesheet('S_button', 'assets/images/spritesheets/settings_knapp.png');
         this.load.spritesheet('mute', 'assets/images/spritesheets/MUTE_knapp.png');
+        this.load.spritesheet('unMute', 'assets/images/spritesheets/UNMUTE_knapp.png');
+        this.load.spritesheet('muteMusic', 'assets/images/spritesheets/MUTE_music_knapp.png');
+        this.load.spritesheet('unMuteMusic', 'assets/images/spritesheets/UNMUTE_music_knapp.png');
+        this.load.spritesheet('muteSound', 'assets/images/spritesheets/MUTE_sound_knapp.png');
+        this.load.spritesheet('unMuteSound', 'assets/images/spritesheets/UNMUTE_sound_knapp.png');
+
+        this.load.spritesheet('tryAgain', 'assets/images/spritesheets/try_again_knapp.png');
+        this.load.spritesheet('backToMenu', 'assets/images/spritesheets/back_to_menu_knapp.png');
+        this.load.spritesheet('quit', 'assets/images/spritesheets/Quit_knapp.png');
+
         
         
 },
