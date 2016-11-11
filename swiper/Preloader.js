@@ -51,6 +51,8 @@ Preloader.prototype = {
         this.load.audio('hurt_audio', 'assets/audio/hurt.mp3');
         this.load.audio('select_audio', 'assets/audio/select.mp3');
         this.load.audio('game_audio', 'assets/audio/bgm.mp3');
+        this.load.audio('fem', 'assets/audio/FEM.mp3');
+        this.load.audio('tia', 'assets/audio/10och20.mp3');
         
         //Animations and spritirsheets
         this.load.spritesheet('button', 'assets/images/spritesheets/Start_knapp.png');

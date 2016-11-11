@@ -21,6 +21,8 @@ var Level=0;
 var rndnr;
 var velocityStart = 150;
 var numSecPerLev= 10;
+var text;
+var meme;
 
 Game.prototype = {
     create: function() {   
@@ -35,6 +37,7 @@ Game.prototype = {
 
         //Build world
         this.buildWorld();
+
     },
     
     updateSeconds: function() {
@@ -43,7 +46,14 @@ Game.prototype = {
         //Update the level with time
         if((secondsElapsed % numSecPerLev) == 0){
             ++Level;
-        }       
+        } 
+
+        if (secondsElapsed == 1)
+        {
+             this.memes(1);
+        }  
+
+
     },
 
     buildWorld: function() {    //Build the game
@@ -56,6 +66,8 @@ Game.prototype = {
         //Add information about the score and the number of lives left 
         scoreText = this.game.add.text(0, 10, 'Score: '+score , { font: '34px Arial', fill: '#fff' });
         lifetext = this.game.add.text(0, 40, 'Lives : '+counterlives, { font: '34px Arial', fill: '#fff' });
+
+
 
         //Add the music and play it
         music = this.game.add.audio('jerry');
@@ -72,6 +84,7 @@ Game.prototype = {
 
         //Quit after a certain amount of time, music ends
         this.game.time.events.add(Phaser.Timer.SECOND *68, this.quitGame, this);
+
     },
 
     generateImage: function() {     //Spawn an object
@@ -116,9 +129,10 @@ Game.prototype = {
         selected.body.collideWorldBounds = true;
         selected.body.onWorldBounds = new Phaser.Signal();
         selected.body.onWorldBounds.add(hitworldbounds, this);
-           
+    
         //tar bort object counter funkar ej atm. Malin: Denna funktion vill ha ett in argument, säker på att du skickar med något?
         //If an object hit the world bounds, this function is executed
+        
         function hitworldbounds (selected) {
             
             if((selected.x<=100) || (selected.x >=Width-100))//pga objektbredd
@@ -128,7 +142,15 @@ Game.prototype = {
                 //Update the score. Why? Isnt this function only for when losing lives? 
                 ++score;
                 scoreText.setText( 'Score: '+score );
-                
+
+                if (score == 5)
+                {
+                 this.memes(2);
+                }
+                if (score == 10)
+                {
+                 this.memes(3);
+                }
             }
             else
             {
@@ -177,6 +199,72 @@ Game.prototype = {
         }
       
     },
+
+    memes: function(meme) {
+
+        var meme_sound;
+
+        // Feem!
+        if (meme == 2)
+        {
+            text = this.game.add.text(this.game.world.centerX, this.game.world.centerY, 'Feeem');
+
+            //  Center align
+            text.anchor.set(0.5);
+            text.align = 'center';
+
+            //  Font style
+            text.font = 'eightbitwonder';
+            text.fontSize = 60;
+            text.fontWeight = 'normal';
+
+            //  Stroke color and thickness
+            text.stroke = '#000000';
+            text.strokeThickness = 6;
+            text.fill = '#00ff00';
+
+            text.alpha = 0;
+
+            var tween = this.game.add.tween(text).to( { alpha: 1 }, 1000, Phaser.Easing.Linear.None, true, 0, 1000, true);
+            
+            tween.repeat(0,0);
+
+            meme_sound = this.game.add.audio('fem');
+            meme_sound.play();
+        }
+
+        //Text i början av spelet.
+        if (meme == 1)
+        {
+            text = this.game.add.text(this.game.world.centerX, this.game.world.centerY, 'Swipe!');
+
+            //  Center align
+            text.anchor.set(0.5);
+            text.align = 'center';
+
+            //  Font style
+            text.font = 'eightbitwonder';
+            text.fontSize = 100;
+            text.fontWeight = 'bold';
+
+            //  Stroke color and thickness
+            text.stroke = '#000000';
+            text.strokeThickness = 6;
+            text.fill = '#ff00dd';
+
+            text.alpha = 0;
+
+            var tween = this.game.add.tween(text).to( { alpha: 1 }, 500, Phaser.Easing.Linear.None, true, 0, 1000, true);
+            tween.repeat(1,0);
+        }
+
+        if (meme == 3)
+        {
+            meme_sound = this.game.add.audio('tia');
+            meme_sound.play();
+        }
+
+    },
     
     quitGame:function() {
         counterlives=5;
@@ -188,6 +276,7 @@ Game.prototype = {
     
     
     update: function() {
+
     }
     
     
