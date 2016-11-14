@@ -233,6 +233,7 @@ Game.prototype = {
                 
         decrement: function(selected){
             //Remove the object
+            selected.destroy();
             
 
             //Update the score.
