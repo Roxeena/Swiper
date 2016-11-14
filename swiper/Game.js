@@ -146,13 +146,12 @@ Game.prototype = {
         //hanterar vänsterpilar 
         function hitworldboundsleft (arrowLeft) {
             // testar ifall träffat rätt sida med marginal för pil
-            if(arrowLeft.position.x<0+arrowLeft.width){
+            if(arrowLeft.position.x<arrowLeft.width){
                this.increment(arrowLeft);
             }//testar ifall fel sida genom att kolla höjd med marginal för object 
-            else if( arrowLeft.position.y<=Height-(2*arrowLeft.height)) 
+            else if( arrowLeft.position.y<=Height-((1.1)*arrowLeft.height) )
             {
                 this.decrement(arrowLeft);
-                console.log(arrowLeft.position);
             }
             else {//fallet när den träffar golvet
                 this.floor(arrowLeft);
@@ -165,12 +164,9 @@ Game.prototype = {
             {
                 this.increment(arrowRight)
             }// testar ifall fel sida genom att kolla höjd med marginal för object
-            else if (arrowRight.position.y<=Height-(2*arrowRight.height))
+            else if (arrowRight.position.y<=Height-((1.1)*arrowRight.height))
             {     
                this.decrement(arrowRight);
-                console.log(arrowRight.position);
-                console.log(arrowRight.height);
-                
             }
             else {//fallet när den träffar golvet
                 
