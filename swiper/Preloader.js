@@ -60,6 +60,7 @@ Preloader.prototype = {
         this.load.spritesheet('back', 'assets/images/spritesheets/Back_knapp.png');
         this.load.spritesheet('S_button', 'assets/images/spritesheets/settings_knapp.png');
         this.load.spritesheet('mute', 'assets/images/spritesheets/MUTE_knapp.png');
+        
         this.load.spritesheet('unMute', 'assets/images/spritesheets/UNMUTE_knapp.png');
         this.load.spritesheet('muteMusic', 'assets/images/spritesheets/MUTE_music_knapp.png');
         this.load.spritesheet('unMuteMusic', 'assets/images/spritesheets/UNMUTE_music_knapp.png');
