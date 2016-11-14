@@ -16,7 +16,8 @@ var countertext;
 var bounds;
 var Width=540;
 var Height=960;
-var Level=0;
+var Level=1;
+var Levelspawn=1;
 var arrowLeft;
 var arrowRight;
 var rndnr;
@@ -51,6 +52,11 @@ Game.prototype = {
             ++Level;
         } 
 
+        if((secondsElapsed % 5) == 0){
+            ++Levelspawn;
+        } 
+        
+
         if (secondsElapsed == 1)
         {
              this.memes(1);
@@ -61,7 +67,7 @@ Game.prototype = {
 
     buildWorld: function() {    //Build the game
 
-        bounds = new Phaser.Rectangle(0, 0, Width-1, Height);
+        //bounds = new Phaser.Rectangle(0, 0, Width-1, Height);
         //Add backgrounds
         this.add.image(0, 0, 'sky');
         this.add.image(0, 800, 'hill');
@@ -82,10 +88,10 @@ Game.prototype = {
         //Add objects in loop depending on time
         //Spawn an object every 2 seconds        
 
-        this.game.time.events.repeat(Phaser.Timer.SECOND * (2), 34, this.generateImage, this);
+        this.game.time.events.repeat(Phaser.Timer.SECOND * (2/(Levelspawn)), 9000, this.generateImage, this);
        
         //Quit after a certain amount of time, music ends
-        this.game.time.events.add(Phaser.Timer.SECOND *68, this.quitGame, this);
+        this.game.time.events.add(Phaser.Timer.SECOND *9000, this.quitGame, this);
 
     },
 
@@ -122,7 +128,7 @@ Game.prototype = {
         function inputstuff(selected){
 
             //Set the velocity for the object
-            selected.body.velocity.y = velocityStart + (Level + 1) * 10;
+            selected.body.velocity.y = velocityStart + (Level ) * 10;
 
             //Enalbe swiping
             selected.inputEnabled = true;
@@ -140,13 +146,13 @@ Game.prototype = {
         //hanterar vänsterpilar 
         function hitworldboundsleft (arrowLeft) {
             // testar ifall träffat rätt sida med marginal för pil
-            if(arrowLeft.position.x<100){
+            if(arrowLeft.position.x<0+arrowLeft.width){
                this.increment(arrowLeft);
             }//testar ifall fel sida genom att kolla höjd med marginal för object 
-            else if( arrowLeft.position.y<=Height-100 )
+            else if( arrowLeft.position.y<=Height-(2*arrowLeft.height)) 
             {
-                
                 this.decrement(arrowLeft);
+                console.log(arrowLeft.position);
             }
             else {//fallet när den träffar golvet
                 this.floor(arrowLeft);
@@ -155,14 +161,16 @@ Game.prototype = {
         }
         function hitworldboundsright (arrowRight) {
             //testar ifall rätt sida med marginal för pil
-            if(arrowRight.position.x >=(Width-100) )
+            if(arrowRight.position.x >(Width-arrowRight.width) )
             {
                 this.increment(arrowRight)
             }// testar ifall fel sida genom att kolla höjd med marginal för object
-            else if (arrowRight.position.y<=Height-100)
-            {
-                
+            else if (arrowRight.position.y<=Height-(2*arrowRight.height))
+            {     
                this.decrement(arrowRight);
+                console.log(arrowRight.position);
+                console.log(arrowRight.height);
+                
             }
             else {//fallet när den träffar golvet
                 
@@ -308,7 +316,10 @@ Game.prototype = {
 
    quitGame: function() {
         counterlives=5;
-        Level=0;
+        Level=5;
+        secondsElapsed=0;
+        Levelspawn=0;
+
         music.pause();
         this.state.start('GameOver', true, false, score);
     },
