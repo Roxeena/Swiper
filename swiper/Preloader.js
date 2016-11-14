@@ -55,6 +55,14 @@ Preloader.prototype = {
         this.load.audio('game_audio', 'assets/audio/bgm.mp3');
         this.load.audio('fem', 'assets/audio/FEM.mp3');
         this.load.audio('tia', 'assets/audio/10och20.mp3');
+        this.load.audio('swipe1', 'assets/audio/swipe1.mp3');
+        this.load.audio('swipe2', 'assets/audio/swipe2.mp3');
+        this.load.audio('swipe3', 'assets/audio/swipe3.mp3');
+        this.load.audio('swipe4', 'assets/audio/swipe4.mp3');
+        this.load.audio('swipe5', 'assets/audio/swipe5.mp3');
+        this.load.audio('swipe6', 'assets/audio/swipe6.mp3');
+        this.load.audio('swipe7', 'assets/audio/swipe7.mp3');
+        this.load.audio('gameoverjerry', 'assets/audio/gameoverjerry.mp3');    
         
         //Animations and spritirsheets
         this.load.spritesheet('button', 'assets/images/spritesheets/Start_knapp.png');
