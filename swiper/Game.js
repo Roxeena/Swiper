@@ -78,7 +78,7 @@ Game.prototype = {
         lifetext = this.game.add.text(0, 40, 'Lives : '+counterlives, { font: '34px Arial', fill: '#fff' });
 
         //Add the music and play it  
-        music = this.game.add.audio('jerry');
+        music = this.game.add.audio('jerry5min');
 
         if(muteMusicbool == false)
         {
