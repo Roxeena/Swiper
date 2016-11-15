@@ -14,14 +14,14 @@ var scoreText;
 var score = 0;
 var countertext;
 var bounds;
-var Width=540;
-var Height=960;
+var Width=window.screen.availWidth;
+var Height=window.screen.availHeight;
 var Level=0;
 var arrowLeft;
 var arrowRight;
 var rndnr;
-var velocityStart = 150;
-var numSecPerLev= 10;
+var velocityStart = 170;
+var numSecPerLev= 5;
 var text;
 var meme;
 
@@ -61,7 +61,7 @@ Game.prototype = {
 
     buildWorld: function() {    //Build the game
 
-        bounds = new Phaser.Rectangle(0, 0, Width-1, Height);
+        bounds = new Phaser.Rectangle(0, 0, Width, Height);
         //Add backgrounds
         this.add.image(0, 0, 'sky');
         this.add.image(0, 800, 'hill');
@@ -315,6 +315,14 @@ Game.prototype = {
     
     
     update: function() {
+        var x = 0;
+        var y = 0;
+        var yi = 32;
+
+        this.game.debug.text('Device', x, y += yi);
+
+        this.game.debug.text('window.screen.availWidth: ' + window.screen.availWidth, x, y += yi);
+        this.game.debug.text('window.screen.availHeight: ' + window.screen.availHeight, x, y += yi);
 
     }
     
