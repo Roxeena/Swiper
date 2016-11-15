@@ -39,7 +39,6 @@ Game.prototype = {
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
         //Build world
-        music.mute = true;
         this.buildWorld();
 
     },
@@ -84,7 +83,6 @@ Game.prototype = {
         {
             music.play();
         }
-        startMusic = false;
 
         //Add objects in loop depending on time
         //Spawn an object every 2 seconds        
@@ -190,28 +188,29 @@ Game.prototype = {
       increment:function (selected){
             selected.destroy();
 
-            //Declaring swipes
-            var swipe1 = this.game.add.audio('swipe1');
-            var swipe2 = this.game.add.audio('swipe2');
-            var swipe3 = this.game.add.audio('swipe3');
-            var swipe4 = this.game.add.audio('swipe4');
-            var swipe5 = this.game.add.audio('swipe5');
-            var swipe6 = this.game.add.audio('swipe6');
-            var swipe7 = this.game.add.audio('swipe7');
+            if(muteSoundbool == false)
+            {
+                //Declaring swipes
+                var swipe1 = this.game.add.audio('swipe1');
+                var swipe2 = this.game.add.audio('swipe2');
+                var swipe3 = this.game.add.audio('swipe3');
+                var swipe4 = this.game.add.audio('swipe4');
+                var swipe5 = this.game.add.audio('swipe5');
+                var swipe6 = this.game.add.audio('swipe6');
+                var swipe7 = this.game.add.audio('swipe7');
 
-            //generate random number
-            var rndnr = this.game.rnd.integerInRange(1, 7);
+                //generate random number
+                var rndnr = this.game.rnd.integerInRange(1, 7);
 
-            //Assigns swipes to random numbers
-            if (rndnr == 1){swipe1.play();}
-            if (rndnr == 2){swipe2.play();}
-            if (rndnr == 3){swipe3.play();}
-            if (rndnr == 4){swipe4.play();}
-            if (rndnr == 5){swipe5.play();}
-            if (rndnr == 6){swipe6.play();}
-            if (rndnr == 7){swipe7.play();}
-            
-
+                //Assigns swipes to random numbers
+                if (rndnr == 1){swipe1.play();}
+                if (rndnr == 2){swipe2.play();}
+                if (rndnr == 3){swipe3.play();}
+                if (rndnr == 4){swipe4.play();}
+                if (rndnr == 5){swipe5.play();}
+                if (rndnr == 6){swipe6.play();}
+                if (rndnr == 7){swipe7.play();}
+            }
             //Remove the object
             selected.destroy();
 
@@ -338,8 +337,12 @@ Game.prototype = {
             
             tween.repeat(0,0);
 
-            meme_sound = this.game.add.audio('fem');
-            meme_sound.play();
+            if(muteSoundbool == false)
+            {
+                meme_sound = this.game.add.audio('fem');
+                meme_sound.play();
+            }
+            
         }
 
         //Text i början av spelet.
@@ -369,8 +372,12 @@ Game.prototype = {
 
         if (meme == 3)
         {
-            meme_sound = this.game.add.audio('tia');
-            meme_sound.play();
+            if(muteSoundbool == false)
+            {
+                meme_sound = this.game.add.audio('tia');
+                meme_sound.play();
+            }
+            
         }
 
     },

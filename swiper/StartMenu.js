@@ -1,7 +1,6 @@
 var StartMenu = function(game){
 }
 
-
 StartMenu.prototype = {
 	create: function(){
 		/*startBG = this.add.image(0,0,'titlescreen');
@@ -23,11 +22,12 @@ StartMenu.prototype = {
 		//Add the start menu image
 		var StartMenu = this.game.add.image(0,0,'titlescreen');
 
-	music = this.game.add.audio('seal');
+//	musicStart = this.game.add.audio('seal');
 
 	if(startMusic)
 	{
-		music.play();
+		musicStart.loop = true;
+		musicStart.play();
 	}
     
     startMusic = false;
@@ -49,7 +49,7 @@ StartMenu.prototype = {
 	//If button "Start" is pressed this function will be executed
 	startGame: function() {
 		//Go to game state
-		music.mute = true;
+		musicStart.mute = true;
 		this.game.state.start('Game');
 	},
 

@@ -48,6 +48,7 @@ Preloader.prototype = {
 
         //Music and sounds
         this.load.audio('seal', 'assets/audio/seal.mp4.mp3');
+        this.load.audio('seal2', 'assets/audio/seal 2.flv.mp3');
         this.load.audio('jerry', 'assets/audio/jerry.mp3');
         this.load.audio('jerry5min', 'assets/audio/jerry5min.mp3');
         this.load.audio('explosion_audio', 'assets/audio/explosion.mp3');
@@ -81,13 +82,15 @@ Preloader.prototype = {
         this.load.spritesheet('tryAgain', 'assets/images/spritesheets/try_again_knapp.png');
         this.load.spritesheet('backToMenu', 'assets/images/spritesheets/back_to_menu_knapp.png');
         this.load.spritesheet('quit', 'assets/images/spritesheets/Quit_knapp.png');
-
         
         
 },
 
 	create: function () {
         //Go to the start menu state
+        musicStart = this.game.add.audio('seal');
+        musicStart2 = this.game.add.audio('seal2');
+        
         this.game.state.start('StartMenu');
     },
 

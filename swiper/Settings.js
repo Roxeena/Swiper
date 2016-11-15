@@ -1,6 +1,8 @@
 var Settings = function(game){
 }
 
+var musicStart;
+
 Settings.prototype = {
     create: function(){
 
@@ -50,35 +52,15 @@ Settings.prototype = {
         this.game.state.start('StartMenu');
     },
 
-    /*Mute: function(){
-    	this.game.sound.mute = true;
-    	music.mute = true;
-    	mute.pendingDestroy = true;
-    	muteMusic.pendingDestroy = true;
-    	muteSound.pendingDestroy = true;
-    	unMute = this.game.add.button(this.game.world.centerX - 150, 300, 'unMute', this.unMute, this, 2, 1, 0);
-    	unMuteMusic = this.game.add.button(this.game.world.centerX - 130, 440, 'unMuteMusic', this.unMuteMusic, this, 2, 1, 0);
-    	unMuteSound = this.game.add.button(this.game.world.centerX - 130, 580, 'unMuteSound', this.unMuteSound, this, 2, 1, 0);
-    },
-
-    unMute: function(){
-    	this.game.sound.mute = false;
-    	music.mute = false;
-    	mute = this.game.add.button(this.game.world.centerX - 130, 300, 'mute', this.Mute, this, 2, 1, 0);
-    	unMute.pendingDestroy = true;
-    	muteMusic = this.game.add.button(this.game.world.centerX - 130, 440, 'muteMusic', this.muteMusic, this, 2, 1, 0);
-    	muteSound = this.game.add.button(this.game.world.centerX - 130, 580, 'muteSound', this.muteSound, this, 2, 1, 0);
-    },*/
-
-    muteMusic: function(){
-    	music.mute = true;
+        muteMusic: function(){
+    	musicStart.mute = true;
     	muteMusic.pendingDestroy = true;
     	unMuteMusic = this.game.add.button(this.game.world.centerX - 130, 440, 'unMuteMusic', this.unMuteMusic, this, 2, 1, 0);
     	muteMusicbool = true;
     },
 
     unMuteMusic: function(){
-    	music.mute = false;
+    	musicStart.mute = false;
     	muteMusic = this.game.add.button(this.game.world.centerX - 130, 440, 'muteMusic', this.muteMusic, this, 2, 1, 0);
     	unMuteMusic.pendingDestroy = true;
     	muteMusicbool = false;
@@ -99,4 +81,26 @@ Settings.prototype = {
     	//unMute.pendingDestroy = true;
     	//mute = this.game.add.button(this.game.world.centerX - 130, 300, 'mute', this.Mute, this, 2, 1, 0);
     }
+
+    /*Mute: function(){
+    	this.game.sound.mute = true;
+    	music.mute = true;
+    	mute.pendingDestroy = true;
+    	muteMusic.pendingDestroy = true;
+    	muteSound.pendingDestroy = true;
+    	unMute = this.game.add.button(this.game.world.centerX - 150, 300, 'unMute', this.unMute, this, 2, 1, 0);
+    	unMuteMusic = this.game.add.button(this.game.world.centerX - 130, 440, 'unMuteMusic', this.unMuteMusic, this, 2, 1, 0);
+    	unMuteSound = this.game.add.button(this.game.world.centerX - 130, 580, 'unMuteSound', this.unMuteSound, this, 2, 1, 0);
+    },
+
+    unMute: function(){
+    	this.game.sound.mute = false;
+    	music.mute = false;
+    	mute = this.game.add.button(this.game.world.centerX - 130, 300, 'mute', this.Mute, this, 2, 1, 0);
+    	unMute.pendingDestroy = true;
+    	muteMusic = this.game.add.button(this.game.world.centerX - 130, 440, 'muteMusic', this.muteMusic, this, 2, 1, 0);
+    	muteSound = this.game.add.button(this.game.world.centerX - 130, 580, 'muteSound', this.muteSound, this, 2, 1, 0);
+    },*/
+
+
 };

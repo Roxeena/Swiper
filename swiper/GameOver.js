@@ -15,12 +15,18 @@ GameOver.prototype = {
 		var GameOverMenu = this.game.add.image(0,0, 'gameoverMenu');
 
 		// Game over music
-		var gameoverjerry = this.game.add.audio('gameoverjerry');
-		gameoverjerry.play();
+		if(muteMusicbool == false)
+		{
+			var gameoverjerry = this.game.add.audio('gameoverjerry');
+			gameoverjerry.play();
+		}
+		
 
 		//Add the score
 		scoreText = this.game.add.text(this.game.world.centerX, 420, 'Your score: '+score , { font: '60px Arial', fill: '#fff' });
 		scoreText.anchor.set(0.5);
+
+		startMusic = true;
 
 		//Add the buttons
 		tryAgainB = this.game.add.button(this.game.world.centerX, 550, 'tryAgain', this.tryAgain, this, 2, 1, 0);
