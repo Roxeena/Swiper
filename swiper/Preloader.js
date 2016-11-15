@@ -28,7 +28,7 @@ Preloader.prototype = {
         //Backgrounds in game
         this.load.image('hill', 'assets/images/hill.png');
         this.load.image('sky', 'assets/images/sky.png');
-        this.load.image('highscore_bild', 'assets/images/HighscoreMenu1.png');
+        this.load.image('highscore_bild1', 'assets/images/HIGHSCORE_bakgrund 3.png');
         
         this.load.atlasXML('bunny', 'assets/images/spritesheets/bunny.png', 'assets/images/spritesheets/bunny.xml');
         this.load.atlasXML('spacerock', 'assets/images/spritesheets/SpaceRock.png', 'assets/images/spritesheets/SpaceRock.xml');
@@ -55,6 +55,14 @@ Preloader.prototype = {
         this.load.audio('game_audio', 'assets/audio/bgm.mp3');
         this.load.audio('fem', 'assets/audio/FEM.mp3');
         this.load.audio('tia', 'assets/audio/10och20.mp3');
+        this.load.audio('swipe1', 'assets/audio/swipe1.mp3');
+        this.load.audio('swipe2', 'assets/audio/swipe2.mp3');
+        this.load.audio('swipe3', 'assets/audio/swipe3.mp3');
+        this.load.audio('swipe4', 'assets/audio/swipe4.mp3');
+        this.load.audio('swipe5', 'assets/audio/swipe5.mp3');
+        this.load.audio('swipe6', 'assets/audio/swipe6.mp3');
+        this.load.audio('swipe7', 'assets/audio/swipe7.mp3');
+        this.load.audio('gameoverjerry', 'assets/audio/gameoverjerry.mp3');    
         
         //Animations and spritirsheets
         this.load.spritesheet('button', 'assets/images/spritesheets/Start_knapp.png');
@@ -62,6 +70,7 @@ Preloader.prototype = {
         this.load.spritesheet('back', 'assets/images/spritesheets/Back_knapp.png');
         this.load.spritesheet('S_button', 'assets/images/spritesheets/settings_knapp.png');
         this.load.spritesheet('mute', 'assets/images/spritesheets/MUTE_knapp.png');
+        
         this.load.spritesheet('unMute', 'assets/images/spritesheets/UNMUTE_knapp.png');
         this.load.spritesheet('muteMusic', 'assets/images/spritesheets/MUTE_music_knapp.png');
         this.load.spritesheet('unMuteMusic', 'assets/images/spritesheets/UNMUTE_music_knapp.png');

@@ -14,6 +14,10 @@ GameOver.prototype = {
 		//Add the game over image
 		var GameOverMenu = this.game.add.image(0,0, 'gameoverMenu');
 
+		// Game over music
+		var gameoverjerry = this.game.add.audio('gameoverjerry');
+		gameoverjerry.play();
+
 		//Add the score
 		scoreText = this.game.add.text(this.game.world.centerX, 420, 'Your score: '+score , { font: '60px Arial', fill: '#fff' });
 		scoreText.anchor.set(0.5);

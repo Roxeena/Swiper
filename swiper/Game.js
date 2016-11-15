@@ -16,7 +16,8 @@ var countertext;
 var bounds;
 var Width=window.screen.availWidth;
 var Height=window.screen.availHeight;
-var Level=0;
+var Level=1;
+var Levelspawn=1;
 var arrowLeft;
 var arrowRight;
 var rndnr;
@@ -51,6 +52,11 @@ Game.prototype = {
             ++Level;
         } 
 
+        if((secondsElapsed % 5) == 0){
+            ++Levelspawn;
+        } 
+        
+
         if (secondsElapsed == 1)
         {
              this.memes(1);
@@ -62,6 +68,7 @@ Game.prototype = {
     buildWorld: function() {    //Build the game
 
         bounds = new Phaser.Rectangle(0, 0, Width, Height);
+
         //Add backgrounds
         this.add.image(0, 0, 'sky');
         this.add.image(0, 800, 'hill');
@@ -82,10 +89,10 @@ Game.prototype = {
         //Add objects in loop depending on time
         //Spawn an object every 2 seconds        
 
-        this.game.time.events.repeat(Phaser.Timer.SECOND * (2), 34, this.generateImage, this);
+        this.game.time.events.repeat(Phaser.Timer.SECOND * (2/(Levelspawn)), 9000, this.generateImage, this);
        
         //Quit after a certain amount of time, music ends
-        this.game.time.events.add(Phaser.Timer.SECOND *68, this.quitGame, this);
+        this.game.time.events.add(Phaser.Timer.SECOND *9000, this.quitGame, this);
 
     },
 
@@ -124,6 +131,7 @@ Game.prototype = {
             //Set the velocity for the object
             selected.body.velocity.y = velocityStart + (Level) * 10;
 
+
             //Enalbe swiping
             selected.inputEnabled = true;
             selected.input.enableDrag(true);
@@ -140,12 +148,11 @@ Game.prototype = {
         //hanterar vänsterpilar 
         function hitworldboundsleft (arrowLeft) {
             // testar ifall träffat rätt sida med marginal för pil
-            if(arrowLeft.position.x<100){
+            if(arrowLeft.position.x<arrowLeft.width){
                this.increment(arrowLeft);
             }//testar ifall fel sida genom att kolla höjd med marginal för object 
-            else if( arrowLeft.position.y<=Height-100 )
+            else if( arrowLeft.position.y<=Height-((1.1)*arrowLeft.height) )
             {
-                
                 this.decrement(arrowLeft);
             }
             else {//fallet när den träffar golvet
@@ -155,13 +162,12 @@ Game.prototype = {
         }
         function hitworldboundsright (arrowRight) {
             //testar ifall rätt sida med marginal för pil
-            if(arrowRight.position.x >=(Width-100) )
+            if(arrowRight.position.x >(Width-arrowRight.width) )
             {
                 this.increment(arrowRight)
             }// testar ifall fel sida genom att kolla höjd med marginal för object
-            else if (arrowRight.position.y<=Height-100)
-            {
-                
+            else if (arrowRight.position.y<=Height-((1.1)*arrowRight.height))
+            {     
                this.decrement(arrowRight);
             }
             else {//fallet när den träffar golvet
@@ -181,9 +187,34 @@ Game.prototype = {
         }
       },   
        
-      increment:function (selected){  
+      increment:function (selected){
+            selected.destroy();
+
+            //Declaring swipes
+            var swipe1 = this.game.add.audio('swipe1');
+            var swipe2 = this.game.add.audio('swipe2');
+            var swipe3 = this.game.add.audio('swipe3');
+            var swipe4 = this.game.add.audio('swipe4');
+            var swipe5 = this.game.add.audio('swipe5');
+            var swipe6 = this.game.add.audio('swipe6');
+            var swipe7 = this.game.add.audio('swipe7');
+
+            //generate random number
+            var rndnr = this.game.rnd.integerInRange(1, 7);
+
+            //Assigns swipes to random numbers
+            if (rndnr == 1){swipe1.play();}
+            if (rndnr == 2){swipe2.play();}
+            if (rndnr == 3){swipe3.play();}
+            if (rndnr == 4){swipe4.play();}
+            if (rndnr == 5){swipe5.play();}
+            if (rndnr == 6){swipe6.play();}
+            if (rndnr == 7){swipe7.play();}
+            
+
             //Remove the object
             selected.destroy();
+
             //Update the score. 
             ++score;
             scoreText.setText( 'Score: '+score );
@@ -201,6 +232,8 @@ Game.prototype = {
         decrement: function(selected){
             //Remove the object
             selected.destroy();
+            
+
             //Update the score.
             --score;
             scoreText.setText( 'Score: '+score );
@@ -234,6 +267,43 @@ Game.prototype = {
             {
                 //Quit to start menu
                 this.quitGame();
+
+
+                if(score > localStorage.getItem("highscore"))
+                {
+                    localStorage.setItem("highscore5", localStorage.getItem("highscore4"));
+                    localStorage.setItem("highscore4", localStorage.getItem("highscore3"));
+                    localStorage.setItem("highscore3", localStorage.getItem("highscore2"));
+                    localStorage.setItem("highscore2", localStorage.getItem("highscore"));
+                    localStorage.setItem("highscore", score);
+                }
+
+                else if(score > localStorage.getItem("highscore2"))
+                {
+                    localStorage.setItem("highscore5", localStorage.getItem("highscore4"));
+                    localStorage.setItem("highscore4", localStorage.getItem("highscore3"));
+                    localStorage.setItem("highscore3", localStorage.getItem("highscore2"));
+                    localStorage.setItem("highscore2", score);
+                    
+                }
+
+                else if(score > localStorage.getItem("highscore3"))
+                {
+                    localStorage.setItem("highscore5", localStorage.getItem("highscore4"));
+                    localStorage.setItem("highscore4", localStorage.getItem("highscore3"));
+                    localStorage.setItem("highscore3", score);
+                }
+
+                else if(score > localStorage.getItem("highscore4"))
+                {
+                    localStorage.setItem("highscore5",localStorage.getItem("highscore4"));
+                    localStorage.setItem("highscore4",score);
+                }
+
+                else if(score > localStorage.getItem("highscore5"))
+                {
+                    localStorage.setItem("highscore5", score);
+                }
             }
             
         },
@@ -308,7 +378,10 @@ Game.prototype = {
 
    quitGame: function() {
         counterlives=5;
-        Level=0;
+        Level=5;
+        secondsElapsed=0;
+        Levelspawn=0;
+
         music.pause();
         this.state.start('GameOver', true, false, score);
     },
