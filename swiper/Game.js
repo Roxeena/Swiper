@@ -122,7 +122,7 @@ Game.prototype = {
         function inputstuff(selected){
 
             //Set the velocity for the object
-            selected.body.velocity.y = velocityStart + (Level + 1) * 10;
+            selected.body.velocity.y = velocityStart + (Level) * 10;
 
             //Enalbe swiping
             selected.inputEnabled = true;
