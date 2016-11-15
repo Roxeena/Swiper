@@ -265,6 +265,43 @@ Game.prototype = {
             {
                 //Quit to start menu
                 this.quitGame();
+
+
+                if(score > localStorage.getItem("highscore"))
+                {
+                    localStorage.setItem("highscore5", localStorage.getItem("highscore4"));
+                    localStorage.setItem("highscore4", localStorage.getItem("highscore3"));
+                    localStorage.setItem("highscore3", localStorage.getItem("highscore2"));
+                    localStorage.setItem("highscore2", localStorage.getItem("highscore"));
+                    localStorage.setItem("highscore", score);
+                }
+
+                else if(score > localStorage.getItem("highscore2"))
+                {
+                    localStorage.setItem("highscore5", localStorage.getItem("highscore4"));
+                    localStorage.setItem("highscore4", localStorage.getItem("highscore3"));
+                    localStorage.setItem("highscore3", localStorage.getItem("highscore2"));
+                    localStorage.setItem("highscore2", score);
+                    
+                }
+
+                else if(score > localStorage.getItem("highscore3"))
+                {
+                    localStorage.setItem("highscore5", localStorage.getItem("highscore4"));
+                    localStorage.setItem("highscore4", localStorage.getItem("highscore3"));
+                    localStorage.setItem("highscore3", score);
+                }
+
+                else if(score > localStorage.getItem("highscore4"))
+                {
+                    localStorage.setItem("highscore5",localStorage.getItem("highscore4"));
+                    localStorage.setItem("highscore4",score);
+                }
+
+                else if(score > localStorage.getItem("highscore5"))
+                {
+                    localStorage.setItem("highscore5", score);
+                }
             }
             
         },
