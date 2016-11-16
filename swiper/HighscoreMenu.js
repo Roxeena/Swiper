@@ -12,8 +12,11 @@ HighscoreMenu.prototype = {
         highscore4 = this.game.add.text(150, 600, localStorage.getItem('highscore4'), { font: '60px Arial', fill: '#fff' });
         highscore5 = this.game.add.text(150, 700, localStorage.getItem('highscore5'), { font: '60px Arial', fill: '#fff' });
 
-        //Add the "Back" button
-        back = this.game.add.button(this.game.world.centerX - 130, 800, 'back', this.backMenu, this, 2, 1, 0);
+        //Add the buttons
+        back = this.game.add.button(this.game.world.centerX, 800, 'back', this.backMenu, this, 2, 1, 0);
+
+        //Add the anchor points
+        back.anchor.set(0.5, 0.5);
 
     },
     //If the "Back" button is pressed

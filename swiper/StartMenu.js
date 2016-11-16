@@ -1,7 +1,6 @@
 var StartMenu = function(game){
 }
 
-
 StartMenu.prototype = {
 	create: function(){
 		/*startBG = this.add.image(0,0,'titlescreen');
@@ -23,27 +22,34 @@ StartMenu.prototype = {
 		//Add the start menu image
 		var StartMenu = this.game.add.image(0,0,'titlescreen');
 
-	music = this.game.add.audio('seal');
+//	musicStart = this.game.add.audio('seal');
 
-	if(startMusic)
+	if(startMusic && muteMusicbool == false)
 	{
-		music.play();
+		musicStart.loop = true;
+		musicStart.play();
 	}
     
     startMusic = false;
 
 
 		//Add the buttons
-		button = this.game.add.button(this.game.world.centerX - 150, 430, 'button', this.startGame, this, 2, 1, 0);
-		HS_button = this.game.add.button(this.game.world.centerX - 125, 570, 'HS_button', this.startHighscoreMenu, this, 2, 1, 0);
-		S_button = this.game.add.button(this.game.world.centerX - 125, 680, 'S_button', this.startSettings, this, 2, 1, 0);
-		Q_button = this.game.add.button(this.game.world.centerX - 105, 790, 'quit', this.Quit, this, 2, 1, 0);
+		startB = this.game.add.button(this.game.world.centerX, 430, 'button', this.startGame, this, 2, 1, 0);
+		highScoreB = this.game.add.button(this.game.world.centerX, 570, 'HS_button', this.startHighscoreMenu, this, 2, 1, 0);
+		settingsB = this.game.add.button(this.game.world.centerX, 680, 'S_button', this.startSettings, this, 2, 1, 0);
+		quitB = this.game.add.button(this.game.world.centerX, 790, 'quit', this.Quit, this, 2, 1, 0);
+
+		//Add the anchor points
+		startB.anchor.set(0.5, 0.5);
+		highScoreB.anchor.set(0.5, 0.5);
+		settingsB.anchor.set(0.5, 0.5);
+		quitB.anchor.set(0.5, 0.5);
 	},
 
 	//If button "Start" is pressed this function will be executed
 	startGame: function() {
 		//Go to game state
-		music.mute = true;
+		musicStart.mute = true;
 		this.game.state.start('Game');
 	},
 

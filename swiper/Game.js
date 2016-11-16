@@ -12,8 +12,6 @@ var timer;
 var secondsElapsed = 0;
 //bounds
 var bounds;
-var Width=540;
-var Height=960;
 //arrows
 var arrowLeft;
 var arrowRight;
@@ -25,6 +23,8 @@ var spawnspeed=1;
 var Level=1;
 var Levelspawn=1;
 //feedback
+var Width=window.screen.availWidth;
+var Height=window.screen.availHeight;
 var text;
 var meme;
 var countertext;
@@ -45,7 +45,6 @@ Game.prototype = {
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
         //Build world
-        music.mute = true;
         this.buildWorld();
 
     },
@@ -67,14 +66,13 @@ Game.prototype = {
         {
              this.memes(1);
         }  
-//        this.game.time.events.add(Phaser.Timer.SECOND *(spawnspeed), this.generateImage, this);
-        
 
     },
 
     buildWorld: function() {    //Build the game
 
-        //bounds = new Phaser.Rectangle(0, 0, Width-1, Height);
+        bounds = new Phaser.Rectangle(0, 0, Width, Height);
+
         //Add backgrounds
         this.add.image(0, 0, 'sky');
         this.add.image(0, 800, 'hill');
@@ -84,13 +82,12 @@ Game.prototype = {
         lifetext = this.game.add.text(0, 40, 'Lives : '+counterlives, { font: '34px Arial', fill: '#fff' });
 
         //Add the music and play it  
-        music = this.game.add.audio('jerry');
+        music = this.game.add.audio('jerry5min');
 
         if(muteMusicbool == false)
         {
             music.play();
         }
-        startMusic = false;
 
         //Add objects in loop depending on time
         //Spawn an object every 2 seconds        
@@ -136,7 +133,8 @@ Game.prototype = {
         function inputstuff(selected){
 
             //Set the velocity for the object
-            selected.body.velocity.y = velocityStart + (Level ) * 10;
+            selected.body.velocity.y = velocityStart + (Level) * 10;
+
 
             //Enalbe swiping
             selected.inputEnabled = true;
@@ -196,28 +194,29 @@ Game.prototype = {
       increment:function (selected){
             selected.destroy();
 
-            //Declaring swipes
-            var swipe1 = this.game.add.audio('swipe1');
-            var swipe2 = this.game.add.audio('swipe2');
-            var swipe3 = this.game.add.audio('swipe3');
-            var swipe4 = this.game.add.audio('swipe4');
-            var swipe5 = this.game.add.audio('swipe5');
-            var swipe6 = this.game.add.audio('swipe6');
-            var swipe7 = this.game.add.audio('swipe7');
+            if(muteSoundbool == false)
+            {
+                //Declaring swipes
+                var swipe1 = this.game.add.audio('swipe1');
+                var swipe2 = this.game.add.audio('swipe2');
+                var swipe3 = this.game.add.audio('swipe3');
+                var swipe4 = this.game.add.audio('swipe4');
+                var swipe5 = this.game.add.audio('swipe5');
+                var swipe6 = this.game.add.audio('swipe6');
+                var swipe7 = this.game.add.audio('swipe7');
 
-            //generate random number
-            var rndnr = this.game.rnd.integerInRange(1, 7);
+                //generate random number
+                var rndnr = this.game.rnd.integerInRange(1, 7);
 
-            //Assigns swipes to random numbers
-            if (rndnr == 1){swipe1.play();}
-            if (rndnr == 2){swipe2.play();}
-            if (rndnr == 3){swipe3.play();}
-            if (rndnr == 4){swipe4.play();}
-            if (rndnr == 5){swipe5.play();}
-            if (rndnr == 6){swipe6.play();}
-            if (rndnr == 7){swipe7.play();}
-            
-
+                //Assigns swipes to random numbers
+                if (rndnr == 1){swipe1.play();}
+                if (rndnr == 2){swipe2.play();}
+                if (rndnr == 3){swipe3.play();}
+                if (rndnr == 4){swipe4.play();}
+                if (rndnr == 5){swipe5.play();}
+                if (rndnr == 6){swipe6.play();}
+                if (rndnr == 7){swipe7.play();}
+            }
             //Remove the object
             selected.destroy();
 
@@ -344,8 +343,12 @@ Game.prototype = {
             
             tween.repeat(0,0);
 
-            meme_sound = this.game.add.audio('fem');
-            meme_sound.play();
+            if(muteSoundbool == false)
+            {
+                meme_sound = this.game.add.audio('fem');
+                meme_sound.play();
+            }
+            
         }
 
         //Text i början av spelet.
@@ -375,8 +378,12 @@ Game.prototype = {
 
         if (meme == 3)
         {
-            meme_sound = this.game.add.audio('tia');
-            meme_sound.play();
+            if(muteSoundbool == false)
+            {
+                meme_sound = this.game.add.audio('tia');
+                meme_sound.play();
+            }
+            
         }
 
     },
@@ -394,7 +401,6 @@ Game.prototype = {
     
     
     update: function() {
-      
     }
     
     
