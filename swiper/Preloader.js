@@ -24,6 +24,7 @@ Preloader.prototype = {
         
         //Fonts
         this.load.bitmapFont('eightbitwonder', 'assets/fonts/eightbitwonder.png', 'assets/fonts/eightbitwonder.fnt');
+        this.load.bitmapFont('AnuSwiper', 'assets/fonts/AnuSwiper Font');
         
         //Backgrounds in game
         this.load.image('hill', 'assets/images/hill.png');
@@ -52,7 +53,7 @@ Preloader.prototype = {
 
 
         //Music and sounds
-        this.load.audio('seal', 'assets/audio/seal.mp4.mp3');
+        this.load.audio('seal', 'assets/audio/sealfiremixtape.mp3');
         this.load.audio('jerry', 'assets/audio/jerry.mp3');
         this.load.audio('jerry5min', 'assets/audio/jerry5min.mp3');
         this.load.audio('explosion_audio', 'assets/audio/explosion.mp3');

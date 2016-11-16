@@ -28,6 +28,5 @@ HighscoreMenu.prototype = {
     //If the "Back" button is pressed
     backMenu: function(){
         //Go to start menu state
-        this.game.state.start('StartMenu');
-    }
+        this.game.state.start('StartMenu');    }
 };
