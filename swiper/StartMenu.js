@@ -45,6 +45,15 @@ StartMenu.prototype = {
 		startB.anchor.set(0.5, 0.5);
 		highScoreB.anchor.set(0.5, 0.5);
 		settingsB.anchor.set(0.5, 0.5);
+
+		//skala bredd
+		startB.width=game.width*(1/2);
+		highScoreB.width=game.width*(1/2.5);
+		settingsB.width=game.width*(1/2.5);
+		//skala höjd 
+		startB.height=game.height*(1/7);
+		highScoreB.height=game.height*(1/10);
+		settingsB.height=game.height*(1/10);
 	},
 
 	//If button "Start" is pressed this function will be executed

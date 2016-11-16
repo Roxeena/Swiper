@@ -108,12 +108,14 @@ Game.prototype = {
 
         //Random X-position for spwan
         var spwnrng = 0;
-        spwnrng = spwnrng + this.game.rnd.integerInRange(-100, 100) + this.game.world.centerX;
+        spwnrng = spwnrng + this.game.rnd.integerInRange(-game.width*(1/3), game.width*(1/3)) + this.game.world.centerX;
 
         if (rndnr == 1){
             //Add a right arrow
-            arrowRight = this.game.add.sprite(spwnrng,50,'XL_right_pil'); 
+            arrowRight = this.game.add.sprite(spwnrng,game.height * (2/20),'XL_right_pil'); 
             arrowRight.anchor.set(0.5, 0.5);
+            arrowRight.width = game.width * (1/3);
+            arrowRight.height = game.height * (1/10);
             this.game.physics.enable( [ arrowRight ], Phaser.Physics.ARCADE);
             inputstuff(arrowRight);
             //signal för högerpil
@@ -124,8 +126,10 @@ Game.prototype = {
         //If the random number is 2, then spawn a left arrow     
         if (rndnr==2){
             //Add a spacefighter, left arrow
-            arrowLeft = this.game.add.sprite(spwnrng,50,'XL_left_pil');
+            arrowLeft = this.game.add.sprite(spwnrng,game.height * (1/20),'XL_left_pil');
             arrowLeft.anchor.set(0.5, 0.5);
+            arrowLeft.width = game.width * (1/3);
+            arrowLeft.height = game.height * (1/10);
             this.game.physics.enable( [ arrowLeft ], Phaser.Physics.ARCADE);
             inputstuff(arrowLeft);
             //signal för vänsterpil
@@ -395,9 +399,11 @@ Game.prototype = {
 
    quitGame: function() {
         counterlives=5;
-        Level=5;
+        Level=1;
         secondsElapsed=0;
-        Levelspawn=0;
+        Levelspawn=1;
+        spawnspeed=1;
+
 
         music.pause();
         this.state.start('GameOver', true, false, score);
