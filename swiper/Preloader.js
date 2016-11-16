@@ -24,6 +24,7 @@ Preloader.prototype = {
         
         //Fonts
         this.load.bitmapFont('eightbitwonder', 'assets/fonts/eightbitwonder.png', 'assets/fonts/eightbitwonder.fnt');
+        this.load.bitmapFont('AnuSwiper', 'assets/fonts/AnuSwiper Font');
         
         //Backgrounds in game
         this.load.image('hill', 'assets/images/hill.png');

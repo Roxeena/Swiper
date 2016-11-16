@@ -69,13 +69,13 @@ Game.prototype = {
 
     buildWorld: function() {    //Build the game
 
-        bounds = new Phaser.Rectangle(0, 0);;
+        bounds = new Phaser.Rectangle(0, 0);
 
         //Add backgrounds
         var background = game.add.image(game.world.centerX, game.world.centerY, 'sky');
-        var foreground = game.add.image(game.world.centerX, 800, 'hill');
         background.anchor.set(0.5, 0.5);
-        foreground.anchor.set(0.5, 0.5);
+        background.width = game.width;
+        background.height = game.height;
 
         //Add information about the score and the number of lives left 
         scoreText = this.game.add.text(game.world.centerX, 20, 'Score: '+score , { font: '34px Arial', fill: '#fff' });
@@ -177,8 +177,6 @@ Game.prototype = {
             else if (arrowRight.position.y<(game.height-arrowRight.height))
             {     
                this.decrement(arrowRight);
-
-                console.log(arrowRight.position);
             }
             else {//fallet när den träffar golvet
                 
