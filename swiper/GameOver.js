@@ -50,6 +50,7 @@ GameOver.prototype = {
 	startMenu: function() {
 		//Go to game state
 		this.game.state.start('StartMenu');
+		musicStart.mute = false;
 	},
 
 	/*Quit: function() {
