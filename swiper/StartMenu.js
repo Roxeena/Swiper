@@ -22,6 +22,8 @@ StartMenu.prototype = {
 		//Add the start menu image
 		var StartMenu = this.game.add.image(game.world.centerX,game.world.centerY,'titlescreen');
 		StartMenu.anchor.set(0.5, 0.5);
+		StartMenu.width = game.width;
+		StartMenu.height = game.height;
 
 //	musicStart = this.game.add.audio('seal');
 
@@ -35,16 +37,14 @@ StartMenu.prototype = {
 
 
 		//Add the buttons
-		startB = this.game.add.button(this.game.world.centerX, 430, 'button', this.startGame, this, 2, 1, 0);
-		highScoreB = this.game.add.button(this.game.world.centerX, 570, 'HS_button', this.startHighscoreMenu, this, 2, 1, 0);
-		settingsB = this.game.add.button(this.game.world.centerX, 680, 'S_button', this.startSettings, this, 2, 1, 0);
-		quitB = this.game.add.button(this.game.world.centerX, 790, 'quit', this.Quit, this, 2, 1, 0);
+		startB = this.game.add.button(this.game.world.centerX, game.world.centerY, 'button', this.startGame, this, 2, 1, 0);
+		highScoreB = this.game.add.button(this.game.world.centerX, 3.8*game.height/6, 'HS_button', this.startHighscoreMenu, this, 2, 1, 0);
+		settingsB = this.game.add.button(this.game.world.centerX, 4.5*game.height/6 , 'S_button', this.startSettings, this, 2, 1, 0);
 
 		//Add the anchor points
 		startB.anchor.set(0.5, 0.5);
 		highScoreB.anchor.set(0.5, 0.5);
 		settingsB.anchor.set(0.5, 0.5);
-		quitB.anchor.set(0.5, 0.5);
 	},
 
 	//If button "Start" is pressed this function will be executed
@@ -66,12 +66,6 @@ StartMenu.prototype = {
 		//Go to settings state
 		
 		this.game.state.start('Settings');
-	}
-
-	/*Quit: function() {
-		navigator.this.game.exitApp();
-		console.log("Quitting swiper");
-	}*/
-	
+	}	
 	
 }; 

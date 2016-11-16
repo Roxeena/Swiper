@@ -15,11 +15,7 @@ Boot.prototype = {
 	
 	//Inactive settings
 	//this.input.maxPointers = 1;	//Can only hold one object at a time, default 2.
-	
-	this.scale.scaleMode = Phaser.ScaleManager.SHOW_all;
-	this.scale.pageAlignHorizontally = true;
-	this.scale.pageAlignVertically = true;
-	this.stage.backgroundColor = '#171642';
+
 	//Active settings
 	this.scale.scaleMode = Phaser.ScaleManager.SHOW_all;		
 	this.scale.pageAlignHorizontally = true;					//Set in the middle of the screen, x

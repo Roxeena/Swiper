@@ -8,7 +8,7 @@ Settings.prototype = {
 
     	//Are there no image?
     	//Add the "Back" button
-        back = this.game.add.button(this.game.world.centerX, 800, 'back', this.backMenu, this, 2, 1, 0);
+        back = this.game.add.button(this.game.world.centerX, 8*game.height/10, 'back', this.backMenu, this, 2, 1, 0);
         back.anchor.set(0.5, 0.5);
 
         credits = this.game.add.button(this.game.world.centerX, 300, 'credits', this.startCredits, this, 2, 1, 0);
@@ -25,25 +25,25 @@ Settings.prototype = {
         
         if(muteMusicbool == false)
         {
-        	muteMusic = this.game.add.button(this.game.world.centerX, 440, 'muteMusic', this.muteMusic, this, 2, 1, 0);
+        	muteMusic = this.game.add.button(this.game.world.centerX, game.world.centerY, 'muteMusic', this.muteMusic, this, 2, 1, 0);
             muteMusic.anchor.set(0.5, 0.5);
         }
 
         else if(muteMusicbool)
         {
-        	unMuteMusic = this.game.add.button(this.game.world.centerX, 440, 'unMuteMusic', this.unMuteMusic, this, 2, 1, 0);
+        	unMuteMusic = this.game.add.button(this.game.world.centerX, game.world.centerY, 'unMuteMusic', this.unMuteMusic, this, 2, 1, 0);
             unMuteMusic.anchor.set(0.5, 0.5);
         }
 
         if(muteSoundbool == false)
         {
-        	muteSound = this.game.add.button(this.game.world.centerX, 580, 'muteSound', this.muteSound, this, 2, 1, 0);
+        	muteSound = this.game.add.button(this.game.world.centerX, 6*game.height/10, 'muteSound', this.muteSound, this, 2, 1, 0);
             muteSound.anchor.set(0.5, 0.5);
         }
 
         else if(muteSoundbool)
         {
-			unMuteSound = this.game.add.button(this.game.world.centerX, 580, 'unMuteSound', this.unMuteSound, this, 2, 1, 0);
+			unMuteSound = this.game.add.button(this.game.world.centerX, 6*game.height/10, 'unMuteSound', this.unMuteSound, this, 2, 1, 0);
             unMuteSound.anchor.set(0.5, 0.5);
 		}
         
@@ -58,16 +58,16 @@ Settings.prototype = {
         muteMusic: function(){
     	musicStart.mute = true;
     	muteMusic.pendingDestroy = true;
-    	unMuteMusic = this.game.add.button(this.game.world.centerX, 440, 'unMuteMusic', this.unMuteMusic, this, 2, 1, 0);
-    	unMuteMusic.anchor.set(0.5, 0.5);
+    	unMuteMusic = this.game.add.button(this.game.world.centerX, game.world.centerY, 'unMuteMusic', this.unMuteMusic, this, 2, 1, 0);
+        unMuteMusic.anchor.set(0.5, 0.5);
     	muteMusicbool = true;
     },
 
     unMuteMusic: function(){
     	musicStart.mute = false;
-    	muteMusic = this.game.add.button(this.game.world.centerX, 440, 'muteMusic', this.muteMusic, this, 2, 1, 0);
-        muteMusic.anchor.set(0.5, 0.5);
+    	muteMusic = this.game.add.button(this.game.world.centerX, game.world.centerY, 'muteMusic', this.muteMusic, this, 2, 1, 0);
     	unMuteMusic.pendingDestroy = true;
+        muteMusic.anchor.set(0.5, 0.5);
     	muteMusicbool = false;
     	//unMute.pendingDestroy = true;
     	//mute = this.game.add.button(this.game.world.centerX - 130, 300, 'mute', this.Mute, this, 2, 1, 0);
@@ -76,14 +76,14 @@ Settings.prototype = {
     muteSound: function(){
     	muteSoundbool = true;
     	muteSound.pendingDestroy = true;
-    	unMuteSound = this.game.add.button(this.game.world.centerX, 580, 'unMuteSound', this.unMuteSound, this, 2, 1, 0);
+    	unMuteSound = this.game.add.button(this.game.world.centerX, 6*game.height/10, 'unMuteSound', this.unMuteSound, this, 2, 1, 0);
         unMuteSound.anchor.set(0.5, 0.5);
     },
 
     unMuteSound: function(){
     	muteSoundbool = false;
     	unMuteSound.pendingDestroy = true;
-    	muteSound = this.game.add.button(this.game.world.centerX, 580, 'muteSound', this.muteSound, this, 2, 1, 0);
+    	muteSound = this.game.add.button(this.game.world.centerX, 6*game.height/10, 'muteSound', this.muteSound, this, 2, 1, 0);
         muteSound.anchor.set(0.5, 0.5);
     	//unMute.pendingDestroy = true;
     	//mute = this.game.add.button(this.game.world.centerX - 130, 300, 'mute', this.Mute, this, 2, 1, 0);
