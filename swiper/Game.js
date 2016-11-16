@@ -140,8 +140,6 @@ Game.prototype = {
 
             //Set the velocity for the object
             selected.body.velocity.y = velocityStart + (Level) * 10;
-
-
             //Enalbe swiping
             selected.inputEnabled = true;
             selected.input.enableDrag(true);
@@ -158,7 +156,7 @@ Game.prototype = {
         //hanterar vänsterpilar 
         function hitworldboundsleft (arrowLeft) {
             // testar ifall träffat rätt sida med marginal för pil
-            if(arrowLeft.position.x<= 0){
+            if(arrowLeft.position.x<= (0+arrowLeft.width/2)){
                this.increment(arrowLeft);
 
             }//testar ifall fel sida genom att kolla höjd med marginal för object 
@@ -173,7 +171,7 @@ Game.prototype = {
         }
         function hitworldboundsright (arrowRight) {
             //testar ifall rätt sida med marginal för pil
-            if(arrowRight.position.x >= Width)
+            if(arrowRight.position.x >= Width-(arrowRight.width/2))
             {                
                 this.increment(arrowRight)
             }// testar ifall fel sida genom att kolla höjd med marginal för object
