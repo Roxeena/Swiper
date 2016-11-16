@@ -10,6 +10,9 @@ Settings.prototype = {
     	//Add the "Back" button
         back = this.game.add.button(this.game.world.centerX, 800, 'back', this.backMenu, this, 2, 1, 0);
         back.anchor.set(0.5, 0.5);
+
+        credits = this.game.add.button(this.game.world.centerX, 300, 'credits', this.startCredits, this, 2, 1, 0);
+        credits.anchor.set(0.5, 0.5);
         /*if(this.game.sound.mute == false)
         {
         	mute = this.game.add.button(this.game.world.centerX - 130, 300, 'mute', this.Mute, this, 2, 1, 0);
@@ -84,6 +87,10 @@ Settings.prototype = {
         muteSound.anchor.set(0.5, 0.5);
     	//unMute.pendingDestroy = true;
     	//mute = this.game.add.button(this.game.world.centerX - 130, 300, 'mute', this.Mute, this, 2, 1, 0);
+    },
+
+    startCredits: function(){
+    	this.game.state.start('Credits');
     }
 
     /*Mute: function(){
