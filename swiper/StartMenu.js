@@ -22,6 +22,8 @@ StartMenu.prototype = {
 		//Add the start menu image
 		var StartMenu = this.game.add.image(game.world.centerX,game.world.centerY,'titlescreen');
 		StartMenu.anchor.set(0.5, 0.5);
+		StartMenu.width=game.width;
+		StartMenu.height=game.height;
 
 //	musicStart = this.game.add.audio('seal');
 

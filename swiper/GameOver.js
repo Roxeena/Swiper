@@ -14,7 +14,8 @@ GameOver.prototype = {
 		//Add the game over image
 		var GameOverMenu = this.game.add.image(game.world.centerX,game.world.centerY, 'gameoverMenu');
 		GameOverMenu.anchor.set(0.5, 0.5);
-
+		GameOverMenu.width=game.width;
+		GameOverMenu.height=game.height;
 		// Game over music
 		if(muteMusicbool == false)
 		{

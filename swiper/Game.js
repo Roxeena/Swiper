@@ -69,7 +69,7 @@ Game.prototype = {
 
     buildWorld: function() {    //Build the game
 
-        bounds = new Phaser.Rectangle(0, 0);;
+        bounds = new Phaser.Rectangle(0, 0);
 
         //Add backgrounds
         var background = game.add.image(game.world.centerX, game.world.centerY, 'sky');
@@ -177,8 +177,6 @@ Game.prototype = {
             else if (arrowRight.position.y<(game.height-arrowRight.height))
             {     
                this.decrement(arrowRight);
-
-                console.log(arrowRight.position);
             }
             else {//fallet när den träffar golvet
                 
