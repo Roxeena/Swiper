@@ -23,8 +23,6 @@ var spawnspeed=1;
 var Level=1;
 var Levelspawn=1;
 //feedback
-var Width=window.screen.availWidth;
-var Height=window.screen.availHeight;
 var text;
 var meme;
 var countertext;
@@ -156,11 +154,11 @@ Game.prototype = {
         //hanterar vänsterpilar 
         function hitworldboundsleft (arrowLeft) {
             // testar ifall träffat rätt sida med marginal för pil
-            if(arrowLeft.position.x<= (0+arrowLeft.width/2)){
+            if(arrowLeft.position.x< (arrowLeft.width/2)){
                this.increment(arrowLeft);
 
             }//testar ifall fel sida genom att kolla höjd med marginal för object 
-            else if( arrowLeft.position.y<Height)
+            else if( arrowLeft.position.y<(game.height-arrowLeft.height))
             {
                 this.decrement(arrowLeft);
             }
@@ -171,13 +169,16 @@ Game.prototype = {
         }
         function hitworldboundsright (arrowRight) {
             //testar ifall rätt sida med marginal för pil
-            if(arrowRight.position.x >= Width-(arrowRight.width/2))
+            if(arrowRight.position.x >= (game.width-arrowRight.width/2))
             {                
                 this.increment(arrowRight)
+                //console.log(arrowRight.position);
             }// testar ifall fel sida genom att kolla höjd med marginal för object
-            else if (arrowRight.position.y<Height)
+            else if (arrowRight.position.y<(game.height-arrowRight.height))
             {     
                this.decrement(arrowRight);
+
+                console.log(arrowRight.position);
             }
             else {//fallet när den träffar golvet
                 
