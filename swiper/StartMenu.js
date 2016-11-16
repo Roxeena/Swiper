@@ -20,7 +20,8 @@ StartMenu.prototype = {
 			'eightbitwonder','Touch to start!',24);*/
 
 		//Add the start menu image
-		var StartMenu = this.game.add.image(0,0,'titlescreen');
+		var StartMenu = this.game.add.image(game.world.centerX,game.world.centerY,'titlescreen');
+		StartMenu.anchor.set(0.5, 0.5);
 
 //	musicStart = this.game.add.audio('seal');
 
@@ -50,6 +51,7 @@ StartMenu.prototype = {
 	startGame: function() {
 		//Go to game state
 		musicStart.mute = true;
+		//musicStart.loop = false;
 		this.game.state.start('Game');
 	},
 

@@ -7,30 +7,34 @@ var Game = function(game) {
 };
 
 //Declare more variables
+//time
 var timer;
 var secondsElapsed = 0;
-var counterlives = 5;
-var scoreText;
-var score = 0;
-var countertext;
+//bounds
 var bounds;
-var Width=window.screen.availWidth;
-var Height=window.screen.availHeight;
-var Level=1;
-var Levelspawn=1;
+//arrows
 var arrowLeft;
 var arrowRight;
 var rndnr;
-var velocityStart = 170;
+//lvl stuff
+var velocityStart = 150;
 var numSecPerLev= 5;
+var spawnspeed=1;
+var Level=1;
+var Levelspawn=1;
+//feedback
 var text;
 var meme;
+var countertext;
+var counterlives = 5;
+var scoreText;
+var score = 0;
 
 Game.prototype = {
     create: function() {   
         score = 0;
         //Initialize some settings and "meta data"
-        this.gameover = false;                        
+        gameover = false;                        
         timer = this.time.create(false);          
         timer.loop(1000, this.updateSeconds, this);
         timer.start();
@@ -51,30 +55,33 @@ Game.prototype = {
             ++Level;
         } 
 
-        if((secondsElapsed % 5) == 0){
+        if((secondsElapsed % 20) == 0){
             ++Levelspawn;
+            spawnspeed=(2/(Levelspawn));
         } 
-        
 
         if (secondsElapsed == 1)
         {
              this.memes(1);
         }  
 
-
     },
 
     buildWorld: function() {    //Build the game
 
-        bounds = new Phaser.Rectangle(0, 0, Width, Height);
+        bounds = new Phaser.Rectangle(0, 0);;
 
         //Add backgrounds
-        this.add.image(0, 0, 'sky');
-        this.add.image(0, 800, 'hill');
+        var background = game.add.image(game.world.centerX, game.world.centerY, 'sky');
+        var foreground = game.add.image(game.world.centerX, 800, 'hill');
+        background.anchor.set(0.5, 0.5);
+        foreground.anchor.set(0.5, 0.5);
 
         //Add information about the score and the number of lives left 
-        scoreText = this.game.add.text(0, 10, 'Score: '+score , { font: '34px Arial', fill: '#fff' });
-        lifetext = this.game.add.text(0, 40, 'Lives : '+counterlives, { font: '34px Arial', fill: '#fff' });
+        scoreText = this.game.add.text(game.world.centerX, 20, 'Score: '+score , { font: '34px Arial', fill: '#fff' });
+        scoreText.anchor.set(0.5);
+        lifetext = this.game.add.text(game.world.centerX, 50, 'Lives : '+counterlives, { font: '34px Arial', fill: '#fff' });
+        lifetext.anchor.set(0.5);
 
         //Add the music and play it  
         music = this.game.add.audio('jerry5min');
@@ -86,25 +93,27 @@ Game.prototype = {
 
         //Add objects in loop depending on time
         //Spawn an object every 2 seconds        
-
-        this.game.time.events.repeat(Phaser.Timer.SECOND * (2/(Levelspawn)), 9000, this.generateImage, this);
-       
-        //Quit after a certain amount of time, music ends
-        this.game.time.events.add(Phaser.Timer.SECOND *9000, this.quitGame, this);
-
+       //Quit after a certain a0mount of time, music ends
+        this.game.time.events.add(Phaser.Timer.SECOND*9000,this.quitGame,this);  
+        this.game.time.events.repeat(Phaser.Timer.SECOND*5,18000,this.spawn,this);  
+      
     },
-
+    spawn : function(){
+        this.game.time.events.repeat(Phaser.Timer.SECOND*spawnspeed,5*(Levelspawn/2),this.generateImage,this);
+    },
     generateImage: function() {     //Spawn an object
-           
+        
+
         var rndnr = this.game.rnd.integerInRange(1, 2);
 
         //Random X-position for spwan
         var spwnrng = 0;
-        spwnrng = spwnrng + this.game.rnd.integerInRange(200, 400);
+        spwnrng = spwnrng + this.game.rnd.integerInRange(-100, 100) + this.game.world.centerX;
 
         if (rndnr == 1){
             //Add a right arrow
-            arrowRight = this.game.add.sprite(spwnrng,0,'proto_right_pil'); 
+            arrowRight = this.game.add.sprite(spwnrng,50,'XL_right_pil'); 
+            arrowRight.anchor.set(0.5, 0.5);
             this.game.physics.enable( [ arrowRight ], Phaser.Physics.ARCADE);
             inputstuff(arrowRight);
             //signal för högerpil
@@ -115,7 +124,8 @@ Game.prototype = {
         //If the random number is 2, then spawn a left arrow     
         if (rndnr==2){
             //Add a spacefighter, left arrow
-            arrowLeft = this.game.add.sprite(spwnrng,0,'proto_left_pil');
+            arrowLeft = this.game.add.sprite(spwnrng,50,'XL_left_pil');
+            arrowLeft.anchor.set(0.5, 0.5);
             this.game.physics.enable( [ arrowLeft ], Phaser.Physics.ARCADE);
             inputstuff(arrowLeft);
             //signal för vänsterpil
@@ -128,8 +138,6 @@ Game.prototype = {
 
             //Set the velocity for the object
             selected.body.velocity.y = velocityStart + (Level) * 10;
-
-
             //Enalbe swiping
             selected.inputEnabled = true;
             selected.input.enableDrag(true);
@@ -146,10 +154,11 @@ Game.prototype = {
         //hanterar vänsterpilar 
         function hitworldboundsleft (arrowLeft) {
             // testar ifall träffat rätt sida med marginal för pil
-            if(arrowLeft.position.x<arrowLeft.width){
+            if(arrowLeft.position.x< (arrowLeft.width/2)){
                this.increment(arrowLeft);
+
             }//testar ifall fel sida genom att kolla höjd med marginal för object 
-            else if( arrowLeft.position.y<=Height-((1.1)*arrowLeft.height) )
+            else if( arrowLeft.position.y<(game.height-arrowLeft.height))
             {
                 this.decrement(arrowLeft);
             }
@@ -160,13 +169,16 @@ Game.prototype = {
         }
         function hitworldboundsright (arrowRight) {
             //testar ifall rätt sida med marginal för pil
-            if(arrowRight.position.x >(Width-arrowRight.width) )
-            {
+            if(arrowRight.position.x >= (game.width-arrowRight.width/2))
+            {                
                 this.increment(arrowRight)
+                //console.log(arrowRight.position);
             }// testar ifall fel sida genom att kolla höjd med marginal för object
-            else if (arrowRight.position.y<=Height-((1.1)*arrowRight.height))
+            else if (arrowRight.position.y<(game.height-arrowRight.height))
             {     
                this.decrement(arrowRight);
+
+                console.log(arrowRight.position);
             }
             else {//fallet när den träffar golvet
                 
@@ -395,15 +407,6 @@ Game.prototype = {
     
     
     update: function() {
-        var x = 0;
-        var y = 0;
-        var yi = 32;
-
-        this.game.debug.text('Device', x, y += yi);
-
-        this.game.debug.text('window.screen.availWidth: ' + window.screen.availWidth, x, y += yi);
-        this.game.debug.text('window.screen.availHeight: ' + window.screen.availHeight, x, y += yi);
-
     }
     
     

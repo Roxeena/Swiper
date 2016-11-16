@@ -12,7 +12,8 @@ GameOver.prototype = {
 
 	create: function(){
 		//Add the game over image
-		var GameOverMenu = this.game.add.image(0,0, 'gameoverMenu');
+		var GameOverMenu = this.game.add.image(game.world.centerX,game.world.centerY, 'gameoverMenu');
+		GameOverMenu.anchor.set(0.5, 0.5);
 
 		// Game over music
 		if(muteMusicbool == false)
@@ -49,6 +50,7 @@ GameOver.prototype = {
 	startMenu: function() {
 		//Go to game state
 		this.game.state.start('StartMenu');
+		musicStart.mute = false;
 	},
 
 	/*Quit: function() {
