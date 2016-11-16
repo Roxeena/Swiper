@@ -47,8 +47,7 @@ Preloader.prototype = {
         this.load.image('proto_left_pil', 'assets/images/proto_left_pil.png');
 
         //Music and sounds
-        this.load.audio('seal', 'assets/audio/seal.mp4.mp3');
-        this.load.audio('seal2', 'assets/audio/seal 2.flv.mp3');
+        this.load.audio('seal', 'assets/audio/sealfiremixtape.mp3');
         this.load.audio('jerry', 'assets/audio/jerry.mp3');
         this.load.audio('jerry5min', 'assets/audio/jerry5min.mp3');
         this.load.audio('explosion_audio', 'assets/audio/explosion.mp3');
