@@ -51,6 +51,7 @@ StartMenu.prototype = {
 	startGame: function() {
 		//Go to game state
 		musicStart.mute = true;
+		//musicStart.loop = false;
 		this.game.state.start('Game');
 	},
 
