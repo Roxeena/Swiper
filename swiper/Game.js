@@ -7,24 +7,30 @@ var Game = function(game) {
 };
 
 //Declare more variables
+//time
 var timer;
 var secondsElapsed = 0;
-var counterlives = 5;
-var scoreText;
-var score = 0;
-var countertext;
+//bounds
 var bounds;
 var Width=540;
 var Height=960;
-var Level=1;
-var Levelspawn=1;
+//arrows
 var arrowLeft;
 var arrowRight;
 var rndnr;
+//lvl stuff
 var velocityStart = 150;
-var numSecPerLev= 10;
+var numSecPerLev= 5;
+var spawnspeed=1;
+var Level=1;
+var Levelspawn=1;
+//feedback
 var text;
 var meme;
+var countertext;
+var counterlives = 5;
+var scoreText;
+var score = 0;
 
 Game.prototype = {
     create: function() {   
@@ -52,16 +58,17 @@ Game.prototype = {
             ++Level;
         } 
 
-        if((secondsElapsed % 5) == 0){
+        if((secondsElapsed % 20) == 0){
             ++Levelspawn;
+            spawnspeed=(2/(Levelspawn));
         } 
-        
 
         if (secondsElapsed == 1)
         {
              this.memes(1);
         }  
-
+//        this.game.time.events.add(Phaser.Timer.SECOND *(spawnspeed), this.generateImage, this);
+        
 
     },
 
@@ -87,16 +94,17 @@ Game.prototype = {
 
         //Add objects in loop depending on time
         //Spawn an object every 2 seconds        
-
-        this.game.time.events.repeat(Phaser.Timer.SECOND * (2/(Levelspawn)), 9000, this.generateImage, this);
-       
-        //Quit after a certain amount of time, music ends
-        this.game.time.events.add(Phaser.Timer.SECOND *9000, this.quitGame, this);
-
+       //Quit after a certain a0mount of time, music ends
+        this.game.time.events.add(Phaser.Timer.SECOND*9000,this.quitGame,this);  
+        this.game.time.events.repeat(Phaser.Timer.SECOND*5,18000,this.spawn,this);  
+      
     },
-
+    spawn : function(){
+        this.game.time.events.repeat(Phaser.Timer.SECOND*spawnspeed,5*(Levelspawn/2),this.generateImage,this);
+    },
     generateImage: function() {     //Spawn an object
-           
+        
+
         var rndnr = this.game.rnd.integerInRange(1, 2);
 
         //Random X-position for spwan
@@ -386,7 +394,7 @@ Game.prototype = {
     
     
     update: function() {
-
+      
     }
     
     
