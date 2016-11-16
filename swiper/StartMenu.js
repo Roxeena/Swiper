@@ -24,7 +24,7 @@ StartMenu.prototype = {
 
 //	musicStart = this.game.add.audio('seal');
 
-	if(startMusic)
+	if(startMusic && muteMusicbool == false)
 	{
 		musicStart.loop = true;
 		musicStart.play();
