@@ -27,7 +27,7 @@ StartMenu.prototype = {
 
 	if(startMusic && muteMusicbool == false)
 	{
-		//musicStart.loop = true;
+		musicStart.loop = true;
 		musicStart.play();
 	}
     
