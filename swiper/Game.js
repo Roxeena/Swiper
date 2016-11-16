@@ -36,7 +36,7 @@ Game.prototype = {
     create: function() {   
         score = 0;
         //Initialize some settings and "meta data"
-        this.gameover = false;                        
+        gameover = false;                        
         timer = this.time.create(false);          
         timer.loop(1000, this.updateSeconds, this);
         timer.start();
@@ -71,15 +71,19 @@ Game.prototype = {
 
     buildWorld: function() {    //Build the game
 
-        bounds = new Phaser.Rectangle(0, 0, Width, Height);
+        bounds = new Phaser.Rectangle(0, 0);;
 
         //Add backgrounds
-        this.add.image(0, 0, 'sky');
-        this.add.image(0, 800, 'hill');
+        var background = game.add.image(game.world.centerX, game.world.centerY, 'sky');
+        var foreground = game.add.image(game.world.centerX, 800, 'hill');
+        background.anchor.set(0.5, 0.5);
+        foreground.anchor.set(0.5, 0.5);
 
         //Add information about the score and the number of lives left 
-        scoreText = this.game.add.text(0, 10, 'Score: '+score , { font: '34px Arial', fill: '#fff' });
-        lifetext = this.game.add.text(0, 40, 'Lives : '+counterlives, { font: '34px Arial', fill: '#fff' });
+        scoreText = this.game.add.text(game.world.centerX, 20, 'Score: '+score , { font: '34px Arial', fill: '#fff' });
+        scoreText.anchor.set(0.5);
+        lifetext = this.game.add.text(game.world.centerX, 50, 'Lives : '+counterlives, { font: '34px Arial', fill: '#fff' });
+        lifetext.anchor.set(0.5);
 
         //Add the music and play it  
         music = this.game.add.audio('jerry5min');
@@ -106,11 +110,12 @@ Game.prototype = {
 
         //Random X-position for spwan
         var spwnrng = 0;
-        spwnrng = spwnrng + this.game.rnd.integerInRange(200, 400);
+        spwnrng = spwnrng + this.game.rnd.integerInRange(-100, 100) + this.game.world.centerX;
 
         if (rndnr == 1){
             //Add a right arrow
-            arrowRight = this.game.add.sprite(spwnrng,0,'proto_right_pil'); 
+            arrowRight = this.game.add.sprite(spwnrng,50,'XL_right_pil'); 
+            arrowRight.anchor.set(0.5, 0.5);
             this.game.physics.enable( [ arrowRight ], Phaser.Physics.ARCADE);
             inputstuff(arrowRight);
             //signal för högerpil
@@ -121,7 +126,8 @@ Game.prototype = {
         //If the random number is 2, then spawn a left arrow     
         if (rndnr==2){
             //Add a spacefighter, left arrow
-            arrowLeft = this.game.add.sprite(spwnrng,0,'proto_left_pil');
+            arrowLeft = this.game.add.sprite(spwnrng,50,'XL_left_pil');
+            arrowLeft.anchor.set(0.5, 0.5);
             this.game.physics.enable( [ arrowLeft ], Phaser.Physics.ARCADE);
             inputstuff(arrowLeft);
             //signal för vänsterpil
@@ -152,10 +158,11 @@ Game.prototype = {
         //hanterar vänsterpilar 
         function hitworldboundsleft (arrowLeft) {
             // testar ifall träffat rätt sida med marginal för pil
-            if(arrowLeft.position.x<arrowLeft.width){
+            if(arrowLeft.position.x<= 0){
                this.increment(arrowLeft);
+
             }//testar ifall fel sida genom att kolla höjd med marginal för object 
-            else if( arrowLeft.position.y<=Height-((1.1)*arrowLeft.height) )
+            else if( arrowLeft.position.y<Height)
             {
                 this.decrement(arrowLeft);
             }
@@ -166,11 +173,11 @@ Game.prototype = {
         }
         function hitworldboundsright (arrowRight) {
             //testar ifall rätt sida med marginal för pil
-            if(arrowRight.position.x >(Width-arrowRight.width) )
-            {
+            if(arrowRight.position.x >= Width)
+            {                
                 this.increment(arrowRight)
             }// testar ifall fel sida genom att kolla höjd med marginal för object
-            else if (arrowRight.position.y<=Height-((1.1)*arrowRight.height))
+            else if (arrowRight.position.y<Height)
             {     
                this.decrement(arrowRight);
             }

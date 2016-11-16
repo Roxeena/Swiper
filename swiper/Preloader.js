@@ -45,6 +45,11 @@ Preloader.prototype = {
         this.load.image('explode', 'assets/images/explode.png');        //New and possibly wrong
         this.load.image('proto_right_pil', 'assets/images/proto_right_pil.png');
         this.load.image('proto_left_pil', 'assets/images/proto_left_pil.png');
+        this.load.image('XL_right_pil', 'assets/images/XL_right_pil1.png');
+        this.load.image('XL_left_pil', 'assets/images/XL_left_pil1.png');
+        
+
+
 
         //Music and sounds
         this.load.audio('seal', 'assets/audio/seal.mp4.mp3');
