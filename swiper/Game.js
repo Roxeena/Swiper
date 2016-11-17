@@ -281,6 +281,8 @@ Game.prototype = {
                 //Quit to start menu
                 this.quitGame();
 
+                                
+
 
                 if(score > localStorage.getItem("highscore"))
                 {

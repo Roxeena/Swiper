@@ -9,18 +9,30 @@ Preloader.prototype = {
         //This is the loading screen 
         //Add the images
         this.preloadBar = this.add.sprite(this.world.centerX, this.world.centerY, 'preloaderbar');
-        this.titleText = this.add.image(this.world.centerX, this.world.centerY-220, 'titleimage');
+        this.titleText = this.add.image(this.world.centerX, this.world.centerY, 'titleimage');
         //Set them in the middle of the screeen
-        this.titleText.anchor.setTo(0.5, 0.5);
-        this.preloadBar.anchor.setTo(0.5, 0.5);
+        this.titleText.anchor.set(0.5, 0.5);
+        this.preloadBar.anchor.set(0.5, 0.5);
         //This is what makes the loading bar animation
-        this.load.setPreloadSprite(this.preloadBar); 
+        //this.load.setPreloadSprite(this.preloadBar); 
 
+        //test
+        this.titleText.width=game.width;
+        this.titleText.height=game.height;
+
+        var foocy = this.game.add.sprite(this.world.centerX, this.world.centerY, 'preloaderbar');
+
+        var walk = foocy.animations.add('walk');
+        foocy.animations.play('walk', 16, true);
+
+        foocy.width=this.world.width*(1/5);
+        foocy.width=this.world.height*(1/15);
         //Preload thing in the game
         //Menu images
         this.load.image('titlescreen', 'assets/images/assomebgb2.png');
-        this.load.image('highscore_bild', 'assets/images/HighscoreMenu1.png');
-        this.load.image('gameoverMenu', 'assets/images/GAMEOVER.png');
+        this.load.image('highscore_bild', 'assets/images/HIGHSCORE_bakgrund5.png');
+        this.load.image('gameoverMenu', 'assets/images/GAMEOVER_2.png');
+        this.load.image('blank_canvas','assets/images/BLANK_CANVAS.png');
 
         //Menu video
         this.load.video('titlevideo', 'assets/images/Comp 2_ver2.mp4');

@@ -6,8 +6,8 @@ var Boot = function(game){
 Boot.prototype = {
 	preload: function() {
 		//Preload the images for the loading screen
-		this.load.image('preloaderbar', 'assets/images/loader_bar.png');
-		this.load.image('titleimage', 'assets/images/TitleImage.png');		//Need to be changed to swiper theme
+		this.game.load.spritesheet('preloaderbar', 'assets/images/Foocy_129_273_16.png', 129, 273, 16);
+		this.game.load.image('titleimage', 'assets/images/BLANK_CANVAS.png');		//Need to be changed to swiper theme
 	},
 	
 	create: function() { 
@@ -15,6 +15,8 @@ Boot.prototype = {
 	
 	//Inactive settings
 	//this.input.maxPointers = 1;	//Can only hold one object at a time, default 2.
+	
+
 
 	//Active settings
 	this.scale.scaleMode = Phaser.ScaleManager.SHOW_all;		

@@ -4,16 +4,14 @@ var HighscoreMenu = function(game){
 HighscoreMenu.prototype = {
     create: function(){
     	//Add the highscore menu image
-        var Highscoremenu = this.game.add.image(game.world.centerX,game.world.centerY,'highscore_bild1');
+        var Highscoremenu = this.game.add.image(game.world.centerX,game.world.centerY,'highscore_bild');
         Highscoremenu.anchor.set(0.5, 0.5);
         Highscoremenu.width=game.width;
         Highscoremenu.height=game.height;
 
         //higescoretext
 
-        highscoreText = this.game.add.text(game.width/2, game.height/6.3, 'Higescore ' , { font: '60px Arial', fill: '#fff' });
-        highscoreText.anchor.set(0.5, 0.5);
-
+       
         //score
         highscore = this.game.add.text((game.width/3), (game.height/3.15),  "1.     "+localStorage.getItem('highscore'), { font: '60px Arial', fill: '#fff' });
         highscore2 = this.game.add.text((game.width/3), (game.height/2.35), "2.     "+localStorage.getItem('highscore2'), { font: '60px Arial', fill: '#fff' });
@@ -29,14 +27,12 @@ HighscoreMenu.prototype = {
         //Add the anchor points
         back.anchor.set(0.5, 0.5);
         //width Highscores
-        highscoreText.width=game.width*(1/1.5);
         highscore.width=game.width*(1/2.75);
         highscore2.width=game.width*(1/2.75);
         highscore3.width=game.width*(1/2.75);
         highscore4.width=game.width*(1/2.75);
         highscore5.width=game.width*(1/2.75);
         //height higescores
-        highscoreText.width=game.width*(1/3)
         highscore.height=game.height*(1/10);
         highscore2.height=game.height*(1/10);
         highscore3.height=game.height*(1/10);

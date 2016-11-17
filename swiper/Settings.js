@@ -6,6 +6,11 @@ var musicStart;
 Settings.prototype = {
     create: function(){
 
+
+        var Settings = this.game.add.image(game.world.centerX,game.world.centerY,'blank_canvas');
+        Settings.anchor.set(0.5, 0.5);
+        Settings.width=game.width;
+        Settings.height=game.height;
     	//Are there no image?
     	//Add the "Back" button
         back = this.game.add.button(this.game.world.centerX, 8*game.height/10, 'back', this.backMenu, this, 2, 1, 0);
