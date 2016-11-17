@@ -19,3 +19,16 @@ body{
 .module_content h2{
   	font-size: 30px;
 }
+
+@font-face{
+    font-family: 'anuswiper_fontmedium';
+    src: url('assets/fonts/anuswiper_font-webfont.woff2') format('woff2'),
+         url('assets/fonts/anuswiper_font-webfont.woff') format('woff'),
+         url('assets/fonts/anuswiper_font-demo.html') format('html'),
+         url('assets/fonts/AnusWiper Font.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+

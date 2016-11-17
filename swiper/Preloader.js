@@ -24,7 +24,6 @@ Preloader.prototype = {
         
         //Fonts
         this.load.bitmapFont('eightbitwonder', 'assets/fonts/eightbitwonder.png', 'assets/fonts/eightbitwonder.fnt');
-        this.load.bitmapFont('AnuSwiper', 'assets/fonts/AnuSwiper Font');
         
         //Backgrounds in game
         this.load.image('hill', 'assets/images/hill.png');
@@ -69,7 +68,7 @@ Preloader.prototype = {
         this.load.audio('swipe5', 'assets/audio/swipe5.mp3');
         this.load.audio('swipe6', 'assets/audio/swipe6.mp3');
         this.load.audio('swipe7', 'assets/audio/swipe7.mp3');
-        this.load.audio('gameoverjerry', 'assets/audio/gameoverjerry.mp3');    
+        this.load.audio('gameoverjerry', 'assets/audio/gameoverjerry.mp3');
         
         //Animations and spritirsheets
         this.load.spritesheet('button', 'assets/images/spritesheets/Start_knapp.png');
@@ -83,6 +82,7 @@ Preloader.prototype = {
         this.load.spritesheet('unMuteMusic', 'assets/images/spritesheets/UNMUTE_music_knapp.png');
         this.load.spritesheet('muteSound', 'assets/images/spritesheets/MUTE_sound_knapp.png');
         this.load.spritesheet('unMuteSound', 'assets/images/spritesheets/UNMUTE_sound_knapp.png');
+        this.load.spritesheet('credits', 'assets/images/spritesheets/credits_knapp.png')
 
         this.load.spritesheet('tryAgain', 'assets/images/spritesheets/try_again_knapp.png');
         this.load.spritesheet('backToMenu', 'assets/images/spritesheets/back_to_menu_knapp.png');
