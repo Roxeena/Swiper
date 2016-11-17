@@ -35,6 +35,19 @@ StartMenu.prototype = {
     
     startMusic = false;
 
+    //Video menu
+    video = this.game.add.video('titlevideo');
+    
+	video.play(true);
+
+	var videoX = this.game.world.centerX;
+	var videoY = this.game.world.centerY;
+	var videoW = (this.game.width/video.width);
+	var videoH = (this.game.height/video.height);
+
+    //  x, y, anchor x, anchor y, scale x, scale y
+    video.addToWorld(videoX, videoY, 0.5, 0.5, videoW, videoH);
+
 
 		//Add the buttons
 		startB = this.game.add.button(this.game.world.centerX, game.world.centerY, 'button', this.startGame, this, 2, 1, 0);
