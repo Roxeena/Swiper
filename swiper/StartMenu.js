@@ -19,12 +19,14 @@ StartMenu.prototype = {
 		/*var bitmapplay = this.add.bitmapText(this.world.centerX-155, this.world.centerY+180, this.startGame,
 			'eightbitwonder','Touch to start!',24);*/
 
-		//Add the start menu image
-		var StartMenu = this.game.add.image(game.world.centerX,game.world.centerY,'titlescreen');
+
+//liger under video
+/*		//Add the start menu image
+		var StartMenu = this.game.add.image(game.world.centerX,game.world.centerY,'titleText');
 		StartMenu.anchor.set(0.5, 0.5);
 		StartMenu.width = game.width;
 		StartMenu.height = game.height;
-
+*/
 //	musicStart = this.game.add.audio('seal');
 
 	if(startMusic && muteMusicbool == false)

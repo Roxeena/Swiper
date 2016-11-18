@@ -29,7 +29,7 @@ Preloader.prototype = {
         foocy.width=this.world.height*(1/15);
         //Preload thing in the game
         //Menu images
-        this.load.image('titlescreen', 'assets/images/assomebgb2.png');
+        //this.load.image('titlescreen', 'assets/images/assomebgb2.png');
         this.load.image('highscore_bild', 'assets/images/HIGHSCORE_bakgrund5.png');
         this.load.image('gameoverMenu', 'assets/images/GAMEOVER_2.png');
         this.load.image('blank_canvas','assets/images/BLANK_CANVAS.png');
@@ -42,25 +42,25 @@ Preloader.prototype = {
         this.load.bitmapFont('AnuSwiper', 'assets/fonts/AnuSwiper Font');
         
         //Backgrounds in game
-        this.load.image('hill', 'assets/images/hill.png');
+        //this.load.image('hill', 'assets/images/hill.png');
         this.load.image('sky', 'assets/images/sky.png');
-        this.load.image('highscore_bild1', 'assets/images/HIGHSCORE_bakgrund 3.png');
+       // this.load.image('highscore_bild1', 'assets/images/HIGHSCORE_bakgrund 3.png');
         
-        this.load.atlasXML('bunny', 'assets/images/spritesheets/bunny.png', 'assets/images/spritesheets/bunny.xml');
-        this.load.atlasXML('spacerock', 'assets/images/spritesheets/SpaceRock.png', 'assets/images/spritesheets/SpaceRock.xml');
+        //this.load.atlasXML('bunny', 'assets/images/spritesheets/bunny.png', 'assets/images/spritesheets/bunny.xml');
+        //this.load.atlasXML('spacerock', 'assets/images/spritesheets/SpaceRock.png', 'assets/images/spritesheets/SpaceRock.xml');
 
-        this.load.image('spacefighter', 'assets/images/player_blue.png');
+       // this.load.image('spacefighter', 'assets/images/player_blue.png');
 
 
         //Objects in game
         //this.load.atlasXML('bunny', 'assets/images/spritesheets/bunny.png', 'assets/images/spritesheets/bunny.xml');
-        this.load.atlasXML('spacerock', 'assets/images/spritesheets/SpaceRock.png', 'assets/images/spritesheets/SpaceRock.xml');
+        //this.load.atlasXML('spacerock', 'assets/images/spritesheets/SpaceRock.png', 'assets/images/spritesheets/SpaceRock.xml');
         //this.load.image('explosion', 'assets/images/explosion.png');
         //this.load.image('ghost', 'assets/images/ghost.png');
         //this.load.image('spacefighter', 'assets/images/player_blue.png');
-        this.load.image('explode', 'assets/images/explode.png');        //New and possibly wrong
-        this.load.image('proto_right_pil', 'assets/images/proto_right_pil.png');
-        this.load.image('proto_left_pil', 'assets/images/proto_left_pil.png');
+        //this.load.image('explode', 'assets/images/explode.png');        //New and possibly wrong
+        //this.load.image('proto_right_pil', 'assets/images/proto_right_pil.png');
+        //this.load.image('proto_left_pil', 'assets/images/proto_left_pil.png');
         this.load.image('XL_right_pil', 'assets/images/XL_right_pil1.png');
         this.load.image('XL_left_pil', 'assets/images/XL_left_pil1.png');
         
