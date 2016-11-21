@@ -26,26 +26,17 @@ GameOver.prototype = {
 
 		//Add the score
 		scoreText = this.game.add.text(this.game.world.centerX, game.world.centerY, 'Your score: '+score , { font: '60px Arial', fill: '#fff' });
-		
+		scoreText.anchor.set(0.5);
 
 		startMusic = true;
 
 		//Add the buttons
 		tryAgainB = this.game.add.button(this.game.world.centerX, game.height*(6/10), 'tryAgain', this.tryAgain, this, 2, 1, 0);
-		menuB = this.game.add.button(this.game.world.centerX, game.height*(7/10), 'backToMenu', this.startMenu, this, 2, 1, 0);
+		menuB = this.game.add.button(this.game.world.centerX, game.height*(8/10), 'backToMenu', this.startMenu, this, 2, 1, 0);
 		
 		//Add the anchorpoints
 		tryAgainB.anchor.set(0.5, 0.5);
 		menuB.anchor.set(0.5, 0.5);
-		scoreText.anchor.set(0.5);
-		//height
-		tryAgainB.height=game.height*(1/10);
-		menuB.height=game.height*(1/11);
-		scoreText.height=game.height*(1/10.5)
-		//width
-		tryAgainB.width=game.width*(1/2.5);
-		menuB.width=game.width*(1/3);
-		scoreText.width=game.width*(1/2.75)
 	},
 
 	//If button "Try Again" is pressed this function will be executed
