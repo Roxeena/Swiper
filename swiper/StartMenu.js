@@ -19,12 +19,14 @@ StartMenu.prototype = {
 		/*var bitmapplay = this.add.bitmapText(this.world.centerX-155, this.world.centerY+180, this.startGame,
 			'eightbitwonder','Touch to start!',24);*/
 
-		//Add the start menu image
-		var StartMenu = this.game.add.image(game.world.centerX,game.world.centerY,'titlescreen');
+
+//liger under video
+/*		//Add the start menu image
+		var StartMenu = this.game.add.image(game.world.centerX,game.world.centerY,'titleText');
 		StartMenu.anchor.set(0.5, 0.5);
 		StartMenu.width = game.width;
 		StartMenu.height = game.height;
-
+*/
 //	musicStart = this.game.add.audio('seal');
 
 	if(startMusic && muteMusicbool == false)
@@ -34,6 +36,19 @@ StartMenu.prototype = {
 	}
     
     startMusic = false;
+
+    //Video menu
+    video = this.game.add.video('titlevideo');
+    
+	video.play(true);
+
+	var videoX = this.game.world.centerX;
+	var videoY = this.game.world.centerY;
+	var videoW = (this.game.width/video.width);
+	var videoH = (this.game.height/video.height);
+
+    //  x, y, anchor x, anchor y, scale x, scale y
+    video.addToWorld(videoX, videoY, 0.5, 0.5, videoW, videoH);
 
 
 		//Add the buttons
@@ -45,6 +60,15 @@ StartMenu.prototype = {
 		startB.anchor.set(0.5, 0.5);
 		highScoreB.anchor.set(0.5, 0.5);
 		settingsB.anchor.set(0.5, 0.5);
+
+		//skala bredd
+		startB.width=game.width*(1/2);
+		highScoreB.width=game.width*(1/2.5);
+		settingsB.width=game.width*(1/2.5);
+		//skala höjd 
+		startB.height=game.height*(1/7);
+		highScoreB.height=game.height*(1/10);
+		settingsB.height=game.height*(1/10);
 	},
 
 	//If button "Start" is pressed this function will be executed

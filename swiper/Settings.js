@@ -6,13 +6,21 @@ var musicStart;
 Settings.prototype = {
     create: function(){
 
+
+        var Settings = this.game.add.image(game.world.centerX,game.world.centerY,'blank_canvas');
+        Settings.anchor.set(0.5, 0.5);
+        Settings.width=game.width;
+        Settings.height=game.height;
     	//Are there no image?
     	//Add the "Back" button
         back = this.game.add.button(this.game.world.centerX, 8*game.height/10, 'back', this.backMenu, this, 2, 1, 0);
         back.anchor.set(0.5, 0.5);
+        back.height=game.height*(1/10);
+        back.width=game.width*(1/3);
 
         credits = this.game.add.button(this.game.world.centerX, 300, 'credits', this.startCredits, this, 2, 1, 0);
         credits.anchor.set(0.5, 0.5);
+
         /*if(this.game.sound.mute == false)
         {
         	mute = this.game.add.button(this.game.world.centerX - 130, 300, 'mute', this.Mute, this, 2, 1, 0);
@@ -27,25 +35,35 @@ Settings.prototype = {
         {
         	muteMusic = this.game.add.button(this.game.world.centerX, game.world.centerY, 'muteMusic', this.muteMusic, this, 2, 1, 0);
             muteMusic.anchor.set(0.5, 0.5);
+            muteMusic.height=game.height*(1/10);
+            muteMusic.width=game.width*(1/2.5);
         }
 
         else if(muteMusicbool)
         {
         	unMuteMusic = this.game.add.button(this.game.world.centerX, game.world.centerY, 'unMuteMusic', this.unMuteMusic, this, 2, 1, 0);
             unMuteMusic.anchor.set(0.5, 0.5);
+            unMuteMusic.height=game.height*(1/10);
+            unMuteMusic.width=game.width*(1/2.5);
+
         }
 
         if(muteSoundbool == false)
         {
         	muteSound = this.game.add.button(this.game.world.centerX, 6*game.height/10, 'muteSound', this.muteSound, this, 2, 1, 0);
             muteSound.anchor.set(0.5, 0.5);
+            muteSound.height=game.height*(1/10);
+            muteSound.width=game.width*(1/2.5);
+
         }
 
         else if(muteSoundbool)
         {
 			unMuteSound = this.game.add.button(this.game.world.centerX, 6*game.height/10, 'unMuteSound', this.unMuteSound, this, 2, 1, 0);
             unMuteSound.anchor.set(0.5, 0.5);
-		}
+            unMuteSound.height=game.height*(1/10);
+            unMuteSound.width=game.width*(1/2.5);
+        }
         
        
     },
@@ -60,6 +78,8 @@ Settings.prototype = {
     	muteMusic.pendingDestroy = true;
     	unMuteMusic = this.game.add.button(this.game.world.centerX, game.world.centerY, 'unMuteMusic', this.unMuteMusic, this, 2, 1, 0);
         unMuteMusic.anchor.set(0.5, 0.5);
+        unMuteMusic.height=game.height*(1/10);
+        unMuteMusic.width=game.width*(1/2.5);
     	muteMusicbool = true;
     },
 
@@ -68,6 +88,8 @@ Settings.prototype = {
     	muteMusic = this.game.add.button(this.game.world.centerX, game.world.centerY, 'muteMusic', this.muteMusic, this, 2, 1, 0);
     	unMuteMusic.pendingDestroy = true;
         muteMusic.anchor.set(0.5, 0.5);
+        muteMusic.height=game.height*(1/10);
+        muteMusic.width=game.width*(1/2.5);
     	muteMusicbool = false;
     	//unMute.pendingDestroy = true;
     	//mute = this.game.add.button(this.game.world.centerX - 130, 300, 'mute', this.Mute, this, 2, 1, 0);
@@ -78,6 +100,8 @@ Settings.prototype = {
     	muteSound.pendingDestroy = true;
     	unMuteSound = this.game.add.button(this.game.world.centerX, 6*game.height/10, 'unMuteSound', this.unMuteSound, this, 2, 1, 0);
         unMuteSound.anchor.set(0.5, 0.5);
+        unMuteSound.height=game.height*(1/10);
+        unMuteSound.width=game.width*(1/2.5);
     },
 
     unMuteSound: function(){
@@ -85,6 +109,8 @@ Settings.prototype = {
     	unMuteSound.pendingDestroy = true;
     	muteSound = this.game.add.button(this.game.world.centerX, 6*game.height/10, 'muteSound', this.muteSound, this, 2, 1, 0);
         muteSound.anchor.set(0.5, 0.5);
+        muteSound.height=game.height*(1/10);
+        muteSound.width=game.width*(1/2.5);
     	//unMute.pendingDestroy = true;
     	//mute = this.game.add.button(this.game.world.centerX - 130, 300, 'mute', this.Mute, this, 2, 1, 0);
     },

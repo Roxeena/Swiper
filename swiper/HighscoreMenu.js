@@ -3,7 +3,8 @@ var HighscoreMenu = function(game){
 
 HighscoreMenu.prototype = {
     create: function(){
-        //Add the highscore menu image
+
+    	//Add the highscore menu image
         var Highscoremenu = this.game.add.image(game.world.centerX,game.world.centerY,'highscore_bild');
         Highscoremenu.anchor.set(0.5, 0.5);
         Highscoremenu.width=game.width;
