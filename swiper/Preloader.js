@@ -18,12 +18,9 @@ Preloader.prototype = {
 
         //Preload thing in the game
         //Menu images
-        this.load.image('titlescreen', 'assets/images/assomebgb2.png');
+        this.load.image('titlescreen', 'assets/images/ässomebgb2.png');
         this.load.image('highscore_bild', 'assets/images/HighscoreMenu1.png');
         this.load.image('gameoverMenu', 'assets/images/GAMEOVER.png');
-
-        //Menu video
-        this.load.video('titlevideo', 'assets/images/Comp 2_ver2.mp4');
         
         //Fonts
         this.load.bitmapFont('eightbitwonder', 'assets/fonts/eightbitwonder.png', 'assets/fonts/eightbitwonder.fnt');
