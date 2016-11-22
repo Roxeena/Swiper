@@ -11,13 +11,7 @@ Boot.prototype = {
 	},
 	
 	create: function() { 
-	//Game settings and loading screen background
 	
-	//Inactive settings
-	//this.input.maxPointers = 1;	//Can only hold one object at a time, default 2.
-	
-
-
 	//Active settings
 	this.scale.scaleMode = Phaser.ScaleManager.SHOW_all;		
 	this.scale.pageAlignHorizontally = true;					//Set in the middle of the screen, x
