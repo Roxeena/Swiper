@@ -241,9 +241,13 @@ Game.prototype = {
                 
         decrement: function(selected){
 
-            //fail sound (Oh man)
-            var ohman = this.game.add.audio('ohman');
-            ohman.play()
+            if (muteSoundbool == false)
+            {
+                //fail sound (Oh man)
+                var ohman = this.game.add.audio('ohman');
+                ohman.play()
+            }
+            
 
             //Remove the object
             selected.destroy();
