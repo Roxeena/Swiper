@@ -90,16 +90,15 @@ Game.prototype = {
         });
 
         //Add the music and play it  
-        music = this.game.add.audio('jerry5min');
-
         if(muteMusicbool == false)
         {
+            music = this.game.add.audio('jerry5min');
             music.play();
         }
 
         //Add objects in loop depending on time
         //Spawn an object every 2 seconds        
-       //Quit after a certain a0mount of time, music ends
+        //Quit after a certain amount of time, music ends
         this.game.time.events.add(Phaser.Timer.SECOND*1000,this.quitGame,this);  
         this.game.time.events.repeat(Phaser.Timer.SECOND*5,2000,this.spawn,this);  
       
@@ -117,7 +116,7 @@ Game.prototype = {
 
         if (rndnr == 1){
             //Add a right arrow
-            arrowRight = this.game.add.sprite(spwnrng,game.height * (2/20),'XL_right_pil'); 
+            arrowRight = this.game.add.sprite(spwnrng,game.height * (2/20),'right_pil'); 
             inputstuff(arrowRight);
             //signal för högerpil
             arrowRight.body.onWorldBounds = new Phaser.Signal();
@@ -126,7 +125,7 @@ Game.prototype = {
         //If the random number is 2, then spawn a left arrow     
         if (rndnr==2){
             //Add a spacefighter, left arrow
-            arrowLeft = this.game.add.sprite(spwnrng,game.height * (1/20),'XL_left_pil');
+            arrowLeft = this.game.add.sprite(spwnrng,game.height * (1/20),'left_pil');
             inputstuff(arrowLeft);
             //signal för vänsterpil
             arrowLeft.body.onWorldBounds = new Phaser.Signal();
@@ -333,7 +332,7 @@ Game.prototype = {
             text.align = 'center';
 
             //  Font style
-            text.font = 'eightbitwonder';
+            text.font = 'anuswiper_font';
             text.fontSize = game.height * (1/10);
             text.fontWeight = 'normal';
 
@@ -366,7 +365,7 @@ Game.prototype = {
             text.align = 'center';
 
             //  Font style
-            text.font = 'eightbitwonder';
+            text.font = 'anuswiper_font';
             text.fontSize = game.height * (1/8);
             text.fontWeight = 'bold';
 
@@ -381,6 +380,7 @@ Game.prototype = {
             tween.repeat(1,0);
         }
 
+        //tia och en tjuga
         if (meme == 3)
         {
             if(muteSoundbool == false)
@@ -388,19 +388,25 @@ Game.prototype = {
                 meme_sound = this.game.add.audio('tia');
                 meme_sound.play();
             }
-            
+
         }
 
     },
     
    quitGame: function() {
+        //Reset
         counterlives=5;
         Level=1;
         secondsElapsed=0;
         Levelspawn=1;
         spawnspeed=1;
 
-        music.pause();
+        if (muteMusicbool == false)
+        {
+            music.pause();
+        }
+        
+        //Send the score to the next state    
         this.state.start('GameOver', true, false, score);
     },
         
