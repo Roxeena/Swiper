@@ -138,7 +138,7 @@ Game.prototype = {
             selected.height = game.height * (1/10);
             this.game.physics.enable( [ selected ], Phaser.Physics.ARCADE);
             //Set the velocity for the object
-            selected.body.velocity.y = game.height*(0.2) + (Level) * 10;
+            selected.body.velocity.y = game.height*(0.1) + (Level) * 10;
             //Enalbe swiping
             selected.inputEnabled = true;
             selected.input.enableDrag(true);
