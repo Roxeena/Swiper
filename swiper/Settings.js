@@ -7,7 +7,7 @@ Settings.prototype = {
     create: function(){
 
 
-        var Settings = this.game.add.image(game.world.centerX,game.world.centerY,'blank_canvas');
+        var Settings = this.game.add.image(game.world.centerX,game.world.centerY,'settings_bild');
         Settings.anchor.set(0.5, 0.5);
         Settings.width=game.width;
         Settings.height=game.height;
@@ -18,8 +18,10 @@ Settings.prototype = {
         back.height=game.height*(1/10);
         back.width=game.width*(1/3);
 
-        credits = this.game.add.button(this.game.world.centerX, 300, 'credits', this.startCredits, this, 2, 1, 0);
+        credits = this.game.add.button(this.game.world.centerX, 3.5*game.height/10, 'credits', this.startCredits, this, 2, 1, 0);
         credits.anchor.set(0.5, 0.5);
+        credits.height=game.height*(1/10);
+        credits.width=game.width*(1/2.5);
 
         /*if(this.game.sound.mute == false)
         {

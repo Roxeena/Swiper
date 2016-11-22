@@ -25,7 +25,7 @@ GameOver.prototype = {
 		
 
 		//Add the score
-		scoreText = this.game.add.text(this.game.world.centerX, game.world.centerY, 'Your score: '+score , { font: '60px Arial', fill: '#fff' });
+		scoreText = this.game.add.text(this.game.world.centerX, game.world.centerY, 'Your score: '+score , { font: '60px anuswiper_font', fill: '#fff' });
 		scoreText.anchor.set(0.5);
 
 		startMusic = true;

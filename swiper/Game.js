@@ -65,10 +65,27 @@ Game.prototype = {
         background.height = game.height;
 
         //Add information about the score and the number of lives left 
-        scoreText = this.game.add.text(game.world.centerX, 20, 'Score: '+score , { font: '34px Arial', fill: '#fff' });
+        scoreText = this.game.add.text(game.world.centerX, 20, 'Score: '+score , { font: '34px anuswiper_font', fill: '#fff' });
         scoreText.anchor.set(0.5);
-        lifetext = this.game.add.text(game.world.centerX, 50, 'Lives : '+counterlives, { font: '34px Arial', fill: '#fff' });
+        lifetext = this.game.add.text(game.world.centerX, 50, 'Lives : '+counterlives, { font: '34px anuswiper_font', fill: '#fff' });
         lifetext.anchor.set(0.5);
+
+        // Create a label to use as a button
+        pause_label = this.game.add.text(700, 20, 'Pause', { font: '24px anuswiper_font', fill: '#fff' });
+        pause_label.inputEnabled = true;
+        pause_label.events.onInputUp.add(function () {
+        // When the paus button is pressed, we pause the game
+        this.game.paused = true;
+                // Then add the menu
+        var pause_menu = game.add.image(game.world.centerX,game.world.centerY,'pause_bild');
+        pause_menu.anchor.setTo(0.5, 0.5);
+        pause_menu.width=game.width;
+        pause_menu.height=game.height;
+
+        // And a label to illustrate which menu item was chosen. (This is not necessary)
+        choiceLabel = game.add.text(400, 450, 'Click outside menu to continue', { font: '30px Arial', fill: '#fff' });
+        choiceLabel.anchor.setTo(0.5, 0.5);
+        });
 
         //Add the music and play it  
         music = this.game.add.audio('jerry5min');

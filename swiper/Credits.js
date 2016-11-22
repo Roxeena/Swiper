@@ -11,8 +11,11 @@ Credits.prototype = {
         Background.width=game.width;
         Background.height=game.height;
 
-        back = this.game.add.button(this.game.world.centerX, game.height*(8/10), 'back', this.backSettings, this, 2, 1, 0);
-		back.anchor.set(0.5, 0.5);
+        back = this.game.add.button(this.game.world.centerX, game.height*(9/10), 'back', this.backSettings, this, 2, 1, 0);
+		
+		back.width=game.width*(1/2.5);
+        back.height=game.height*(1/10);
+       	back.anchor.set(0.5, 0.5);
        	
         art = this.game.add.text(50,50, 'Art director \n Nicholas Frederiksen',{ font: '60px anuswiper_font', fill: '#fff' });
         gameplay = this.game.add.text(700,50, 'Gameplay director \n PushPulle',{ font: '60px anuswiper_font', fill: '#fff'});

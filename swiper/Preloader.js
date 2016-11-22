@@ -33,6 +33,8 @@ Preloader.prototype = {
         this.load.image('highscore_bild', 'assets/images/HIGHSCORE_bakgrund5.png');
         this.load.image('gameoverMenu', 'assets/images/GAMEOVER_2.png');
         this.load.image('blank_canvas','assets/images/BLANK_CANVAS.png');
+        this.load.image('settings_bild', 'assets/images/SETTINGS_SCREEN.png');
+        this.load.image('pause_bild', 'assets/images/PAUSED_SCREEN.png');
 
         //Menu video
         this.load.video('titlevideo', 'assets/images/Comp 2_ver2.mp4');
