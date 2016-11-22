@@ -7,7 +7,7 @@ Settings.prototype = {
     create: function(){
 
 
-        var Settings = this.game.add.image(game.world.centerX,game.world.centerY,'blank_canvas');
+        var Settings = this.game.add.image(game.world.centerX,game.world.centerY,'settings_bild');
         Settings.anchor.set(0.5, 0.5);
         Settings.width=game.width;
         Settings.height=game.height;
@@ -22,6 +22,7 @@ Settings.prototype = {
         credits.anchor.set(0.5, 0.5);
         credits.height = game.height*(1/10);
         credits.width = game.height *(1/5);
+
 
         /*if(this.game.sound.mute == false)
         {

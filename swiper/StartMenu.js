@@ -50,7 +50,7 @@ StartMenu.prototype = {
     //  x, y, anchor x, anchor y, scale x, scale y
     video.addToWorld(videoX, videoY, 0.5, 0.5, videoW, videoH);
 
-
+ 
 		//Add the buttons
 		startB = this.game.add.button(this.game.world.centerX, game.world.centerY, 'button', this.startGame, this, 2, 1, 0);
 		highScoreB = this.game.add.button(this.game.world.centerX, 3.8*game.height/6, 'HS_button', this.startHighscoreMenu, this, 2, 1, 0);
@@ -73,6 +73,8 @@ StartMenu.prototype = {
 
 	//If button "Start" is pressed this function will be executed
 	startGame: function() {
+		//video paus
+		video.play(false);
 		//Go to game state
 		musicStart.mute = true;
 		//musicStart.loop = false;
@@ -81,14 +83,15 @@ StartMenu.prototype = {
 
 	//If button "Highscore" is pressed
 	startHighscoreMenu: function() {
+		
 		//Go to highscore menu state
 		this.game.state.start('HighscoreMenu');
 	},
 
 	//If button "Settings"
 	startSettings: function() {
-		//Go to settings state
 		
+		//Go to settings state
 		this.game.state.start('Settings');
 	}	
 	

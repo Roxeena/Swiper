@@ -15,7 +15,7 @@ Credits.prototype = {
 		back.anchor.set(0.5, 0.5);
 		back.height = game.height*(1/10);
         back.width = game.width*(1/3);
-       	
+	
         //Add the credit text
         art = 			this.game.add.text(game.width * (1/4), game.height * (2/10), 'Art:\nNicholas\nFrederiksen',{ font: '40px anuswiper_font', fill: '#fff' });
         gameplay = 		this.game.add.text(game.width * (1/4),game.height * (4/10), 'Gameplay:\nJulius Kördel',{ font: '40px anuswiper_font', fill: '#fff'});
