@@ -6,41 +6,30 @@ var Game = function(game) {
     this.generateImage;
 };
 
-//Declare more variables
-//time
-var timer;
-var secondsElapsed = 0;
-//bounds
-var bounds;
-//arrows
-var arrowLeft;
-var arrowRight;
-var rndnr;
-//lvl stuff
-var velocityStart = 150;
-var numSecPerLev= 5;
-var spawnspeed=1;
-var Level=1;
-var Levelspawn=1;
-//feedback
-var text;
-var meme;
-var countertext;
-var counterlives = 5;
-var scoreText;
-var score = 0;
-
 Game.prototype = {
     create: function() {   
         score = 0;
+        counterlives = 5;
+        spawnspeed=1;
+        Level=1;
+        Levelspawn=1;
+        numSecPerLev= 5;
+        secondsElapsed = 0;
+
+        var countertext;
+        var scoreText;
+        //feedback
+        var text;
+        var meme;
+  
         //Initialize some settings and "meta data"
         gameover = false;                        
-        timer = this.time.create(false);          
+        var timer = this.time.create(false);          
         timer.loop(1000, this.updateSeconds, this);
         timer.start();
 
         //Start the physics of the game, gravity
-        this.game.physics.startSystem(Phaser.Physics.ARCADE);
+        game.physics.startSystem(Phaser.Physics.ARCADE);
 
         //Build world
         this.buildWorld();
@@ -69,8 +58,6 @@ Game.prototype = {
 
     buildWorld: function() {    //Build the game
 
-        bounds = new Phaser.Rectangle(0, 0);
-
         //Add backgrounds
         var background = game.add.image(game.world.centerX, game.world.centerY, 'sky');
         background.anchor.set(0.5, 0.5);
@@ -94,8 +81,8 @@ Game.prototype = {
         //Add objects in loop depending on time
         //Spawn an object every 2 seconds        
        //Quit after a certain a0mount of time, music ends
-        this.game.time.events.add(Phaser.Timer.SECOND*9000,this.quitGame,this);  
-        this.game.time.events.repeat(Phaser.Timer.SECOND*5,18000,this.spawn,this);  
+        this.game.time.events.add(Phaser.Timer.SECOND*1000,this.quitGame,this);  
+        this.game.time.events.repeat(Phaser.Timer.SECOND*5,2000,this.spawn,this);  
       
     },
     spawn : function(){
@@ -103,45 +90,38 @@ Game.prototype = {
     },
     generateImage: function() {     //Spawn an object
         
-
         var rndnr = this.game.rnd.integerInRange(1, 2);
 
         //Random X-position for spwan
-        var spwnrng = 0;
-        spwnrng = spwnrng + this.game.rnd.integerInRange(-game.width*(1/3), game.width*(1/3)) + this.game.world.centerX;
+    
+        spwnrng = game.rnd.integerInRange(-game.width*(1/3), game.width*(1/3)) + this.game.world.centerX;
 
         if (rndnr == 1){
             //Add a right arrow
             arrowRight = this.game.add.sprite(spwnrng,game.height * (2/20),'XL_right_pil'); 
-            arrowRight.anchor.set(0.5, 0.5);
-            arrowRight.width = game.width * (1/3);
-            arrowRight.height = game.height * (1/10);
-            this.game.physics.enable( [ arrowRight ], Phaser.Physics.ARCADE);
             inputstuff(arrowRight);
             //signal för högerpil
             arrowRight.body.onWorldBounds = new Phaser.Signal();
             arrowRight.body.onWorldBounds.add(hitworldboundsright, this);
-
         }
         //If the random number is 2, then spawn a left arrow     
         if (rndnr==2){
             //Add a spacefighter, left arrow
             arrowLeft = this.game.add.sprite(spwnrng,game.height * (1/20),'XL_left_pil');
-            arrowLeft.anchor.set(0.5, 0.5);
-            arrowLeft.width = game.width * (1/3);
-            arrowLeft.height = game.height * (1/10);
-            this.game.physics.enable( [ arrowLeft ], Phaser.Physics.ARCADE);
             inputstuff(arrowLeft);
             //signal för vänsterpil
             arrowLeft.body.onWorldBounds = new Phaser.Signal();
             arrowLeft.body.onWorldBounds.add(hitworldboundsleft, this);
-     
         }
 
         function inputstuff(selected){
 
+            selected.anchor.set(0.5, 0.5);
+            selected.width = game.width * (1/3);
+            selected.height = game.height * (1/10);
+            this.game.physics.enable( [ selected ], Phaser.Physics.ARCADE);
             //Set the velocity for the object
-            selected.body.velocity.y = velocityStart + (Level) * 10;
+            selected.body.velocity.y = game.height*(0.2) + (Level) * 10;
             //Enalbe swiping
             selected.inputEnabled = true;
             selected.input.enableDrag(true);
@@ -200,7 +180,12 @@ Game.prototype = {
       },   
        
       increment:function (selected){
+            //Remove the object
             selected.destroy();
+
+            //Update the score. 
+            ++score;
+            scoreText.setText( 'Score: '+score );
 
             if(muteSoundbool == false)
             {
@@ -225,13 +210,7 @@ Game.prototype = {
                 if (rndnr == 6){swipe6.play();}
                 if (rndnr == 7){swipe7.play();}
             }
-            //Remove the object
-            selected.destroy();
-
-            //Update the score. 
-            ++score;
-            scoreText.setText( 'Score: '+score );
-
+    
             if (score == 5)
             {
                 this.memes(2);
@@ -245,8 +224,6 @@ Game.prototype = {
         decrement: function(selected){
             //Remove the object
             selected.destroy();
-            
-
             //Update the score.
             --score;
             scoreText.setText( 'Score: '+score );
@@ -254,6 +231,9 @@ Game.prototype = {
 
         floor: function(selected){
                 
+            //Remove the object
+            selected.destroy(); 
+   
             //Decrement the number of lives
             --counterlives;
             
@@ -261,9 +241,7 @@ Game.prototype = {
             lifetext.setText('Lives : '+counterlives);
 
             //Play animation of exploion when an object collides with the world boundaries
-            selected.play('explode', 12, true);     //Does not work! I think the object is deleted before the 
-            //animation it played. Also think that the loading and adding of spritesheet is wrong. 
-            //counterlives.text = 'lives: ' + counterlives;
+            selected.play('explode', 12, true);    
 
             //Play a litle exlosion sound
             var sound = this.game.add.audio('explosion_audio');
@@ -272,17 +250,12 @@ Game.prototype = {
                 sound.play();
             }
             
-             //Remove the object
-            selected.destroy(); 
-
+            
              //Check if the player is out of lives
             if (counterlives === 0)
             {
                 //Quit to start menu
                 this.quitGame();
-
-                                
-
 
                 if(score > localStorage.getItem("highscore"))
                 {
@@ -398,7 +371,6 @@ Game.prototype = {
 
     },
     
-
    quitGame: function() {
         counterlives=5;
         Level=1;
@@ -406,14 +378,9 @@ Game.prototype = {
         Levelspawn=1;
         spawnspeed=1;
 
-
         music.pause();
         this.state.start('GameOver', true, false, score);
     },
-    
-    
-    update: function() {
-    }
-    
+        
     
 };
