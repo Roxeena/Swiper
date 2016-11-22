@@ -21,7 +21,7 @@ Settings.prototype = {
         credits = this.game.add.button(this.game.world.centerX, game.height *(6/10), 'credits', this.startCredits, this, 2, 1, 0);
         credits.anchor.set(0.5, 0.5);
         credits.height = game.height*(1/10);
-        credits.width = game.height *(1/5);
+        credits.width = game.width *(1/3);
 
 
         /*if(this.game.sound.mute == false)
