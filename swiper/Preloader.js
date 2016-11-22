@@ -21,6 +21,7 @@ Preloader.prototype = {
         this.titleText.height=game.height;
 
         var foocy = this.game.add.sprite(this.world.centerX, this.world.centerY, 'preloaderbar');
+        foocy.anchor.set(0.5, 0.5);
 
         var walk = foocy.animations.add('walk');
         foocy.animations.play('walk', 16, true);

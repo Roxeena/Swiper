@@ -18,10 +18,10 @@ HighscoreMenu.prototype = {
         highscore5 = this.game.add.text((game.width/3), (game.height/1.47), "5.     "+localStorage.getItem('highscore5'), { font: '60px anuswiper_font', fill: '#fff' });
 
         //Add the buttons
-        back = this.game.add.button(this.game.world.centerX, game.height*(9/10), 'back', this.backMenu, this, 2, 1, 0);
-        //size
-        back.width=game.width*(1/2.5);
-        back.height=game.height*(1/10);
+        back = this.game.add.button(this.game.world.centerX, game.height*(8.5/10), 'back', this.backMenu, this, 2, 1, 0);
+        back.anchor.set(0.5, 0.5);
+        back.height = game.height*(1/10);
+        back.width = game.width*(1/3);
         //Add the anchor points
         back.anchor.set(0.5, 0.5);
         //width Highscores

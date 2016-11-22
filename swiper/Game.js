@@ -78,10 +78,12 @@ Game.prototype = {
         background.height = game.height;
 
         //Add information about the score and the number of lives left 
-        scoreText = this.game.add.text(game.world.centerX, 20, 'Score: '+score , { font: '34px Arial', fill: '#fff' });
-        scoreText.anchor.set(0.5);
-        lifetext = this.game.add.text(game.world.centerX, 50, 'Lives : '+counterlives, { font: '34px Arial', fill: '#fff' });
-        lifetext.anchor.set(0.5);
+        scoreText = this.game.add.text(game.world.centerX, game.height * (1/20), 'Score: '+score , { font: '34px anuswiper_font', fill: '#fff' });
+        scoreText.anchor.set(0.5, 0.5);
+        lifetext = this.game.add.text(game.world.centerX, game.height * (1/10), 'Lives : '+counterlives, { font: '34px anuswiper_font', fill: '#fff' });
+        lifetext.anchor.set(0.5, 0.5);
+        scoreText.fontSize = game.height * (1/20);
+        lifetext.fontSize = game.height * (1/20);
 
         //Add the music and play it  
         music = this.game.add.audio('jerry5min');
@@ -339,7 +341,7 @@ Game.prototype = {
 
             //  Font style
             text.font = 'eightbitwonder';
-            text.fontSize = 60;
+            text.fontSize = game.height * (1/10);
             text.fontWeight = 'normal';
 
             //  Stroke color and thickness
@@ -372,7 +374,7 @@ Game.prototype = {
 
             //  Font style
             text.font = 'eightbitwonder';
-            text.fontSize = 100;
+            text.fontSize = game.height * (1/8);
             text.fontWeight = 'bold';
 
             //  Stroke color and thickness
