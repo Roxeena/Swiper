@@ -61,6 +61,8 @@ Preloader.prototype = {
         this.load.audio('swipe6', 'assets/audio/swipe6.mp3');
         this.load.audio('swipe7', 'assets/audio/swipe7.mp3');
         this.load.audio('gameoverjerry', 'assets/audio/gameoverjerry.mp3');
+        this.load.audio('ohman', 'assets/audio/ohman.mp3');
+
         
         //Animations and spritirsheets
         this.load.spritesheet('button', 'assets/images/spritesheets/Start_knapp.png');

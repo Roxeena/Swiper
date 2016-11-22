@@ -239,6 +239,11 @@ Game.prototype = {
         },
                 
         decrement: function(selected){
+
+            //fail sound (Oh man)
+            var ohman = this.game.add.audio('ohman');
+            ohman.play()
+
             //Remove the object
             selected.destroy();
             //Update the score.
