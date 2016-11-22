@@ -266,8 +266,6 @@ Game.prototype = {
             {
                 sound.play();
             }
-            
-            
              //Check if the player is out of lives
             if (counterlives === 0)
             {
