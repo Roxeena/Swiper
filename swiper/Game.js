@@ -78,9 +78,12 @@ Game.prototype = {
         lifetext.fontSize = game.height * (1/20);
 
         // Create a label to use as a button
-        pause_label = this.game.add.text(500, 20, 'Pause', { font: '60px anuswiper_font', fill: '#fff' });
+        pause_label = this.game.add.text(game.width * (94/100), 0, 'Pause', { font: '60px anuswiper_font', fill: '#fff' });
         pause_label.inputEnabled = true;
+        pause_label.anchor.set(1, 0);
+        pause_label.fontSize = game.height * (1/20);
         pause_label.events.onInputUp.add(function () {
+
         // When the pause button is pressed, we pause the game
         this.game.paused = true;
         
@@ -128,6 +131,7 @@ Game.prototype = {
         }
 
         
+
         });
         game.input.onDown.add(this.unpause, self);
 
@@ -159,7 +163,7 @@ Game.prototype = {
 
         if (rndnr == 1){
             //Add a right arrow
-            arrowRight = this.game.add.sprite(spwnrng,game.height * (2/20),'right_pil'); 
+            arrowRight = this.game.add.sprite(spwnrng,game.height * (1/9),'right_pil'); 
             inputstuff(arrowRight);
             //signal för högerpil
             arrowRight.body.onWorldBounds = new Phaser.Signal();
@@ -168,7 +172,7 @@ Game.prototype = {
         //If the random number is 2, then spawn a left arrow     
         if (rndnr==2){
             //Add a spacefighter, left arrow
-            arrowLeft = this.game.add.sprite(spwnrng,game.height * (1/20),'left_pil');
+            arrowLeft = this.game.add.sprite(spwnrng,game.height * (1/9),'left_pil');
             inputstuff(arrowLeft);
             //signal för vänsterpil
             arrowLeft.body.onWorldBounds = new Phaser.Signal();
@@ -179,7 +183,7 @@ Game.prototype = {
 
             selected.anchor.set(0.5, 0.5);
             selected.width = game.width * (1/3);
-            selected.height = game.height * (1/10);
+            selected.height = game.height * (1/9);
             this.game.physics.enable( [ selected ], Phaser.Physics.ARCADE);
             //Set the velocity for the object
             selected.body.velocity.y = game.height*(0.1) + (Level) * 10;
@@ -314,9 +318,9 @@ Game.prototype = {
             selected.play('explode', 12, true);    
 
             //Play a litle exlosion sound
-            var sound = this.game.add.audio('explosion_audio');
             if(muteSoundbool == false)
             {
+                var sound = this.game.add.audio('explosion_audio');
                 sound.play();
             }
              //Check if the player is out of lives
