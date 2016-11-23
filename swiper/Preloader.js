@@ -47,7 +47,7 @@ Preloader.prototype = {
         //Music and sounds
         this.load.audio('seal', 'assets/audio/sealfiremixtape.mp3');
         this.load.audio('jerry', 'assets/audio/jerry.mp3');
-        this.load.audio('jerry5min', 'assets/audio/jerry5min.mp3');
+        this.load.audio('jerry5min', 'assets/audio/jerry4min.mp3');
         this.load.audio('explosion_audio', 'assets/audio/explosion.mp3');
         this.load.audio('hurt_audio', 'assets/audio/hurt.mp3');
         this.load.audio('select_audio', 'assets/audio/select.mp3');
