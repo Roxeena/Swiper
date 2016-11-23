@@ -32,7 +32,7 @@ Preloader.prototype = {
         //Fonts
         
         //Background in game
-        this.load.image('sky', 'assets/images/NEW GAME BACKGROUND_proto.png');
+        this.load.image('sky', 'assets/images/GAME BACKGROUND TEST3.png');
 
         //Arrows
         this.load.image('right_pil', 'assets/images/border_pil_R.png');
