@@ -280,9 +280,9 @@ Game.prototype = {
             selected.play('explode', 12, true);    
 
             //Play a litle exlosion sound
-            var sound = this.game.add.audio('explosion_audio');
             if(muteSoundbool == false)
             {
+                var sound = this.game.add.audio('explosion_audio');
                 sound.play();
             }
              //Check if the player is out of lives
