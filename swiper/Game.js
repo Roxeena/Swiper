@@ -78,22 +78,24 @@ Game.prototype = {
         lifetext.fontSize = game.height * (1/20);
 
         // Create a label to use as a button
-        pause_label = this.game.add.text(500, 20, 'Pause', { font: '60px anuswiper_font', fill: '#fff' });
+        pause_label = this.game.add.text(game.width * (94/100), 0, 'Pause', { font: '60px anuswiper_font', fill: '#fff' });
         pause_label.inputEnabled = true;
+        pause_label.anchor.set(1, 0);
+        pause_label.fontSize = game.height * (1/20);
         pause_label.events.onInputUp.add(function () {
-        // When the pause button is pressed, we pause the game
-        this.game.paused = true;
-        
-        // this.game.body.velocity.y = 0;
-        // Then add the menu
-        pause_menu = game.add.image(game.world.centerX, game.world.centerY, 'transpause_bild');
-        pause_menu.anchor.set(0.5, 0.5);
-        pause_menu.width = game.width;
-        pause_menu.height = game.height;
-        resume_knapp = this.game.add.button(this.game.world.centerX, 3.5*game.height/10, 'resume', this.unpause, this, 2, 1, 0);
-        resume_knapp.anchor.set(0.5, 0.5);
-        resume_knapp.height=game.height*(1/10);
-        resume_knapp.width=game.width*(1/3);
+            // When the pause button is pressed, we pause the game
+            this.game.paused = true;
+            
+            // this.game.body.velocity.y = 0;
+            // Then add the menu
+            pause_menu = game.add.image(game.world.centerX, game.world.centerY, 'transpause_bild');
+            pause_menu.anchor.set(0.5, 0.5);
+            pause_menu.width = game.width;
+            pause_menu.height = game.height;
+            resume_knapp = this.game.add.button(game.world.centerX, game.height * (6/10), 'resume', this.unpause, this, 2, 1, 0);
+            resume_knapp.anchor.set(0.5, 0.5);
+            resume_knapp.height=game.height*(1/7);
+            resume_knapp.width=game.width*(1/2);
         });
         game.input.onDown.add(this.unpause, self);
 
