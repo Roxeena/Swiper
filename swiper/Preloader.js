@@ -35,12 +35,13 @@ Preloader.prototype = {
         this.load.image('blank_canvas','assets/images/BLANK_CANVAS.png');
         this.load.image('settings_bild', 'assets/images/SETTINGS_SCREEN.png');
         this.load.image('pause_bild', 'assets/images/PAUSED_SCREEN.png');
+        this.load.image('transpause_bild', 'assets/images/TRANS PAUSED_SCREEN 2.png');
 
         //Menu video
         this.load.video('titlevideo', 'assets/images/Comp 2_ver2.mp4');
         
         //Fonts
-        this.load.bitmapFont('eightbitwonder', 'assets/fonts/eightbitwonder.png', 'assets/fonts/eightbitwonder.fnt');
+        //this.load.bitmapFont('eightbitwonder', 'assets/fonts/eightbitwonder.png', 'assets/fonts/eightbitwonder.fnt');
         
         //Backgrounds in game
         //this.load.image('hill', 'assets/images/hill.png');
@@ -93,17 +94,16 @@ Preloader.prototype = {
         this.load.spritesheet('back', 'assets/images/spritesheets/Back_knapp.png');
         this.load.spritesheet('S_button', 'assets/images/spritesheets/settings_knapp.png');
         this.load.spritesheet('mute', 'assets/images/spritesheets/MUTE_knapp.png');
-        
         this.load.spritesheet('unMute', 'assets/images/spritesheets/UNMUTE_knapp.png');
         this.load.spritesheet('muteMusic', 'assets/images/spritesheets/MUTE_music_knapp.png');
         this.load.spritesheet('unMuteMusic', 'assets/images/spritesheets/UNMUTE_music_knapp.png');
         this.load.spritesheet('muteSound', 'assets/images/spritesheets/MUTE_sound_knapp.png');
         this.load.spritesheet('unMuteSound', 'assets/images/spritesheets/UNMUTE_sound_knapp.png');
         this.load.spritesheet('credits', 'assets/images/spritesheets/credits_knapp.png')
-
         this.load.spritesheet('tryAgain', 'assets/images/spritesheets/try_again_knapp.png');
         this.load.spritesheet('backToMenu', 'assets/images/spritesheets/back_to_menu_knapp.png');
         this.load.spritesheet('quit', 'assets/images/spritesheets/Quit_knapp.png');
+        this.load.spritesheet('resume', 'assets/images/spritesheets/RESUME_knapp.png');
         
         
 },

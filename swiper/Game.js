@@ -6,6 +6,10 @@ var Game = function(game) {
     this.generateImage;
 };
 
+var pause_menu;
+var resume_knapp;
+var w = 800, h = 600;
+
 Game.prototype = {
     create: function() {   
         score = 0;
@@ -21,6 +25,7 @@ Game.prototype = {
         //feedback
         var text;
         var meme;
+        
   
         //Initialize some settings and "meta data"
         gameover = false;                        
@@ -71,21 +76,24 @@ Game.prototype = {
         lifetext.anchor.set(0.5);
 
         // Create a label to use as a button
-        pause_label = this.game.add.text(700, 20, 'Pause', { font: '24px anuswiper_font', fill: '#fff' });
+        pause_label = this.game.add.text(500, 20, 'Pause', { font: '60px anuswiper_font', fill: '#fff' });
         pause_label.inputEnabled = true;
         pause_label.events.onInputUp.add(function () {
-        // When the paus button is pressed, we pause the game
+        // When the pause button is pressed, we pause the game
         this.game.paused = true;
-                // Then add the menu
-        var pause_menu = game.add.image(game.world.centerX,game.world.centerY,'pause_bild');
-        pause_menu.anchor.setTo(0.5, 0.5);
-        pause_menu.width=game.width;
-        pause_menu.height=game.height;
-
-        // And a label to illustrate which menu item was chosen. (This is not necessary)
-        choiceLabel = game.add.text(400, 450, 'Click outside menu to continue', { font: '30px Arial', fill: '#fff' });
-        choiceLabel.anchor.setTo(0.5, 0.5);
+        
+        // this.game.body.velocity.y = 0;
+        // Then add the menu
+        pause_menu = game.add.image(game.world.centerX, game.world.centerY, 'transpause_bild');
+        pause_menu.anchor.set(0.5, 0.5);
+        pause_menu.width = game.width;
+        pause_menu.height = game.height;
+        resume_knapp = this.game.add.button(this.game.world.centerX, 3.5*game.height/10, 'resume', this.unpause, this, 2, 1, 0);
+        resume_knapp.anchor.set(0.5, 0.5);
+        resume_knapp.height=game.height*(1/10);
+        resume_knapp.width=game.width*(1/3);
         });
+        game.input.onDown.add(this.unpause, self);
 
         //Add the music and play it  
         music = this.game.add.audio('jerry5min');
@@ -97,7 +105,7 @@ Game.prototype = {
 
         //Add objects in loop depending on time
         //Spawn an object every 2 seconds        
-       //Quit after a certain a0mount of time, music ends
+        //Quit after a certain a0mount of time, music ends
         this.game.time.events.add(Phaser.Timer.SECOND*1000,this.quitGame,this);  
         this.game.time.events.repeat(Phaser.Timer.SECOND*5,2000,this.spawn,this);  
       
@@ -387,6 +395,19 @@ Game.prototype = {
         }
 
     },
+        unpause: function(event){
+        // Only act if paused
+        if(game.paused && event.x > game.width*(2/6) && event.x < game.width*(4/6) && event.y > 3.5*game.height/10-game.height/20 && event.y < 3.5*game.height/10+game.height/20 ){
+            // Calculate the corners of the menu            
+                // Remove the menu and the label
+                pause_menu.destroy();
+                resume_knapp.destroy();
+
+                // Unpause the game
+                game.paused = false;
+            
+        }
+    },
     
    quitGame: function() {
         counterlives=5;
@@ -397,7 +418,6 @@ Game.prototype = {
 
         music.pause();
         this.state.start('GameOver', true, false, score);
-    },
-        
+    }        
     
 };
