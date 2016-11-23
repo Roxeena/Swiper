@@ -6,6 +6,10 @@ var Game = function(game) {
     this.generateImage;
 };
 
+var pause_menu;
+var resume_knapp;
+var w = 800, h = 600;
+
 Game.prototype = {
     create: function() {   
         score = 0;
@@ -21,6 +25,7 @@ Game.prototype = {
         //feedback
         var text;
         var meme;
+        
   
         //Initialize some settings and "meta data"
         gameover = false;                        
@@ -73,33 +78,38 @@ Game.prototype = {
         lifetext.fontSize = game.height * (1/20);
 
         // Create a label to use as a button
-        pause_label = this.game.add.text(700, 20, 'Pause', { font: '24px anuswiper_font', fill: '#fff' });
+        pause_label = this.game.add.text(game.width * (94/100), 0, 'Pause', { font: '60px anuswiper_font', fill: '#fff' });
         pause_label.inputEnabled = true;
+        pause_label.anchor.set(1, 0);
+        pause_label.fontSize = game.height * (1/20);
         pause_label.events.onInputUp.add(function () {
-        // When the paus button is pressed, we pause the game
-        this.game.paused = true;
-                // Then add the menu
-        var pause_menu = game.add.image(game.world.centerX,game.world.centerY,'pause_bild');
-        pause_menu.anchor.setTo(0.5, 0.5);
-        pause_menu.width=game.width;
-        pause_menu.height=game.height;
-
-        // And a label to illustrate which menu item was chosen. (This is not necessary)
-        choiceLabel = game.add.text(400, 450, 'Click outside menu to continue', { font: '30px Arial', fill: '#fff' });
-        choiceLabel.anchor.setTo(0.5, 0.5);
+            // When the pause button is pressed, we pause the game
+            this.game.paused = true;
+            
+            // this.game.body.velocity.y = 0;
+            // Then add the menu
+            pause_menu = game.add.image(game.world.centerX, game.world.centerY, 'transpause_bild');
+            pause_menu.anchor.set(0.5, 0.5);
+            pause_menu.width = game.width;
+            pause_menu.height = game.height;
+            resume_knapp = this.game.add.button(game.world.centerX, game.height * (6/10), 'resume', this.unpause, this, 2, 1, 0);
+            resume_knapp.anchor.set(0.5, 0.5);
+            resume_knapp.height=game.height*(1/7);
+            resume_knapp.width=game.width*(1/2);
         });
+        game.input.onDown.add(this.unpause, self);
 
         //Add the music and play it  
-        music = this.game.add.audio('jerry5min');
-
         if(muteMusicbool == false)
         {
+            music = this.game.add.audio('jerry5min');
             music.play();
         }
 
         //Add objects in loop depending on time
         //Spawn an object every 2 seconds        
-       //Quit after a certain a0mount of time, music ends
+
+        //Quit after a certain amount of time, music ends
         this.game.time.events.add(Phaser.Timer.SECOND*1000,this.quitGame,this);  
         this.game.time.events.repeat(Phaser.Timer.SECOND*5,2000,this.spawn,this);  
       
@@ -117,7 +127,7 @@ Game.prototype = {
 
         if (rndnr == 1){
             //Add a right arrow
-            arrowRight = this.game.add.sprite(spwnrng,game.height * (2/20),'XL_right_pil'); 
+            arrowRight = this.game.add.sprite(spwnrng,game.height * (1/9),'right_pil'); 
             inputstuff(arrowRight);
             //signal för högerpil
             arrowRight.body.onWorldBounds = new Phaser.Signal();
@@ -126,7 +136,7 @@ Game.prototype = {
         //If the random number is 2, then spawn a left arrow     
         if (rndnr==2){
             //Add a spacefighter, left arrow
-            arrowLeft = this.game.add.sprite(spwnrng,game.height * (1/20),'XL_left_pil');
+            arrowLeft = this.game.add.sprite(spwnrng,game.height * (1/9),'left_pil');
             inputstuff(arrowLeft);
             //signal för vänsterpil
             arrowLeft.body.onWorldBounds = new Phaser.Signal();
@@ -137,7 +147,7 @@ Game.prototype = {
 
             selected.anchor.set(0.5, 0.5);
             selected.width = game.width * (1/3);
-            selected.height = game.height * (1/10);
+            selected.height = game.height * (1/9);
             this.game.physics.enable( [ selected ], Phaser.Physics.ARCADE);
             //Set the velocity for the object
             selected.body.velocity.y = game.height*(0.1) + (Level) * 10;
@@ -242,9 +252,13 @@ Game.prototype = {
                 
         decrement: function(selected){
 
-            //fail sound (Oh man)
-            var ohman = this.game.add.audio('ohman');
-            ohman.play()
+            if (muteSoundbool == false)
+            {
+                //fail sound (Oh man)
+                var ohman = this.game.add.audio('ohman');
+                ohman.play()
+            }
+            
 
             //Remove the object
             selected.destroy();
@@ -268,9 +282,9 @@ Game.prototype = {
             selected.play('explode', 12, true);    
 
             //Play a litle exlosion sound
-            var sound = this.game.add.audio('explosion_audio');
             if(muteSoundbool == false)
             {
+                var sound = this.game.add.audio('explosion_audio');
                 sound.play();
             }
              //Check if the player is out of lives
@@ -333,7 +347,7 @@ Game.prototype = {
             text.align = 'center';
 
             //  Font style
-            text.font = 'eightbitwonder';
+            text.font = 'anuswiper_font';
             text.fontSize = game.height * (1/10);
             text.fontWeight = 'normal';
 
@@ -366,7 +380,7 @@ Game.prototype = {
             text.align = 'center';
 
             //  Font style
-            text.font = 'eightbitwonder';
+            text.font = 'anuswiper_font';
             text.fontSize = game.height * (1/8);
             text.fontWeight = 'bold';
 
@@ -381,6 +395,7 @@ Game.prototype = {
             tween.repeat(1,0);
         }
 
+        //tia och en tjuga
         if (meme == 3)
         {
             if(muteSoundbool == false)
@@ -388,21 +403,39 @@ Game.prototype = {
                 meme_sound = this.game.add.audio('tia');
                 meme_sound.play();
             }
-            
+
         }
 
     },
+        unpause: function(event){
+        // Only act if paused
+        if(game.paused && event.x > game.width*(2/6) && event.x < game.width*(4/6) && event.y > 3.5*game.height/10-game.height/20 && event.y < 3.5*game.height/10+game.height/20 ){
+            // Calculate the corners of the menu            
+                // Remove the menu and the label
+                pause_menu.destroy();
+                resume_knapp.destroy();
+
+                // Unpause the game
+                game.paused = false;
+            
+        }
+    },
     
    quitGame: function() {
+        //Reset
         counterlives=5;
         Level=1;
         secondsElapsed=0;
         Levelspawn=1;
         spawnspeed=1;
 
-        music.pause();
-        this.state.start('GameOver', true, false, score);
-    },
+        if (muteMusicbool == false)
+        {
+            music.pause();
+        }
         
+        //Send the score to the next state    
+        this.state.start('GameOver', true, false, score);
+    }        
     
 };

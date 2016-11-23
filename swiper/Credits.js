@@ -52,6 +52,11 @@ Credits.prototype = {
 	},
 
 	backSettings: function() {
+		//Knappljud
+		if (muteSoundbool == false)
+		{
+			audio.play(); 
+		}
 		//Go to settings state
 		this.game.state.start('Settings');
 	}	

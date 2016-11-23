@@ -9,7 +9,44 @@ HighscoreMenu.prototype = {
         Highscoremenu.anchor.set(0.5, 0.5);
         Highscoremenu.width=game.width;
         Highscoremenu.height=game.height;
-       
+        
+        //If there are no highscore then set it to zero
+        if(localStorage.getItem('highscore') == null)
+        {
+            localStorage.setItem('highscore', 0);
+            localStorage.setItem('highscore2', 0);
+            localStorage.setItem('highscore3', 0);
+            localStorage.setItem('highscore4', 0);
+            localStorage.setItem('highscore5', 0);
+        }
+        //If there are no highscore then set it to zero
+        else if(localStorage.getItem('highscore2') == null)
+        {
+            localStorage.setItem('highscore2', 0);
+            localStorage.setItem('highscore3', 0);
+            localStorage.setItem('highscore4', 0);
+            localStorage.setItem('highscore5', 0);
+        }
+        //If there are no highscore then set it to zero
+        else if(localStorage.getItem('highscore3') == null)
+        {
+            localStorage.setItem('highscore3', 0);
+            localStorage.setItem('highscore4', 0);
+            localStorage.setItem('highscore5', 0);
+
+        }
+        //If there are no highscore then set it to zero
+        else if(localStorage.getItem('highscore4') == null)
+        {
+            localStorage.setItem('highscore4', 0);
+            localStorage.setItem('highscore5', 0);
+        }
+        //If there are no highscore then set it to zero
+        else if(localStorage.getItem('highscore5') == null)
+        {
+            localStorage.setItem('highscore5', 0);
+        } 
+
         //score
         highscore = this.game.add.text((game.width/3), (game.height/3.15),  "1.     "+localStorage.getItem('highscore'), { font: '60px anuswiper_font', fill: '#fff' });
         highscore2 = this.game.add.text((game.width/3), (game.height/2.35), "2.     "+localStorage.getItem('highscore2'), { font: '60px anuswiper_font', fill: '#fff' });
@@ -41,6 +78,11 @@ HighscoreMenu.prototype = {
     },
     //If the "Back" button is pressed
     backMenu: function(){
+        //Knappljud
+        if (muteSoundbool == false)
+        {
+            audio.play(); 
+        }
         //Go to start menu state
         this.game.state.start('StartMenu');    }
 };
