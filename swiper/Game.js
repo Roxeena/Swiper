@@ -90,17 +90,51 @@ Game.prototype = {
         pause_menu.anchor.set(0.5, 0.5);
         pause_menu.width = game.width;
         pause_menu.height = game.height;
-        resume_knapp = this.game.add.button(this.game.world.centerX, 3.5*game.height/10, 'resume', this.unpause, this, 2, 1, 0);
+
+        resume_knapp = this.game.add.image(this.game.world.centerX, game.height*(9/20), 'resume');
         resume_knapp.anchor.set(0.5, 0.5);
         resume_knapp.height=game.height*(1/10);
         resume_knapp.width=game.width*(1/3);
+
+        back_to_knapp = this.game.add.image(this.game.world.centerX, game.height*(4/5), 'backToMenu');
+        back_to_knapp.anchor.set(0.5, 0.5);
+        back_to_knapp.height = game.height*(1/12);
+        back_to_knapp.width = game.width*(1/3.5);
+
+        if(muteMusicbool){
+            unMuteMusic = this.game.add.image(this.game.world.centerX, game.height*(7/10), 'unMuteMusic');
+            unMuteMusic.anchor.set(0.5, 0.5);
+            unMuteMusic.height = game.height*(1/10);
+            unMuteMusic.width = game.width*(1/3.5);
+        }
+        else{
+            muteMusic = this.game.add.image(this.game.world.centerX, game.height*(7/10), 'muteMusic');
+            muteMusic.anchor.set(0.5, 0.5);
+            muteMusic.height = game.height*(1/10);
+            muteMusic.width = game.width*(1/3.5);
+        }
+        
+        if(muteSoundbool){
+            unMuteSound = this.game.add.image(this.game.world.centerX, game.height*(3/5), 'unMuteSound');
+            unMuteSound.anchor.set(0.5, 0.5);
+            unMuteSound.height = game.height*(1/10);
+            unMuteSound.width = game.width*(1/3.5);
+        }
+        else{
+            muteSound = this.game.add.image(this.game.world.centerX, game.height*(3/5), 'muteSound');
+            muteSound.anchor.set(0.5, 0.5);
+            muteSound.height = game.height*(1/10);
+            muteSound.width = game.width*(1/3.5);
+        }
+
+        
         });
         game.input.onDown.add(this.unpause, self);
 
         //Add the music and play it  
+        music = this.game.add.audio('jerry5min');
         if(muteMusicbool == false)
         {
-            music = this.game.add.audio('jerry5min');
             music.play();
         }
 
@@ -407,14 +441,95 @@ Game.prototype = {
     },
         unpause: function(event){
         // Only act if paused
-        if(game.paused && event.x > game.width*(2/6) && event.x < game.width*(4/6) && event.y > 3.5*game.height/10-game.height/20 && event.y < 3.5*game.height/10+game.height/20 ){
+        if(game.paused){
+
+            if(event.x > game.width*(2/6) && event.x < game.width*(4/6) && event.y > game.height*(9/20)-game.height/20 && event.y < game.height*(9/20)+game.height/20 ){
             // Calculate the corners of the menu            
-                // Remove the menu and the label
+                // Remove the menu and the buttons
                 pause_menu.destroy();
                 resume_knapp.destroy();
+                if(muteMusicbool)
+                    unMuteMusic.destroy();
+                else
+                    muteMusic.destroy();
+                
+                if(muteSoundbool)
+                    unMuteSound.destroy();
+                else
+                    muteSound.destroy();
+                
+                back_to_knapp.destroy();
 
                 // Unpause the game
                 game.paused = false;
+            }
+
+            else if(event.x > game.width*(5/14) && event.x < game.width*(9/14) && event.y > game.height*(4/5)-game.height/24 && event.y < game.height*(4/5)+game.height/24){
+                counterlives=5;
+                Level=1;
+                secondsElapsed=0;
+                Levelspawn=1;
+                spawnspeed=1;
+
+                if (muteMusicbool == false)
+                {
+                    music.pause();
+                }
+
+                game.paused = false;
+                this.game.state.start('StartMenu');
+            }
+
+            else if(event.x > game.width*(5/14) && event.x < game.width*(9/14) && event.y > game.height*(13/20) && event.y < game.height*(15/20)){
+                game.paused = false;
+                if(muteMusicbool)
+                {
+                    unMuteMusic.destroy();
+                    muteMusicbool = false;
+                    music.play();
+
+                    muteMusic = this.game.add.image(this.game.world.centerX, game.height*(7/10), 'muteMusic');
+                    muteMusic.anchor.set(0.5, 0.5);
+                    muteMusic.height = game.height*(1/10);
+                    muteMusic.width = game.width*(1/3.5);
+                }
+                else{
+                    muteMusic.destroy();
+                    muteMusicbool = true;
+                    music.pause();
+
+                    unMuteMusic = this.game.add.image(this.game.world.centerX, game.height*(7/10), 'unMuteMusic');
+                    unMuteMusic.anchor.set(0.5, 0.5);
+                    unMuteMusic.height = game.height*(1/10);
+                    unMuteMusic.width = game.width*(1/3.5);
+                }
+                game.paused = true;
+            }
+
+            else if(event.x > game.width*(5/14) && event.x < game.width*(9/14) && event.y > game.height*(11/20) && event.y < game.height*(13/20)){
+                game.paused = false;
+                if(muteSoundbool)
+                {
+                    unMuteSound.destroy();
+                    muteSoundbool = false;
+
+                    muteSound = this.game.add.image(this.game.world.centerX, game.height*(3/5), 'muteSound');
+                    muteSound.anchor.set(0.5, 0.5);
+                    muteSound.height = game.height*(1/10);
+                    muteSound.width = game.width*(1/3.5);
+                }
+                else{
+                    muteSound.destroy();
+                    muteSoundbool = true;
+
+                    unMuteSound = this.game.add.image(this.game.world.centerX, game.height*(3/5), 'unMuteSound');
+                    unMuteSound.anchor.set(0.5, 0.5);
+                    unMuteSound.height = game.height*(1/10);
+                    unMuteSound.width = game.width*(1/3.5);
+                }
+                game.paused = true;
+            }
+
             
         }
     },
