@@ -1,11 +1,11 @@
 var GameOver = function(game){
 }
 
-var scoreText;
 var score = 0;
 
 GameOver.prototype = {
 	
+	//Recive the score that have been sent from Game.js
 	init: function(scoreIn) {
 		score = scoreIn;
 	},
@@ -16,6 +16,7 @@ GameOver.prototype = {
 		GameOverMenu.anchor.set(0.5, 0.5);
 		GameOverMenu.width=game.width;
 		GameOverMenu.height=game.height;
+		
 		// Game over music
 		if(muteMusicbool == false)
 		{
@@ -23,33 +24,51 @@ GameOver.prototype = {
 			gameoverjerry.play();
 		}
 		
-
 		//Add the score
-		scoreText = this.game.add.text(this.game.world.centerX, game.world.centerY, 'Your score: '+score , { font: '60px anuswiper_font', fill: '#fff' });
+		var scoreText = this.game.add.text(this.game.world.centerX, game.world.centerY, 'Your score: '+score , { font: '60px anuswiper_font', fill: '#fff' });
 		scoreText.anchor.set(0.5);
+		scoreText.fontSize = game.height * (1/15);
 
+		//Next time the menu are opened the music should be played
 		startMusic = true;
 
 		//Add the buttons
-		tryAgainB = this.game.add.button(this.game.world.centerX, game.height*(6/10), 'tryAgain', this.tryAgain, this, 2, 1, 0);
+		tryAgainB = this.game.add.button(this.game.world.centerX, game.height*(6.5/10), 'tryAgain', this.tryAgain, this, 2, 1, 0);
 		menuB = this.game.add.button(this.game.world.centerX, game.height*(8/10), 'backToMenu', this.startMenu, this, 2, 1, 0);
 		
 		//Add the anchorpoints
 		tryAgainB.anchor.set(0.5, 0.5);
 		menuB.anchor.set(0.5, 0.5);
+
+		//Scale the buttons
+		tryAgainB.height = game.height * (1/7);
+		menuB.height = game.height * (1/9);
+		tryAgainB.width = game.width * (1/2);
+		menuB.width = game.width * (1/2.5);
 	},
 
 	//If button "Try Again" is pressed this function will be executed
 	tryAgain: function() {
+		//Knappljud
+		if (muteSoundbool == false)
+		{
+			audio.play(); 
+		}
 		//Go to game state
 		this.game.state.start('Game');
 	},
 
 	//If button "Back to Menu" is pressed this function will be executed
 	startMenu: function() {
+		//Knappljud
+		if (muteSoundbool == false)
+		{
+			audio.play(); 
+		}
 		//Go to game state
+		//Restart the music in menu if not muted
+		startMusic = true;
 		this.game.state.start('StartMenu');
-		musicStart.mute = false;
 	},
 
 }
