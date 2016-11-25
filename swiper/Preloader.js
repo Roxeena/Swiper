@@ -27,7 +27,7 @@ Preloader.prototype = {
         this.load.image('blank_canvas', 'assets/images/BLANK_CANVAS.png')
 
         //Menu video
-        this.load.video('titlevideo', 'assets/images/Comp 2_ver2.mp4');
+        this.load.video('titlevideo', 'assets/images/Comp 2_ver3.mp4');
         
         //Fonts
         
@@ -41,7 +41,7 @@ Preloader.prototype = {
         //Music and sounds
         this.load.audio('seal', 'assets/audio/sealfiremixtape.mp3');
 
-        this.load.audio('jerry', 'assets/audio/jerry.mp3');
+        //this.load.audio('jerry', 'assets/audio/jerry.mp3');
         this.load.audio('jerry5min', 'assets/audio/jerry4min.mp3');
         this.load.audio('explosion_audio', 'assets/audio/explosion.mp3');
         this.load.audio('select_audio', 'assets/audio/select.mp3');
