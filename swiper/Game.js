@@ -280,7 +280,7 @@ Game.prototype = {
             {
                 this.memes(2);
             }
-            if (score == 10)
+            if (score == 30)
             {
                 this.memes(3);
             }
