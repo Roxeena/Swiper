@@ -30,6 +30,7 @@ Preloader.prototype = {
         this.load.video('titlevideo', 'assets/images/Comp 2_ver2.mp4');
         
         //Fonts
+        this.load.bitmapFont('anuswiper_font', 'assets/fonts/bitmap/superswiper.png', 'assets/fonts/bitmap/superswiper.fnt');
         
         //Background in game
         this.load.image('sky', 'assets/images/NEW GAME BACKGROUND_proto.png');

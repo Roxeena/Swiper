@@ -48,11 +48,13 @@ HighscoreMenu.prototype = {
         } 
 
         //score
-        highscore = this.game.add.text((game.width/3), (game.height/3.15),  "1.     "+localStorage.getItem('highscore'), { font: '60px anuswiper_font', fill: '#fff' });
-        highscore2 = this.game.add.text((game.width/3), (game.height/2.35), "2.     "+localStorage.getItem('highscore2'), { font: '60px anuswiper_font', fill: '#fff' });
-        highscore3 = this.game.add.text((game.width/3), (game.height/1.95), "3.     "+localStorage.getItem('highscore3'), { font: '60px anuswiper_font', fill: '#fff' });
-        highscore4 = this.game.add.text((game.width/3), (game.height/1.67), "4.     "+localStorage.getItem('highscore4'), { font: '60px anuswiper_font', fill: '#fff' });
-        highscore5 = this.game.add.text((game.width/3), (game.height/1.47), "5.     "+localStorage.getItem('highscore5'), { font: '60px anuswiper_font', fill: '#fff' });
+        highscore  = this.add.bitmapText((game.width/3), (game.height/3.15),'anuswiper_font', "1.     "+localStorage.getItem('highscore'),  24);
+        highscore2 = this.add.bitmapText((game.width/3), (game.height/2.40),'anuswiper_font', "2.     "+localStorage.getItem('highscore2'), 24);
+        highscore3 = this.add.bitmapText((game.width/3), (game.height/1.95),'anuswiper_font', "3.     "+localStorage.getItem('highscore3'), 24);
+        highscore4 = this.add.bitmapText((game.width/3), (game.height/1.67),'anuswiper_font', "4.     "+localStorage.getItem('highscore4'), 24);
+        highscore5 = this.add.bitmapText((game.width/3), (game.height/1.45),'anuswiper_font', "5.     "+localStorage.getItem('highscore5'), 24);
+
+       
 
         //Add the buttons
         back = this.game.add.button(this.game.world.centerX, game.height*(8.5/10), 'back', this.backMenu, this, 2, 1, 0);

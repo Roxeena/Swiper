@@ -16,14 +16,18 @@ Credits.prototype = {
 		back.height = game.height*(1/10);
         back.width = game.width*(1/3);
 	
+                //var style = { font: "anuswiper_font", fill: "#ffffff", align: "center" };
+
         //Add the credit text
-        art = 			this.game.add.text(game.width * (1/4), game.height * (2/10), 'Art:\nNicholas\nFrederiksen',{ font: '40px anuswiper_font', fill: '#fff' });
-        gameplay = 		this.game.add.text(game.width * (1/4),game.height * (4/10), 'Gameplay:\nJulius Kördel',{ font: '40px anuswiper_font', fill: '#fff'});
-        github = 		this.game.add.text(game.width * (1/4), game.height * (6/10), 'Communication:\nMalin Ejdbo',{ font: '40px anuswiper_font', fill: '#fff'});
-        meme = 			this.game.add.text(game.width * (3/4), game.height * (2/10), 'Feedback:\nJakob\nGunnarsson',{ font: '40px anuswiper_font', fill: '#fff'});
-        menu = 			this.game.add.text(game.width * (3/4), game.height * (4/10), 'Menu:\nErik Asp',{ font: '40px anuswiper_font', fill: '#fff'});
-        music_sound = 	this.game.add.text(game.width * (3/4), game.height *(6/10), 'Music and sound:\nElias Elmquist',{ font: '40px anuswiper_font', fill: '#fff'});
+        art = 			this.add.bitmapText(game.width * (1/4), game.height * (2/10),'anuswiper_font','Art:\nNicholas\nFrederiksen' );
+        gameplay = 		this.add.bitmapText(game.width * (1/4), game.height * (4/10), 'anuswiper_font','Gameplay:\nJulius Kordel');
+        github = 		this.add.bitmapText(game.width * (1/4), game.height * (6/10), 'anuswiper_font','Communication:\nMalin Ejdbo');
+        meme = 			this.add.bitmapText(game.width * (3/4), game.height * (2/10), 'anuswiper_font','Feedback:\nJakob\nGunnarsson');
+        menu = 			this.add.bitmapText(game.width * (3/4), game.height * (4/10), 'anuswiper_font','Menu:\nErik Asp');
+        music_sound = 	        this.add.bitmapText(game.width * (3/4), game.height *(6/10),  'anuswiper_font','Music and sound:\nElias Elmquist');
         
+      //  art.addColor('#ffffff', 25);
+
         //Add the anchors
         art.anchor.set(0.5, 0.5);
         gameplay.anchor.set(0.5, 0.5);
