@@ -70,15 +70,15 @@ Game.prototype = {
         background.height = game.height;
 
         //Add information about the score and the number of lives left 
-        scoreText = this.game.add.text(game.world.centerX, game.height * (1/20), 'Score: '+score , { font: '34px anuswiper_font', fill: '#fff' });
+        scoreText = game.add.bitmapText(game.world.centerX, game.height * (1/20), 'anuswiper_font','Score: '+score );
         scoreText.anchor.set(0.5, 0.5);
-        lifetext = this.game.add.text(game.world.centerX, game.height * (1/10), 'Lives : '+counterlives, { font: '34px anuswiper_font', fill: '#fff' });
+        lifetext = game.add.bitmapText(game.world.centerX, game.height * (1/10), 'anuswiper_font','Lives : '+counterlives);
         lifetext.anchor.set(0.5, 0.5);
         scoreText.fontSize = game.height * (1/20);
         lifetext.fontSize = game.height * (1/20);
 
         // Create a label to use as a button
-        pause_label = this.game.add.text(game.width * (94/100), 0, 'Pause', { font: '60px anuswiper_font', fill: '#fff' });
+        pause_label = game.add.bitmapText(game.width * (94/100), 0,'anuswiper_font', 'Pause');
         pause_label.inputEnabled = true;
         pause_label.anchor.set(1, 0);
         pause_label.fontSize = game.height * (1/20);

@@ -25,7 +25,7 @@ GameOver.prototype = {
 		}
 		
 		//Add the score
-		var scoreText = this.game.add.text(this.game.world.centerX, game.world.centerY, 'Your score: '+score , { font: '60px anuswiper_font', fill: '#fff' });
+		var scoreText = game.add.bitmapText(this.game.world.centerX, game.world.centerY,'anuswiper_font', 'Your score: '+score );
 		scoreText.anchor.set(0.5);
 		scoreText.fontSize = game.height * (1/15);
 
