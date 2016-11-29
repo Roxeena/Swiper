@@ -23,17 +23,17 @@ Preloader.prototype = {
         this.load.image('gameoverMenu', 'assets/images/GAMEOVER_2.png');
         this.load.image('settings_bild', 'assets/images/SETTINGS_SCREEN.png');
         this.load.image('pause_bild', 'assets/images/PAUSED_SCREEN.png');
-        this.load.image('transpause_bild', 'assets/images/TRANS PAUSED_SCREEN 2.png');
+        this.load.image('transpause_bild', 'assets/images/GAME_PAUSED_SCREEN.png');
         this.load.image('blank_canvas', 'assets/images/BLANK_CANVAS.png')
 
         //Menu video
-        this.load.video('titlevideo', 'assets/images/Comp 2_ver2.mp4');
+        this.load.video('titlevideo', 'assets/images/Comp 2_ver3.mp4');
         
         //Fonts
         this.load.bitmapFont('anuswiper_font', 'assets/fonts/bitmap/superswiper.png', 'assets/fonts/bitmap/superswiper.fnt');
         
         //Background in game
-        this.load.image('sky', 'assets/images/NEW GAME BACKGROUND_proto.png');
+        this.load.image('sky', 'assets/images/GAME BACKGROUND TEST3.png');
 
         //Arrows
         this.load.image('right_pil', 'assets/images/border_pil_R.png');
@@ -41,7 +41,9 @@ Preloader.prototype = {
         
         //Music and sounds
         this.load.audio('seal', 'assets/audio/sealfiremixtape.mp3');
-        this.load.audio('jerry5min', 'assets/audio/jerry5min.mp3');
+
+        //this.load.audio('jerry', 'assets/audio/jerry.mp3');
+        this.load.audio('jerry5min', 'assets/audio/jerry4min.mp3');
         this.load.audio('explosion_audio', 'assets/audio/explosion.mp3');
         this.load.audio('select_audio', 'assets/audio/select.mp3');
         this.load.audio('fem', 'assets/audio/FEM.mp3');
