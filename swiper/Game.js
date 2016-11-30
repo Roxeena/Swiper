@@ -385,22 +385,20 @@ Game.prototype = {
 
         // Feem!
         if (meme == 2)
-        {
-            text = this.game.add.text(this.game.world.centerX, this.game.world.centerY, 'Feeem');
+        {   
+            text = game.add.bitmapText(this.game.world.centerX, this.game.world.centerY, 'anuswiper_font_green','Feeem');
 
             //  Center align
             text.anchor.set(0.5);
             text.align = 'center';
 
             //  Font style
-            text.font = 'anuswiper_font';
+      
             text.fontSize = game.height * (1/10);
             text.fontWeight = 'normal';
 
             //  Stroke color and thickness
-            text.stroke = '#000000';
-            text.strokeThickness = 6;
-            text.fill = '#00ff00';
+         
 
             text.alpha = 0;
 
@@ -421,21 +419,15 @@ Game.prototype = {
         //Text i början av spelet.
         if (meme == 1)
         {
-            text = this.game.add.text(this.game.world.centerX, this.game.world.centerY, 'Swipe!');
+            text = game.add.bitmapText(this.game.world.centerX, this.game.world.centerY,'anuswiper_font_rosa', 'Swipe!');
 
             //  Center align
             text.anchor.set(0.5);
             text.align = 'center';
 
-            //  Font style
-            text.font = 'anuswiper_font';
+           
             text.fontSize = game.height * (1/8);
             text.fontWeight = 'bold';
-
-            //  Stroke color and thickness
-            text.stroke = '#000000';
-            text.strokeThickness = 6;
-            text.fill = '#ff00dd';
 
             text.alpha = 0;
 
@@ -458,21 +450,15 @@ Game.prototype = {
         //minuspoäng
         if (meme == 4)
         {
-            text = this.game.add.text(this.game.world.centerX, this.game.world.centerY, '-1');
+            text = game.add.bitmapText(this.game.world.centerX, this.game.world.centerY,'anuswiper_font_rod', '-1');
 
             //  Center align
             text.anchor.set(0.5);
             text.align = 'center';
 
             //  Font style
-            text.font = 'anuswiper_font';
             text.fontSize = game.height * (1/10);
             text.fontWeight = 'normal';
-
-            //  Stroke color and thickness
-            text.stroke = '#000000';
-            text.strokeThickness = 6;
-            text.fill = '#fe1d17';
 
             text.alpha = 0;
 
