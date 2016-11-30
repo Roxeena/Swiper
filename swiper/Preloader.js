@@ -62,16 +62,16 @@ Preloader.prototype = {
         //Animations and spritirsheets
         this.load.spritesheet('button', 'assets/images/spritesheets/THE_START_KNAPP.png');
         this.load.spritesheet('HS_button', 'assets/images/spritesheets/THE_HIGH_KNAPP.png');
-        this.load.spritesheet('back', 'assets/images/spritesheets/Back_knapp.png');
+        this.load.spritesheet('back', 'assets/images/spritesheets/BACK.png');
         this.load.spritesheet('S_button', 'assets/images/spritesheets/THE_SETT_KNAPP.png');
-        this.load.spritesheet('muteMusic', 'assets/images/spritesheets/MUTE_music_knapp.png');
-        this.load.spritesheet('unMuteMusic', 'assets/images/spritesheets/UNMUTE_music_knapp.png');
-        this.load.spritesheet('muteSound', 'assets/images/spritesheets/MUTE_sound_knapp.png');
-        this.load.spritesheet('unMuteSound', 'assets/images/spritesheets/UNMUTE_sound_knapp.png');
-        this.load.spritesheet('credits', 'assets/images/spritesheets/credits_knapp.png')
-        this.load.spritesheet('tryAgain', 'assets/images/spritesheets/try_again_knapp.png');
-        this.load.spritesheet('backToMenu', 'assets/images/spritesheets/back_to_menu_knapp.png');
-        this.load.spritesheet('resume', 'assets/images/spritesheets/RESUME_knapp.png');
+        this.load.spritesheet('muteMusic', 'assets/images/spritesheets/MUTE_MUSIC.png');
+        this.load.spritesheet('unMuteMusic', 'assets/images/spritesheets/UNMUTE_MUSIC.png');
+        this.load.spritesheet('muteSound', 'assets/images/spritesheets/MUTE_SOUND.png');
+        this.load.spritesheet('unMuteSound', 'assets/images/spritesheets/UNMUTE_SOUND.png');
+        this.load.spritesheet('credits', 'assets/images/spritesheets/CREDITS.png')
+        this.load.spritesheet('tryAgain', 'assets/images/spritesheets/TRY_AGAIN.png');
+        this.load.spritesheet('backToMenu', 'assets/images/spritesheets/BACK_TO_MENU.png');
+        this.load.spritesheet('resume', 'assets/images/spritesheets/RESUME.png');
         
 },
 

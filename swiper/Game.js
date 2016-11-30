@@ -70,18 +70,23 @@ Game.prototype = {
         background.height = game.height;
 
         //Add information about the score and the number of lives left 
-        scoreText = game.add.bitmapText(game.world.centerX, game.height * (1/20), 'anuswiper_font','Score: '+score );
+        scoreText = game.add.bitmapText(game.world.centerX, game.height * (1/24), 'anuswiper_font','Score: '+score );
         scoreText.anchor.set(0.5, 0.5);
         lifetext = game.add.bitmapText(game.world.centerX, game.height * (1/10), 'anuswiper_font','Lives : '+counterlives);
         lifetext.anchor.set(0.5, 0.5);
-        scoreText.fontSize = game.height * (1/20);
-        lifetext.fontSize = game.height * (1/20);
+
+        scoreText.height = game.height * (1/17);
+        lifetext.height = game.height * (1/17);
+
+        scoreText.width = game.width * (1/3);
+        lifetext.width = game.width * (1/3);
 
         // Create a label to use as a button
-        pause_label = game.add.bitmapText(game.width * (94/100), 0,'anuswiper_font', 'Pause');
+        pause_label = game.add.bitmapText(game.width * (98/100), 0,'anuswiper_font', 'Pause');
         pause_label.inputEnabled = true;
         pause_label.anchor.set(1, 0);
-        pause_label.fontSize = game.height * (1/20);
+        pause_label.height = game.height * (1/18);
+        pause_label.width= game.width * (1/5);
         pause_label.events.onInputUp.add(function () {
 
         // When the pause button is pressed, we pause the game

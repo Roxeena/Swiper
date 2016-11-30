@@ -46,12 +46,19 @@ Credits.prototype = {
         music_sound.align = "center";
 
         //Scale the text 
-        art.fontSize = game.height * (1/30);
-        gameplay.fontSize = game.height *(1/30);
-        github.fontSize = game.height *(1/30);
-        meme.fontSize = game.height *(1/30);
-        menu.fontSize = game.height *(1/30);
-        music_sound.fontSize = game.height *(1/30);
+        art.height = game.height * (1/10);
+        gameplay.height = game.height *(1/10);
+        github.height = game.height *(1/10);
+        meme.height = game.height *(1/10);
+        menu.height = game.height *(1/10);
+        music_sound.height = game.height *(1/10);
+
+        art.width = game.width * (1/3);
+        gameplay.width = game.width *(1/3);
+        github.width = game.width *(1/3);
+        meme.width = game.width *(1/3);
+        menu.width = game.width *(1/3);
+        music_sound.width = game.width *(1/3);
 
 	},
 
