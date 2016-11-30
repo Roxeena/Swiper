@@ -153,14 +153,14 @@ Game.prototype = {
 
         //Quit after a certain amount of time, music ends
         this.game.time.events.add(Phaser.Timer.SECOND*1000,this.quitGame,this);  
-        this.game.time.events.repeat(Phaser.Timer.SECOND*5,2000,this.spawn,this);  
+        this.game.time.events.repeat(Phaser.Timer.SECOND*5,2000,this.spawn,this); 
       
     },
     spawn : function(){
         this.game.time.events.repeat(Phaser.Timer.SECOND*spawnspeed,5*(Levelspawn/2),this.generateImage,this);
     },
     generateImage: function() {     //Spawn an object
-        
+
         var rndnr = this.game.rnd.integerInRange(1, 2);
 
         //Random X-position for spwan
@@ -216,10 +216,11 @@ Game.prototype = {
             else if( arrowLeft.position.y<(game.height-arrowLeft.height))
             {
                 this.decrement(arrowLeft);
+                this.memes(4);
             }
             else {//fallet när den träffar golvet
                 this.floor(arrowLeft);
-                
+                this.memes(5);               
             }
         }
         function hitworldboundsright (arrowRight) {
@@ -232,10 +233,12 @@ Game.prototype = {
             else if (arrowRight.position.y<(game.height-arrowRight.height))
             {     
                this.decrement(arrowRight);
+               this.memes(4);
             }
             else {//fallet när den träffar golvet
                 
                 this.floor(arrowRight);
+                this.memes(5);
             }
         }
       
@@ -405,10 +408,12 @@ Game.prototype = {
             
             tween.repeat(0,0);
 
+
             if(muteSoundbool == false)
             {
                 meme_sound = this.game.add.audio('fem');
                 meme_sound.play();
+
             }
             
         }
@@ -436,6 +441,7 @@ Game.prototype = {
 
             var tween = this.game.add.tween(text).to( { alpha: 1 }, 500, Phaser.Easing.Linear.None, true, 0, 1000, true);
             tween.repeat(1,0);
+
         }
 
         //tia och en tjuga
@@ -446,6 +452,49 @@ Game.prototype = {
                 meme_sound = this.game.add.audio('tia');
                 meme_sound.play();
             }
+
+        }
+
+        //minuspoäng
+        if (meme == 4)
+        {
+            text = this.game.add.text(this.game.world.centerX, this.game.world.centerY, '-1');
+
+            //  Center align
+            text.anchor.set(0.5);
+            text.align = 'center';
+
+            //  Font style
+            text.font = 'anuswiper_font';
+            text.fontSize = game.height * (1/10);
+            text.fontWeight = 'normal';
+
+            //  Stroke color and thickness
+            text.stroke = '#000000';
+            text.strokeThickness = 6;
+            text.fill = '#fe1d17';
+
+            text.alpha = 0;
+
+            var tween = this.game.add.tween(text).to( { alpha: 1 }, 250, Phaser.Easing.Linear.None, true, 0, 500, true);
+            
+            tween.repeat(0,0);
+
+        }
+
+        if(meme == 5)
+        {
+
+            var red = game.add.image(game.world.centerX, game.world.centerY, 'lostlife');
+            red.anchor.set(0.5, 0.5);
+            red.width = game.width;
+            red.height = game.height;
+
+            red.alpha = 0;
+
+            var tween = this.game.add.tween(red).to( { alpha: 1 }, 500, Phaser.Easing.Linear.None, true, 0, 500, true);
+            
+            tween.repeat(0,0);
 
         }
 

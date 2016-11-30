@@ -21,6 +21,9 @@ Boot.prototype = {
 
 		//Go to Preloader state
 		this.state.start('Preloader');
+
+		//Pause the game on lock
+		this.stage.disableVisibilityChange = false;
 	},
 	
 };

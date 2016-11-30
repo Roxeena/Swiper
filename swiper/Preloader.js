@@ -35,6 +35,8 @@ Preloader.prototype = {
         
         //Background in game
         this.load.image('sky', 'assets/images/GAME BACKGROUND TEST3.png');
+        //Feedback in game
+        this.load.image('lostlife', 'assets/images/WARNING RED.png');
 
         //Arrows
         this.load.image('right_pil', 'assets/images/R_PIL1.png');
