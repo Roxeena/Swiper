@@ -17,6 +17,7 @@ Preloader.prototype = {
 
         //Scale the image
         foocy.width = this.world.width*(1/3);
+        foocy.height=this.world.height*(1/4);
 
         //Menu images
         this.load.image('highscore_bild', 'assets/images/HIGHSCORE_bakgrund5.png');
@@ -59,10 +60,10 @@ Preloader.prototype = {
         this.load.audio('ohman', 'assets/audio/ohman.mp3');
  
         //Animations and spritirsheets
-        this.load.spritesheet('button', 'assets/images/spritesheets/Start_knapp.png');
-        this.load.spritesheet('HS_button', 'assets/images/spritesheets/highscore_knapp.png');
+        this.load.spritesheet('button', 'assets/images/spritesheets/THE_START_KNAPP.png');
+        this.load.spritesheet('HS_button', 'assets/images/spritesheets/THE_HIGH_KNAPP.png');
         this.load.spritesheet('back', 'assets/images/spritesheets/Back_knapp.png');
-        this.load.spritesheet('S_button', 'assets/images/spritesheets/settings_knapp.png');
+        this.load.spritesheet('S_button', 'assets/images/spritesheets/THE_SETT_KNAPP.png');
         this.load.spritesheet('muteMusic', 'assets/images/spritesheets/MUTE_music_knapp.png');
         this.load.spritesheet('unMuteMusic', 'assets/images/spritesheets/UNMUTE_music_knapp.png');
         this.load.spritesheet('muteSound', 'assets/images/spritesheets/MUTE_sound_knapp.png');
