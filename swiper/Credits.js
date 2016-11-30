@@ -21,10 +21,10 @@ Credits.prototype = {
         //Add the credit text
         art = 			this.add.bitmapText(game.width * (1/4), game.height * (2/10),'anuswiper_font','Art:\nNicholas\nFrederiksen' );
         gameplay = 		this.add.bitmapText(game.width * (1/4), game.height * (4/10), 'anuswiper_font','Gameplay:\nJulius Kordel');
-        github = 		this.add.bitmapText(game.width * (1/4), game.height * (6/10), 'anuswiper_font','Communication:\nMalin Ejdbo');
+        github = 		this.add.bitmapText(game.width * (1/4), game.height * (6/10), 'anuswiper_font','Producer:\nMalin Ejdbo');
         meme = 			this.add.bitmapText(game.width * (3/4), game.height * (2/10), 'anuswiper_font','Feedback:\nJakob\nGunnarsson');
         menu = 			this.add.bitmapText(game.width * (3/4), game.height * (4/10), 'anuswiper_font','Menu:\nErik Asp');
-        music_sound = 	        this.add.bitmapText(game.width * (3/4), game.height *(6/10),  'anuswiper_font','Music and sound:\nElias Elmquist');
+        music_sound = 	this.add.bitmapText(game.width * (3/4), game.height *(6/10),  'anuswiper_font','Audio:\nElias\n Elmquist');
         
       //  art.addColor('#ffffff', 25);
 
@@ -46,19 +46,19 @@ Credits.prototype = {
         music_sound.align = "center";
 
         //Scale the text 
-        art.height = game.height * (1/10);
-        gameplay.height = game.height *(1/10);
-        github.height = game.height *(1/10);
-        meme.height = game.height *(1/10);
-        menu.height = game.height *(1/10);
-        music_sound.height = game.height *(1/10);
+        art.height = game.height * (1/9);
+        gameplay.height = game.height *(1/9);
+        github.height = game.height *(1/9);
+        meme.height = game.height *(1/9);
+        menu.height = game.height *(1/9);
+        music_sound.height = game.height *(1/9);
 
-        art.width = game.width * (1/3);
-        gameplay.width = game.width *(1/3);
-        github.width = game.width *(1/3);
-        meme.width = game.width *(1/3);
-        menu.width = game.width *(1/3);
-        music_sound.width = game.width *(1/3);
+        art.width = game.width * (1/2.3);
+        gameplay.width = game.width *(1/2.3);
+        github.width = game.width *(1/2.3);
+        meme.width = game.width *(1/2.3);
+        menu.width = game.width *(1/2.3);
+        music_sound.width = game.width *(1/2.3);
 
 	},
 
