@@ -37,8 +37,8 @@ Preloader.prototype = {
         this.load.image('sky', 'assets/images/GAME BACKGROUND TEST3.png');
 
         //Arrows
-        this.load.image('right_pil', 'assets/images/border_pil_R.png');
-        this.load.image('left_pil', 'assets/images/border_pil_L.png');
+        this.load.image('right_pil', 'assets/images/R_PIL1.png');
+        this.load.image('left_pil', 'assets/images/L_PIL1.png');
         
         //Music and sounds
         this.load.audio('seal', 'assets/audio/sealfiremixtape.mp3');
