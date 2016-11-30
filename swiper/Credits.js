@@ -21,7 +21,7 @@ Credits.prototype = {
         //Add the credit text
         art = 			this.add.bitmapText(game.width * (1/4), game.height * (2/10),'anuswiper_font','Art:\nNicholas\nFrederiksen' );
         gameplay = 		this.add.bitmapText(game.width * (1/4), game.height * (4/10), 'anuswiper_font','Gameplay:\nJulius Kordel');
-        github = 		this.add.bitmapText(game.width * (1/4), game.height * (6/10), 'anuswiper_font','Producer:\nMalin Ejdbo');
+        github = 		this.add.bitmapText(game.width * (1/4), game.height * (6/10), 'anuswiper_font','Communication:\nMalin Ejdbo');
         meme = 			this.add.bitmapText(game.width * (3/4), game.height * (2/10), 'anuswiper_font','Feedback:\nJakob\nGunnarsson');
         menu = 			this.add.bitmapText(game.width * (3/4), game.height * (4/10), 'anuswiper_font','Menu:\nErik Asp');
         music_sound = 	this.add.bitmapText(game.width * (3/4), game.height *(6/10),  'anuswiper_font','Audio:\nElias\n Elmquist');
@@ -36,6 +36,7 @@ Credits.prototype = {
         meme.anchor.set(0.5, 0.5);
         menu.anchor.set(0.5, 0.5);
         music_sound.anchor.set(0.5, 0.5);
+
 
         //Align the text
         art.align = "center";

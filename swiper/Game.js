@@ -82,7 +82,7 @@ Game.prototype = {
         lifetext.width = game.width * (1/3);
 
         // Create a label to use as a button
-        pause_label = game.add.bitmapText(game.width * (98/100), 0,'anuswiper_font', 'Pause');
+        pause_label = game.add.bitmapText(game.width * (96/100), 0,'anuswiper_font', 'Pause');
         pause_label.inputEnabled = true;
         pause_label.anchor.set(1, 0);
         pause_label.height = game.height * (1/18);
