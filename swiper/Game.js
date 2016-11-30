@@ -105,26 +105,26 @@ Game.prototype = {
         back_to_knapp.width = game.width*(1/3.5);
 
         if(muteMusicbool){
-            unMuteMusic = this.game.add.image(this.game.world.centerX, game.height*(8/10), 'unMuteMusic');
+            unMuteMusic = this.game.add.image(this.game.world.centerX, game.height*(7/10), 'unMuteMusic');
             unMuteMusic.anchor.set(0.5, 0.5);
             unMuteMusic.height = game.height*(1/10);
             unMuteMusic.width = game.width*(1/3.5);
         }
         else{
-            muteMusic = this.game.add.image(this.game.world.centerX, game.height*(8/10), 'muteMusic');
+            muteMusic = this.game.add.image(this.game.world.centerX, game.height*(7/10), 'muteMusic');
             muteMusic.anchor.set(0.5, 0.5);
             muteMusic.height = game.height*(1/10);
             muteMusic.width = game.width*(1/3.5);
         }
         
         if(muteSoundbool){
-            unMuteSound = this.game.add.image(this.game.world.centerX, game.height*(7/10), 'unMuteSound');
+            unMuteSound = this.game.add.image(this.game.world.centerX, game.height*(8/10), 'unMuteSound');
             unMuteSound.anchor.set(0.5, 0.5);
             unMuteSound.height = game.height*(1/10);
             unMuteSound.width = game.width*(1/3.5);
         }
         else{
-            muteSound = this.game.add.image(this.game.world.centerX, game.height*(7/10), 'muteSound');
+            muteSound = this.game.add.image(this.game.world.centerX, game.height*(8/10), 'muteSound');
             muteSound.anchor.set(0.5, 0.5);
             muteSound.height = game.height*(1/10);
             muteSound.width = game.width*(1/3.5);
@@ -133,6 +133,7 @@ Game.prototype = {
         
 
         });
+        //Funktion som används för att knappar inte fungerar när spelet är pausat
         game.input.onDown.add(this.unpause, self);
 
         //Add the music and play it  
@@ -329,6 +330,7 @@ Game.prototype = {
                 //Quit to start menu
                 this.quitGame();
 
+                //Using localStorage to store five highscores
                 if(score > localStorage.getItem("highscore"))
                 {
                     localStorage.setItem("highscore5", localStorage.getItem("highscore4"));
@@ -448,7 +450,7 @@ Game.prototype = {
         if(game.paused){
 
             if(event.x > game.width*(2/6) && event.x < game.width*(4/6) && event.y > game.height*(11/20)-game.height/20 && event.y < game.height*(11/20)+game.height/20 ){
-            // Calculate the corners of the menu            
+            // Calculate the corners of the button Resume            
                 // Remove the menu and the buttons
                 pause_menu.destroy();
                 resume_knapp.destroy();
@@ -469,6 +471,8 @@ Game.prototype = {
             }
 
             else if(event.x > game.width*(5/14) && event.x < game.width*(9/14) && event.y > game.height*(18/20)-game.height/24 && event.y < game.height*(18/20)+game.height/24){
+            //Calculates the corners of the button Back to menu
+                //Reset the variables of Game
                 counterlives=5;
                 Level=1;
                 secondsElapsed=0;
@@ -480,19 +484,24 @@ Game.prototype = {
                     music.pause();
                 }
 
+                //Unpause the game
                 game.paused = false;
+                //Back to startmenu
                 this.game.state.start('StartMenu');
             }
 
-            else if(event.x > game.width*(5/14) && event.x < game.width*(9/14) && event.y > game.height*(15/20) && event.y < game.height*(17/20)){
+            else if(event.x > game.width*(5/14) && event.x < game.width*(9/14) && event.y > game.height*(13/20) && event.y < game.height*(15/20)){
+            //Calculates the corners of the button Mute music/unmute music
+                //Unpause the game for a short time so the button can be changed
                 game.paused = false;
+                //Works like the mute music in settings
                 if(muteMusicbool)
                 {
                     unMuteMusic.destroy();
                     muteMusicbool = false;
                     music.play();
 
-                    muteMusic = this.game.add.image(this.game.world.centerX, game.height*(8/10), 'muteMusic');
+                    muteMusic = this.game.add.image(this.game.world.centerX, game.height*(7/10), 'muteMusic');
                     muteMusic.anchor.set(0.5, 0.5);
                     muteMusic.height = game.height*(1/10);
                     muteMusic.width = game.width*(1/3.5);
@@ -502,22 +511,25 @@ Game.prototype = {
                     muteMusicbool = true;
                     music.pause();
 
-                    unMuteMusic = this.game.add.image(this.game.world.centerX, game.height*(8/10), 'unMuteMusic');
+                    unMuteMusic = this.game.add.image(this.game.world.centerX, game.height*(7/10), 'unMuteMusic');
                     unMuteMusic.anchor.set(0.5, 0.5);
                     unMuteMusic.height = game.height*(1/10);
                     unMuteMusic.width = game.width*(1/3.5);
                 }
+                //pause the game
                 game.paused = true;
             }
 
-            else if(event.x > game.width*(5/14) && event.x < game.width*(9/14) && event.y > game.height*(13/20) && event.y < game.height*(15/20)){
+            else if(event.x > game.width*(5/14) && event.x < game.width*(9/14) && event.y > game.height*(15/20) && event.y < game.height*(17/20)){
+            //Calculates the corners of the mute/unmute sound button
+                //Works the same as mute music
                 game.paused = false;
                 if(muteSoundbool)
                 {
                     unMuteSound.destroy();
                     muteSoundbool = false;
 
-                    muteSound = this.game.add.image(this.game.world.centerX, game.height*(7/10), 'muteSound');
+                    muteSound = this.game.add.image(this.game.world.centerX, game.height*(8/10), 'muteSound');
                     muteSound.anchor.set(0.5, 0.5);
                     muteSound.height = game.height*(1/10);
                     muteSound.width = game.width*(1/3.5);
@@ -526,7 +538,7 @@ Game.prototype = {
                     muteSound.destroy();
                     muteSoundbool = true;
 
-                    unMuteSound = this.game.add.image(this.game.world.centerX, game.height*(7/10), 'unMuteSound');
+                    unMuteSound = this.game.add.image(this.game.world.centerX, game.height*(8/10), 'unMuteSound');
                     unMuteSound.anchor.set(0.5, 0.5);
                     unMuteSound.height = game.height*(1/10);
                     unMuteSound.width = game.width*(1/3.5);
