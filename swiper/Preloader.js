@@ -24,7 +24,7 @@ Preloader.prototype = {
         this.load.image('gameoverMenu', 'assets/images/GAMEOVER_2.png');
         this.load.image('settings_bild', 'assets/images/SETTINGS_SCREEN.png');
         this.load.image('pause_bild', 'assets/images/PAUSED_SCREEN.png');
-        this.load.image('transpause_bild', 'assets/images/GAME_PAUSED_SCREEN.png');
+        this.load.image('transpause_bild', 'assets/images/GAME_PAUSED.png');
         this.load.image('blank_canvas', 'assets/images/BLANK_CANVAS.png')
 
         //Menu video
