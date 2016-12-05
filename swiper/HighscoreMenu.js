@@ -48,11 +48,11 @@ HighscoreMenu.prototype = {
         } 
 
         //score
-        highscore  = this.add.bitmapText((game.width/3), (game.height/3.15),'anuswiper_font', "1.     "+localStorage.getItem('highscore'),  24);
-        highscore2 = this.add.bitmapText((game.width/3), (game.height/2.40),'anuswiper_font', "2.     "+localStorage.getItem('highscore2'), 24);
-        highscore3 = this.add.bitmapText((game.width/3), (game.height/1.95),'anuswiper_font', "3.     "+localStorage.getItem('highscore3'), 24);
-        highscore4 = this.add.bitmapText((game.width/3), (game.height/1.67),'anuswiper_font', "4.     "+localStorage.getItem('highscore4'), 24);
-        highscore5 = this.add.bitmapText((game.width/3), (game.height/1.45),'anuswiper_font', "5.     "+localStorage.getItem('highscore5'), 24);
+        highscore  = this.add.bitmapText((game.width/3), (game.height/4),'anuswiper_font', "1.     "+localStorage.getItem('highscore'),  24);
+        highscore2 = this.add.bitmapText((game.width/3), (game.height/2.88),'anuswiper_font', "2.     "+localStorage.getItem('highscore2'), 24);
+        highscore3 = this.add.bitmapText((game.width/3), (game.height/2.25),'anuswiper_font', "3.     "+localStorage.getItem('highscore3'), 24);
+        highscore4 = this.add.bitmapText((game.width/3), (game.height/1.85),'anuswiper_font', "4.     "+localStorage.getItem('highscore4'), 24);
+        highscore5 = this.add.bitmapText((game.width/3), (game.height/1.58),'anuswiper_font', "5.     "+localStorage.getItem('highscore5'), 24);
 
        
 
