@@ -495,7 +495,8 @@ Game.prototype = {
         // Only act if paused
         if(game.paused){
 
-            if(event.x > game.width*(1/4) && event.x < game.width*(3/4) && event.y > game.height/2-game.height/14 && event.y < game.height/2+game.height/14 ){
+            if(event.x > game.width*(1/4) && event.x < game.width*(3/4) && event.y > game.height*(11/20)-game.height/14
+                && event.y < game.height*(11/20)+game.height/14){
             // Calculate the corners of the button Resume            
                 // Remove the menu and the buttons
                 resume_knapp.destroy();
@@ -511,11 +512,12 @@ Game.prototype = {
                 
                 back_to_knapp.destroy();
                 pause_menu.destroy();
+                highscoreText.destroy();
 
                 game.paused = false;                
             }
 
-            else if(event.x > game.width*(2/6) && event.x < game.width*(4/6) && event.y > game.height*(16.5/20) && event.y < game.height*(18.5/20)){
+            else if(event.x > game.width*(2/6) && event.x < game.width*(4/6) && event.y > game.height*(17.5/20) && event.y < game.height*(19.5/20)){
             //Calculates the corners of the button Back to menu
                 //Reset the variables of Game
                 counterlives=5;
@@ -536,7 +538,7 @@ Game.prototype = {
             }
 
             else if(event.x > game.width*(5/14) && event.x < game.width*(9/14) && 
-                event.y > 3.8*game.height/6-game.height/20 && event.y < game.height*(3.8/6) + game.height/20){
+                event.y > game.height*(13/20) && event.y < game.height*(15/20)){
             //Calculates the corners of the button Mute music/unmute music
                 //Unpause the game for a short time so the button can be changed
                 game.paused = false;
@@ -566,8 +568,8 @@ Game.prototype = {
                 game.paused = true;
             }
 
-            else if(event.x > game.width*(5/14) && event.x < game.width*(9/14) && event.y > 0.73*game.height - game.height/20 && 
-                event.y < 0.73*game.height + game.height/20){
+            else if(event.x > game.width*(5/14) && event.x < game.width*(9/14) && event.y > game.height*(15/20) && 
+                event.y < game.height*(17/20)){
             //Calculates the corners of the mute/unmute sound button
                 //Works the same as mute music
                 game.paused = false;
