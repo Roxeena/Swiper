@@ -299,6 +299,26 @@ Game.prototype = {
             {
                 this.memes(3);
             }
+            if (score == 50)
+            {
+                this.memes(6);
+            }
+            if (score == 100)
+            {
+                this.memes(7);
+            }
+            if (score == 150)
+            {
+                this.memes(8);
+            }
+            if (score == 200)
+            {
+                this.memes(9);
+            }
+            if (score == 300)
+            {
+                this.memes(10);
+            }
         },
                 
         decrement: function(selected){
@@ -488,6 +508,121 @@ Game.prototype = {
             
             tween.repeat(0,0);
 
+        }
+
+        if (meme == 6)
+        {   
+            text = game.add.bitmapText(this.game.world.centerX, this.game.world.centerY, 'anuswiper_font_green','Great!');
+
+            //  Center align
+            text.anchor.set(0.5);
+            text.align = 'center';
+
+            //  Font style
+      
+            text.fontSize = game.height * (1/10);
+            text.fontWeight = 'normal';
+
+            //  Stroke color and thickness
+         
+
+            text.alpha = 0;
+
+            var tween = this.game.add.tween(text).to( { alpha: 1 }, 1000, Phaser.Easing.Linear.None, true, 0, 1000, true);
+            
+            tween.repeat(0,0);
+        }
+
+        if (meme == 7)
+        {   
+            text = game.add.bitmapText(this.game.world.centerX, this.game.world.centerY, 'anuswiper_font_green','Awesome!');
+
+            //  Center align
+            text.anchor.set(0.5);
+            text.align = 'center';
+
+            //  Font style
+      
+            text.fontSize = game.height * (1/10);
+            text.fontWeight = 'normal';
+
+            //  Stroke color and thickness
+         
+
+            text.alpha = 0;
+
+            var tween = this.game.add.tween(text).to( { alpha: 1 }, 1000, Phaser.Easing.Linear.None, true, 0, 1000, true);
+            
+            tween.repeat(0,0);
+        }
+
+        if (meme == 8)
+        {   
+            text = game.add.bitmapText(this.game.world.centerX, this.game.world.centerY, 'anuswiper_font_green','Holly shit!');
+
+            //  Center align
+            text.anchor.set(0.5);
+            text.align = 'center';
+
+            //  Font style
+      
+            text.fontSize = game.height * (1/10);
+            text.fontWeight = 'normal';
+
+            //  Stroke color and thickness
+         
+
+            text.alpha = 0;
+
+            var tween = this.game.add.tween(text).to( { alpha: 1 }, 1000, Phaser.Easing.Linear.None, true, 0, 1000, true);
+            
+            tween.repeat(0,0);
+        }
+
+        if (meme == 9)
+        {   
+            text = game.add.bitmapText(this.game.world.centerX, this.game.world.centerY, 'anuswiper_font_green','200!');
+
+            //  Center align
+            text.anchor.set(0.5);
+            text.align = 'center';
+
+            //  Font style
+      
+            text.fontSize = game.height * (1/10);
+            text.fontWeight = 'normal';
+
+            //  Stroke color and thickness
+         
+
+            text.alpha = 0;
+
+            var tween = this.game.add.tween(text).to( { alpha: 1 }, 1000, Phaser.Easing.Linear.None, true, 0, 1000, true);
+            
+            tween.repeat(0,0);
+        }
+
+        if (meme == 10)
+        {   
+            text = game.add.bitmapText(this.game.world.centerX, this.game.world.centerY, 'anuswiper_font_green','YOU ARE FAGS!');
+
+            //  Center align
+            text.anchor.set(0.5);
+            text.align = 'center';
+
+            //  Font style
+      
+            text.fontSize = game.height * (1/10);
+            text.fontWeight = 'normal';
+
+            //  Stroke color and thickness
+         
+
+            text.alpha = 0;
+
+            var tween = this.game.add.tween(text).to( { alpha: 1 }, 1000, Phaser.Easing.Linear.None, true, 0, 1000, true);
+            
+            tween.repeat(0,0);
         }
 
     },
