@@ -84,17 +84,35 @@ Game.prototype = {
         lifetext.width = game.width * (1/3);
 
         // Create a label to use as a button
-        pause_label = game.add.bitmapText(game.width * (96/100), 0,'anuswiper_font', 'Pause');
-        pause_label.inputEnabled = true;
-        pause_label.anchor.set(1, 0);
-        pause_label.height = game.height * (1/18);
-        pause_label.width= game.width * (1/5);
-        pause_label.events.onInputUp.add(function () {
+        pauseB = game.add.button(game.width * (98/100), game.height * (2/100),'miniPause', this.pauseMenu, this, 2, 1, 0);
+        pauseB.anchor.set(1, 0);
+        pauseB.height = game.width * (1/7);
+        pauseB.width = game.width * (1/7);
+        
+        //Funktion som används för att knappar inte fungerar när spelet är pausat
+        game.input.onDown.add(this.unpause, self);
+
+        //Add the music and play it  
+        music = this.game.add.audio('jerry5min');
+        if(muteMusicbool == false)
+        {
+            music.play();
+        }
+
+        //Add objects in loop depending on time
+        //Spawn an object every 2 seconds        
+
+        //Quit after a certain amount of time, music ends
+        this.game.time.events.add(Phaser.Timer.SECOND*1000,this.quitGame,this);  
+        this.game.time.events.repeat(Phaser.Timer.SECOND*5,2000,this.spawn,this); 
+      
+    },
+
+    pauseMenu: function () {
 
         // When the pause button is pressed, we pause the game
         this.game.paused = true;
-        
-        // this.game.body.velocity.y = 0;
+    
         // Then add the menu
         pause_menu = game.add.image(game.world.centerX, game.world.centerY, 'transpause_bild');
         pause_menu.anchor.set(0.5, 0.5);
@@ -143,25 +161,8 @@ Game.prototype = {
 
         
 
-        });
-        //Funktion som används för att knappar inte fungerar när spelet är pausat
-        game.input.onDown.add(this.unpause, self);
-
-        //Add the music and play it  
-        music = this.game.add.audio('jerry5min');
-        if(muteMusicbool == false)
-        {
-            music.play();
-        }
-
-        //Add objects in loop depending on time
-        //Spawn an object every 2 seconds        
-
-        //Quit after a certain amount of time, music ends
-        this.game.time.events.add(Phaser.Timer.SECOND*1000,this.quitGame,this);  
-        this.game.time.events.repeat(Phaser.Timer.SECOND*5,2000,this.spawn,this); 
-      
     },
+
     spawn : function(){
         this.game.time.events.repeat(Phaser.Timer.SECOND*spawnspeed,5*(Levelspawn/2),this.generateImage,this);
     },

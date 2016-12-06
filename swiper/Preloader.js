@@ -25,7 +25,7 @@ Preloader.prototype = {
         this.load.image('settings_bild', 'assets/images/SETTINGS_SCREEN.png');
         this.load.image('pause_bild', 'assets/images/PAUSED_SCREEN.png');
         this.load.image('transpause_bild', 'assets/images/GAME_PAUSED.png');
-        this.load.image('blank_canvas', 'assets/images/BLANK_CANVAS.png')
+        this.load.image('blank_canvas', 'assets/images/BLANK_CANVAS.png');
 
         //Menu video
         this.load.video('titlevideo', 'assets/images/Comp 2_ver3.mp4');
@@ -48,8 +48,6 @@ Preloader.prototype = {
         
         //Music and sounds
         this.load.audio('seal', 'assets/audio/sealfiremixtape.mp3');
-
-        //this.load.audio('jerry', 'assets/audio/jerry.mp3');
         this.load.audio('jerry5min', 'assets/audio/jerry4min.mp3');
         this.load.audio('explosion_audio', 'assets/audio/explosion.mp3');
         this.load.audio('select_audio', 'assets/audio/select.mp3');
@@ -65,7 +63,7 @@ Preloader.prototype = {
         this.load.audio('gameoverjerry', 'assets/audio/gameoverjerry.mp3');
         this.load.audio('ohman', 'assets/audio/ohman.mp3');
  
-        //Animations and spritirsheets
+        //Animations, buttons and spritirsheets
         this.load.spritesheet('button', 'assets/images/spritesheets/THE_START_KNAPP.png');
         this.load.spritesheet('HS_button', 'assets/images/spritesheets/THE_HIGH_KNAPP.png');
         this.load.spritesheet('back', 'assets/images/spritesheets/BACK.png');
@@ -78,6 +76,7 @@ Preloader.prototype = {
         this.load.spritesheet('tryAgain', 'assets/images/spritesheets/TRY_AGAIN.png');
         this.load.spritesheet('backToMenu', 'assets/images/spritesheets/BACK_TO_MENU.png');
         this.load.spritesheet('resume', 'assets/images/spritesheets/RESUME.png');
+        this.load.image('miniPause', 'assets/images/rundMiniPaus.png');
         
 },
 

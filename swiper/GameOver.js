@@ -25,9 +25,10 @@ GameOver.prototype = {
 		}
 		
 		//Add the score
-		var scoreText = game.add.bitmapText(this.game.world.centerX, game.world.centerY,'anuswiper_font', 'Your score: '+score );
+		var scoreText = game.add.bitmapText(this.game.world.centerX, game.height *(4.7/10),'anuswiper_font', 'Your score:\n'+score );
 		scoreText.anchor.set(0.5);
-		scoreText.fontSize = game.height * (1/10);
+		scoreText.fontSize = game.height * (1/12);
+		scoreText.align = 'center';
 
 		//Next time the menu are opened the music should be played
 		startMusic = true;
