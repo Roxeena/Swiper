@@ -72,7 +72,7 @@ Preloader.prototype = {
         this.load.spritesheet('unMuteMusic', 'assets/images/spritesheets/UNMUTE_MUSIC.png');
         this.load.spritesheet('muteSound', 'assets/images/spritesheets/MUTE_SOUND.png');
         this.load.spritesheet('unMuteSound', 'assets/images/spritesheets/UNMUTE_SOUND.png');
-        this.load.spritesheet('credits', 'assets/images/spritesheets/CREDITS.png')
+        this.load.spritesheet('credits', 'assets/images/spritesheets/CREDITS.png');
         this.load.spritesheet('tryAgain', 'assets/images/spritesheets/TRY_AGAIN.png');
         this.load.spritesheet('backToMenu', 'assets/images/spritesheets/BACK_TO_MENU.png');
         this.load.spritesheet('resume', 'assets/images/spritesheets/RESUME.png');
