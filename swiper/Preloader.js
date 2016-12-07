@@ -62,6 +62,8 @@ Preloader.prototype = {
         this.load.audio('swipe7', 'assets/audio/swipe7.mp3');
         this.load.audio('gameoverjerry', 'assets/audio/gameoverjerry.mp3');
         this.load.audio('ohman', 'assets/audio/ohman.mp3');
+        this.load.audio('btnpush', 'assets/audio/ButtonPush.mp3');
+        this.load.audio('great', 'assets/audio/great.mp3');
  
         //Animations, buttons and spritirsheets
         this.load.spritesheet('button', 'assets/images/spritesheets/THE_START_KNAPP.png');
@@ -83,7 +85,7 @@ Preloader.prototype = {
 	create: function () {
         //Go to the start menu state
         musicStart = this.game.add.audio('seal'); 
-        audio = this.game.add.audio('select_audio');        
+        audio = this.game.add.audio('btnpush');        
         this.game.state.start('StartMenu');
     },
 
