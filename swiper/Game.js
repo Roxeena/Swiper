@@ -513,6 +513,13 @@ Game.prototype = {
 
         if (meme == 6)
         {   
+
+            if(muteSoundbool == false)
+            {
+                meme_sound = this.game.add.audio('great');
+                meme_sound.play();
+            }
+
             text = game.add.bitmapText(this.game.world.centerX, this.game.world.centerY, 'anuswiper_font_green','Great!');
 
             //  Center align
