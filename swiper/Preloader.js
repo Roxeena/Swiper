@@ -78,7 +78,7 @@ Preloader.prototype = {
         this.load.spritesheet('tryAgain', 'assets/images/spritesheets/TRY_AGAIN.png');
         this.load.spritesheet('backToMenu', 'assets/images/spritesheets/BACK_TO_MENU.png');
         this.load.spritesheet('resume', 'assets/images/spritesheets/RESUME.png');
-        this.load.image('miniPause', 'assets/images/rundMiniPaus.png');
+        this.load.image('miniPause', 'assets/images/pausknapp.png');
         
 },
 
