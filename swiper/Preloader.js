@@ -83,7 +83,7 @@ Preloader.prototype = {
 	create: function () {
         //Go to the start menu state
         musicStart = this.game.add.audio('seal'); 
-        audio = this.game.add.audio('select_audio');        
+        audio = this.game.add.audio('select_audio');
         this.game.state.start('StartMenu');
     },
 
