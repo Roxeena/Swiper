@@ -17,7 +17,7 @@ Credits.prototype = {
         back.width = game.width*(1/3);
 
         //Add the credit text
-        credit = this.add.bitmapText(game.world.centerX, game.height *(4/10),'anuswiper_font','Elias Elmquist\n\nErik Asp\n\nJakob\nGunnarsson\n\nJulius Kördel\n\nMalin Ejdbo\n\nNicholas\nFrederiksen\n' );
+        credit = this.add.bitmapText(game.world.centerX, game.height *(4/10),'anuswiper_font','Elias Elmquist\n\nErik Asp\n\nJakob\nGunnarsson\n\nJulius Kordel\n\nMalin Ejdbo\n\nNicholas\nFrederiksen\n' );
         
         //Add the anchor
         credit.anchor.set(0.5, 0.5);

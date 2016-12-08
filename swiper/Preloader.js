@@ -77,9 +77,10 @@ Preloader.prototype = {
         this.load.spritesheet('unMuteSound', 'assets/images/spritesheets/UNMUTE_SOUND.png');
         this.load.spritesheet('credits', 'assets/images/spritesheets/CREDITS.png');
         this.load.spritesheet('tryAgain', 'assets/images/spritesheets/TRY_AGAIN.png');
-        this.load.spritesheet('backToMenu', 'assets/images/spritesheets/BACK_TO_MENU.png');
+        this.load.spritesheet('backToMenu', 'assets/images/spritesheets/MAIN_MENU_2.png');
         this.load.spritesheet('resume', 'assets/images/spritesheets/RESUME.png');
-        this.load.image('miniPause', 'assets/images/pausknapp.png');
+        this.load.image('miniPause', 'assets/images/pausikon.png');
+        this.load.image('miniPlay', 'assets/images/playikon.png');
         
 },
 
