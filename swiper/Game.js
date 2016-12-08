@@ -543,6 +543,13 @@ Game.prototype = {
 
         if (meme == 7)
         {   
+
+        	   if(muteSoundbool == false)
+            {
+                meme_sound = this.game.add.audio('awesome');
+                meme_sound.play();
+            }
+
             text = game.add.bitmapText(this.game.world.centerX, this.game.world.centerY, 'anuswiper_font_green','Awesome!');
 
             //  Center align
@@ -589,6 +596,13 @@ Game.prototype = {
 
         if (meme == 9)
         {   
+
+        	 if(muteSoundbool == false)
+            {
+                meme_sound = this.game.add.audio('borne');
+                meme_sound.play();
+            }
+
             text = game.add.bitmapText(this.game.world.centerX, this.game.world.centerY, 'anuswiper_font_green','200!');
 
             //  Center align

@@ -63,6 +63,8 @@ Preloader.prototype = {
         this.load.audio('ohman', 'assets/audio/ohman.mp3');
         this.load.audio('btnpush', 'assets/audio/ButtonPush.mp3');
         this.load.audio('great', 'assets/audio/great.mp3');
+        this.load.audio('borne', 'assets/audio/JuanBorne.mp3');
+        this.load.audio('awesome', 'assets/audio/awesome.mp3');
  
         //Animations, buttons and spritirsheets
         this.load.spritesheet('button', 'assets/images/spritesheets/THE_START_KNAPP.png');
