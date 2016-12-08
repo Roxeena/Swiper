@@ -50,7 +50,7 @@ Game.prototype = {
             ++Level;
         } 
 
-        if((secondsElapsed % 20) == 0){
+        if((secondsElapsed % 20) == 0  && secondsElapsed <=100){
             ++Levelspawn;
             spawnspeed=(2/(Levelspawn));
         } 
