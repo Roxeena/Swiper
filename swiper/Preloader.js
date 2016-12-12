@@ -31,7 +31,8 @@ Preloader.prototype = {
         
         //Fonts
         this.load.bitmapFont('anuswiper_font', 'assets/fonts/bitmap/superswiper.png', 'assets/fonts/bitmap/superswiper.fnt');
-        //feedbackfonts
+  
+         //feedbackfonts
         this.load.bitmapFont('anuswiper_font_rod', 'assets/fonts/bitmap/superswiper_rod.png', 'assets/fonts/bitmap/superswiper_feedback.fnt');
         this.load.bitmapFont('anuswiper_font_green', 'assets/fonts/bitmap/superswiper_green.png', 'assets/fonts/bitmap/superswiper_feedback.fnt');
         this.load.bitmapFont('anuswiper_font_rosa', 'assets/fonts/bitmap/superswiper_rosa.png', 'assets/fonts/bitmap/superswiper_feedback.fnt');
